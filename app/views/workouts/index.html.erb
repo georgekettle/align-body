@@ -1,4 +1,7 @@
-<h1 class="font-serif text-4xl">Workouts</h1>
+<%= render 'components/header' do %>
+	<h1 class="font-serif text-4xl">Hey groovin,<br>let’s get movin</h1>
+	<p>Random motivating text to help people get movin</p>
+<% end %>
 <% @workouts.each do |workout| %>
 	<%= render 'workout', workout: workout %>
 <% end %>
