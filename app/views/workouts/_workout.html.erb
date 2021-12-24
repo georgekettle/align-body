@@ -1,5 +1,11 @@
-<%= link_to workout do %>
-	<h3><%= workout.name %></h3>
-	<h3><%= workout.mins %></h3>
-	<h3 class="inline-block" style="background-color: <%= workout.category.color %>"><%= workout.category.name %></h3>
+<%= turbo_frame_tag workout do %>
+	<div>
+		<h3><%= workout.name %></h3>
+		<h3><%= workout.mins %></h3>
+		<h3 class="inline-block" style="background-color: <%= workout.category.color %>"><%= workout.category.name %></h3>
+		<% if user_signed_in? %>
+			<%= render 'workouts/save_btn', workout: workout %>
+		<% end %>
+		<%= link_to 'See workout', workout_path(workout), data: { turbo_frame:"_top" } %>
+	</div>
 <% end %>

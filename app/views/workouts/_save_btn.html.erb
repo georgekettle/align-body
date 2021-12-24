@@ -1,0 +1,7 @@
+<%= button_to workout_toggle_save_path(workout), method: :post, form: {id: "workout_#{workout.id}_save"} do %>
+	<% if current_user.workouts.include?(workout) %>
+		<%= render 'icons/bookmark', klass: 'text-black', fill: true %>
+	<% else %>
+		<%= render 'icons/bookmark', klass: 'text-black' %>
+	<% end %>
+<% end %>
