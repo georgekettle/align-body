@@ -1,0 +1,7 @@
+/*.btn {
+	@apply bg-white px-4 py-3 text-center cursor-pointer inline-block uppercase;
+}
+
+.btn-primary {
+	@apply bg-black text-white;
+}*/
