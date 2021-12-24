@@ -1,5 +1,5 @@
-<div>
+<%= link_to workout do %>
 	<h3><%= workout.name %></h3>
 	<h3><%= workout.mins %></h3>
-	<h3 style="background-color: <%= workout.category.color %>"><%= workout.category.name %></h3>
-</div>
+	<h3 class="inline-block" style="background-color: <%= workout.category.color %>"><%= workout.category.name %></h3>
+<% end %>
