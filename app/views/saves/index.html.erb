@@ -1,0 +1,4 @@
+<h1 class="font-bold text-4xl">Saved workouts</h1>
+<% @workouts.each do |workout| %>
+	<%= render 'workouts/workout', workout: workout %>
+<% end %>
