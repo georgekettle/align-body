@@ -3,4 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable, :rememberable, :validatable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable
+
+  has_many :saves, class_name: "Save", foreign_key: "user_id", dependent: :destroy
+  has_many :workouts, through: :saves
 end
