@@ -1,3 +1,7 @@
+puts "Creating Users"
+george = User.create!(email: 'george@gmail.com', password: 'secret')
+puts "Finished creating Users"
+
 
 puts "Creating Categories"
 categories = [
@@ -21,6 +25,44 @@ categories.each { |cat| Category.create!(cat) }
 puts "Finished creating Categories"
 
 puts "Creating Instructors"
-emma = Instructor.create(first_name: 'Emma', last_name: 'Lyons', bio: 'The face & founder of ALIGN. Emma is your wild, excited, overly honest and entirely dedicated trainer. Wi
+emma = Instructor.create!(first_name: 'Emma', last_name: 'Lyons', bio: 'The face & founder of ALIGN. Emma is your wild, excited, overly honest and entirely dedicated trainer. Wi
 th over 9 years of experience specialising in Group Fitness, Circuit, HIIT, Mat, Barre and Reformer Pilates Training.')
 puts "Finished creating Instructors"
+
+puts "Creating Workouts"
+workouts = [
+	{
+		name: 'HIIT session',
+		video_url: 'https://player.vimeo.com/video/209288527',
+		category: Category.find_by_name('HIIT'),
+		instructor: emma,
+		difficulty: 'hard',
+		mins: 22,
+	},
+	{
+		name: 'Yin yoga',
+		video_url: 'https://player.vimeo.com/video/209288527',
+		category: Category.find_by_name('Flex'),
+		instructor: emma,
+		difficulty: 'medium',
+		mins: 35,
+	},
+	{
+		name: 'Booty workout',
+		video_url: 'https://player.vimeo.com/video/209288527',
+		category: Category.find_by_name('HIIT'),
+		instructor: emma,
+		difficulty: 'easy',
+		mins: 32,
+	},
+	{
+		name: 'Abs be burnin',
+		video_url: 'https://player.vimeo.com/video/209288527',
+		category: Category.find_by_name('Flow'),
+		instructor: emma,
+		difficulty: 'medium',
+		mins: 43,
+	},
+]
+workouts.each { |workout| Workout.create!(workout) }
+puts "Finished creating Workouts"
