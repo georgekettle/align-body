@@ -76,3 +76,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# format names using first_name/last_name
+gem 'name_of_person'
