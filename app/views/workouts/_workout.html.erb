@@ -1,11 +1,12 @@
-<%= turbo_frame_tag workout do %>
-	<div>
-		<h3><%= workout.name %></h3>
-		<h3><%= workout.mins %> mins</h3>
-		<h3 class="inline-block" style="background-color: <%= workout.category.color %>"><%= workout.category.name %></h3>
+<div class="relative">
+	<%= link_to workout_path(workout), class: 'aspect-w-1 aspect-h-1 bg-white mb-1 block' do %>
+		<%= image_tag 'default_1.jpg', class:"h-full w-full object-cover object-center" %>
+	<% end %>
+	<h3 class="font-medium uppercase"><%= workout.name %></h3>
+	<h3 class="opacity-80 text-sm"><%= workout.mins %> mins</h3>
+	<div class="absolute top-2 right-2 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10">
 		<% if user_signed_in? %>
 			<%= render 'workouts/save_btn', workout: workout %>
 		<% end %>
-		<%= link_to 'See workout', workout_path(workout), data: { turbo_frame:"_top" } %>
 	</div>
-<% end %>
+</div>

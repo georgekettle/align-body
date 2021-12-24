@@ -1,21 +1,23 @@
 <% @navbar_fixed ||= false %>
 
-<div class="<%= @navbar_fixed ? 'fixed' : 'sticky' %> h-12 top-0 left-0 w-screen flex items-center justify-between z-10">
-	<div class="flex-grow-1 flex items-center justify-start h-full w-1/2 text-xs md:text-base">
-		<%= link_to 'Workouts', workouts_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
-		<% if user_signed_in? %>
-			<%= link_to 'Saves', saves_path, class: 'px-4 h-full hidden md:inline-flex items-center justify-center uppercase' %>
+<div class="<%= @navbar_fixed ? 'fixed' : 'sticky' %> top-0 left-0 w-screen z-10">
+	<div class="container h-12 flex items-center justify-between">
+		<div class="flex-grow-1 flex items-center justify-start h-full w-1/2 text-xs md:text-base">
+			<%= link_to 'Workouts', workouts_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
+			<% if user_signed_in? %>
+				<%= link_to 'Saves', saves_path, class: 'px-4 h-full hidden md:inline-flex items-center justify-center uppercase' %>
+			<% end %>
+		</div>
+		<%= link_to root_path, class:'h-8 flex-shrink-0' do %>
+			<%= image_tag 'logo.svg', class:'h-full' %>
 		<% end %>
-	</div>
-	<%= link_to root_path, class:'h-8 flex-shrink-0' do %>
-		<%= image_tag 'logo.svg', class:'h-full' %>
-	<% end %>
-	<div class="flex-grow-1 flex items-center justify-end h-full w-1/2 text-xs md:text-base">
-		<% if user_signed_in? %>
-			<%= link_to 'Account', '#', class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
-		<% else %>
-			<%= link_to 'Login', new_user_session_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
-			<%= link_to 'Signup', new_user_registration_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
-		<% end %>
+		<div class="flex-grow-1 flex items-center justify-end h-full w-1/2 text-xs md:text-base">
+			<% if user_signed_in? %>
+				<%= link_to 'Account', '#', class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
+			<% else %>
+				<%= link_to 'Login', new_user_session_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
+				<%= link_to 'Signup', new_user_registration_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
+			<% end %>
+		</div>
 	</div>
 </div>

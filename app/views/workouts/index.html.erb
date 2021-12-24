@@ -1,4 +1,16 @@
-<h1 class="font-serif text-4xl">Workouts</h1>
-<% @workouts.each do |workout| %>
-	<%= render 'workout', workout: workout %>
+<%= render 'components/header' do %>
+	<h1 class="font-serif text-4xl">Hey groovin,<br>let’s get movin</h1>
+	<p class="font-serif opacity-80">Random motivating text to help people get movin</p>
 <% end %>
+<div class="p-4">
+	<div class="container">
+		<div class="flex items-center justify-between mb-4">
+			<h4 class="uppercase font-medium">Workouts</h4>
+		</div>
+		<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+			<% @workouts.each do |workout| %>
+				<%= render 'workout', workout: workout %>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,7 +1,10 @@
-<%= button_to workout_toggle_save_path(workout), method: :post, form: {id: "workout_#{workout.id}_save"} do %>
+<% btn_klass ||= "" %>
+<% icon_klass ||= "" %>
+
+<%= button_to workout_toggle_save_path(workout), method: :post, form: {id: "workout_#{workout.id}_save", class:'h-full w-full'}, class:"bg-white rounded-full p-2 backdrop-blur-lg bg-white/70 flex items-center justify-center w-full h-full #{btn_klass}" do %>
 	<% if current_user.workouts.include?(workout) %>
-		<%= render 'icons/bookmark', klass: 'text-black', fill: true %>
+		<%= render 'icons/bookmark', klass: "text-black w-2/3 #{icon_klass}", fill: true %>
 	<% else %>
-		<%= render 'icons/bookmark', klass: 'text-black' %>
+		<%= render 'icons/bookmark', klass: "text-black w-2/3 #{icon_klass}" %>
 	<% end %>
 <% end %>
