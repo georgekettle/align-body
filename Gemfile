@@ -80,3 +80,5 @@ end
 
 # format names using first_name/last_name
 gem 'name_of_person'
+# Image uploads
+gem 'cloudinary', '~> 1.16.0'
