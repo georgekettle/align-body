@@ -57,6 +57,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -79,3 +80,5 @@ end
 
 # format names using first_name/last_name
 gem 'name_of_person'
+# Image uploads
+gem 'cloudinary', '~> 1.16.0'

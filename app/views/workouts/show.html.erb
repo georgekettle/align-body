@@ -1,6 +1,8 @@
 <div class="w-screen h-screen md:flex">
   <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden">
-    <%= image_tag 'default_1.jpg', class: "object-cover object-center h-full w-full" %>
+    <% if @workout.photo.attached? %>
+      <%= cl_image_tag @workout.photo.key, class: "object-cover object-center h-full w-full" %>
+    <% end %>
   </div>
   <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
     <div class="max-w-md flex flex-col items-center justify-center text-center mx-auto">
