@@ -9,12 +9,14 @@
       <p class="text-sm mt-2 mb-6 opacity-80"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
       
       <div data-controller="workout-vimeo" data-workout-vimeo-id-value="659918390">
-        <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center" do %>
+        <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4" do %>
           <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
           Start workout
         <% end %>
         <div data-workout-vimeo-target="embed" class="hidden"></div>
       </div>
+
+      <%= render 'workouts/save_btn', workout: @workout, show_page: true %>
     </div>
   </div>
 </div>
