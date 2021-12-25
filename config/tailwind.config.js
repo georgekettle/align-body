@@ -19,6 +19,12 @@ module.exports = {
       'white': '#ffffff',
       'black': '#000',
       'cream': '#FFEFE4',
+      'terracotta': '#8D2B00',
+      'mandarin': '#B55119',
+      'carrot': '#BE6731',
+      'earth': '#76704C',
+      'shale': '#545E45',
+      'forrest': '#545E45',
     },
   },
   plugins: [
