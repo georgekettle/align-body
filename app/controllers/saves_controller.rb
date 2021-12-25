@@ -14,7 +14,7 @@ class SavesController < ApplicationController
 		end
 
 		respond_to do |format|
-	    format.turbo_stream { render turbo_stream: turbo_stream.replace("workout_#{@workout.id}_save", partial: "workouts/save_btn", locals: { workout: @workout }) }
+			format.turbo_stream
 	    format.html         { redirect_to workout_url(@workout) }
 	  end
 	end

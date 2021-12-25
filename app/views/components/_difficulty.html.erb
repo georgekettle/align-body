@@ -1,0 +1,7 @@
+<% text_color = 'text-terracotta' if workout.difficulty == 'hard' %>
+<% text_color = 'text-carrot' if workout.difficulty == 'medium' %>
+<% text_color = 'text-shale' if workout.difficulty == 'easy' %>
+
+<div class="<%= text_color %> inline-block text-sm uppercase mb-4 font-medium">
+	<%= workout.difficulty %>
+</div>

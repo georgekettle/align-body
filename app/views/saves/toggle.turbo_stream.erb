@@ -1,0 +1,2 @@
+<%= turbo_stream.replace("workout_#{@workout.id}_save", partial: "workouts/save_btn", locals: { workout: @workout }) %>
+<%= turbo_stream.replace("workout_#{@workout.id}_save_show_page", partial: "workouts/save_btn", locals: { workout: @workout, show_page: true }) %>

@@ -1,7 +1,22 @@
-<h1 class="font-bold text-4xl"><%= @workout.name %></h1>
-<h3><%= @workout.mins %> mins</h3>
-<h3 class="inline-block" style="background-color: <%= @workout.category.color %>"><%= @workout.category.name %></h3>
-<h3><%= @workout.instructor.name %></h3>
-<% if user_signed_in? %>
-	<%= render 'workouts/save_btn', workout: @workout %>
-<% end %>
+<div class="w-screen h-screen md:flex">
+  <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden">
+    <%= image_tag 'default_1.jpg', class: "object-cover object-center h-full w-full" %>
+  </div>
+  <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
+    <div class="max-w-md flex flex-col items-center justify-center text-center mx-auto">
+      <%= render 'components/difficulty', workout: @workout %>
+      <h1 class="text-4xl tracking-tight font-serif"><%= @workout.name %></h1>
+      <p class="text-sm mt-2 mb-6 opacity-80"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
+      
+      <div data-controller="workout-vimeo" data-workout-vimeo-id-value="659918390">
+        <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4" do %>
+          <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
+          Start workout
+        <% end %>
+        <div data-workout-vimeo-target="embed" class="hidden"></div>
+      </div>
+
+      <%= render 'workouts/save_btn', workout: @workout, show_page: true %>
+    </div>
+  </div>
+</div>

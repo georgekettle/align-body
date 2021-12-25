@@ -5,5 +5,6 @@ class WorkoutsController < ApplicationController
 
 	def show
 		@workout = Workout.find(params[:id])
+		@navbar_fixed = true
 	end
 end
