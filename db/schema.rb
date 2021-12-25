@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2021_12_25_102257) do
     t.string "video_url"
     t.bigint "category_id", null: false
     t.bigint "instructor_id", null: false
-    t.integer "difficulty"
+    t.integer "difficulty", default: 0, null: false
     t.integer "mins"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
