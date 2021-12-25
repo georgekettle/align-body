@@ -1,6 +1,7 @@
 class Workout < ApplicationRecord
   belongs_to :category
   belongs_to :instructor
+  has_one_attached :photo
 
   enum difficulty: {
     easy: 0,
