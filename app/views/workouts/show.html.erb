@@ -5,8 +5,8 @@
   <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
     <div class="max-w-md flex flex-col items-center justify-center text-center mx-auto">
       <%= render 'components/difficulty', workout: @workout %>
-      <h1 class="text-4xl tracking-tight text-gray-900 font-serif"><%= @workout.name %></h1>
-      <p class="text-sm text-gray-500 mt-2 mb-6"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
+      <h1 class="text-4xl tracking-tight font-serif"><%= @workout.name %></h1>
+      <p class="text-sm mt-2 mb-6 opacity-80"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
       
       <div data-controller="workout-vimeo" data-workout-vimeo-id-value="659918390">
         <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center" do %>
