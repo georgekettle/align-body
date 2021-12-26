@@ -1,0 +1,16 @@
+<%= render 'components/header' do %>
+	<h1 class="font-serif text-4xl">Hey George<br></h1>
+	<p class="font-serif opacity-80">This is your account page</p>
+<% end %>
+<div class="p-4">
+	<div class="container">
+		<div class="flex items-center justify-between mb-4">
+			<h4 class="uppercase font-medium">Your plan</h4>
+		</div>
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+			<% 2.times do %>
+				<%= render 'accounts/plan' %>
+			<% end %>
+		</div>
+	</div>
+</div>
