@@ -82,3 +82,5 @@ end
 gem 'name_of_person'
 # Image uploads
 gem 'cloudinary', '~> 1.16.0'
+# Payments to make stripe subscriptions easier
+gem 'pay', '~> 3.0'
