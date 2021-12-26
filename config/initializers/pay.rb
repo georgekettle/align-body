@@ -7,9 +7,9 @@ Pay.setup do |config|
 
   config.send_emails = true
 
-  config.default_product_name = "default"
-  config.default_plan_name = "default"
+  config.default_product_name = "Dedicated"
+  config.default_plan_name = "Dedicated"
 
-  config.automount_routes = true
-  config.routes_path = "/pay" # Only when automount_routes is true
+  # config.automount_routes = true
+  # config.routes_path = "/pay" # Only when automount_routes is true
 end

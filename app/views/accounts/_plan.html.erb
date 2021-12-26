@@ -1,10 +1,12 @@
-<div style="background-image: url(<%= asset_url('default_1.jpg') %>)" class="w-full bg-cover bg-center aspect-w-2 aspect-h-3 bg-white">
+<div style="background-image: url(<%= plan.product.images.first %>)" class="w-full bg-cover bg-center aspect-w-2 aspect-h-3 bg-white">
 	<div class="h-full w-full flex flex-col justify-end p-4">
-		<h3 class="text-6xl font-medium font-display">FREEDOM</h3>
-		<h6 class="font-medium mb-6 text-lg">$0 <span class="opacity-50 font-thin text-xs">per month (AUD)</span></h6>
-		<%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
-	    <%# render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
-	    Upgrade
-	  <% end %>
+		<h3 class="text-6xl font-medium font-display uppercase"><%= plan.product.name %></h3>
+		<% price = number_with_precision(plan.unit_amount.fdiv(100), precision: 2) %>
+		<h6 class="font-medium mb-6 text-lg">
+			<%= number_to_currency(price) %> <span class="opacity-50 font-thin text-xs">per <%= plan.recurring.interval %> (<%= plan.currency.upcase %>)</span>
+		</h6>
+
+		<%= render 'accounts/subscribe_btn', plan: plan %>
+
 	</div>
 </div>
