@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :workouts, through: :saves
 
   pay_customer
+  has_person_name
 
   def active_subscriptions
     subscriptions.where(status: "active")
