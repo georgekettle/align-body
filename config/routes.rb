@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   resources :instructors, only: [:show, :index]
   resources :workouts, only: [:show, :index] do
     post 'toggle_save', to: 'saves#toggle', as: :toggle_save
