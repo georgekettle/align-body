@@ -1,7 +1,7 @@
 require "open-uri"
 
 puts "Creating Users"
-	george = User.create!(email: 'george@gmail.com', password: 'secret')
+	george = User.create!(email: 'george@gmail.com', password: 'secret', first_name: "George", last_name: "Kettle")
 puts "Finished creating Users"
 
 

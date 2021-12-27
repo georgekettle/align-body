@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         sans: ['Magnet', ...defaultTheme.fontFamily.sans],
         serif: ['Value Serif', ...defaultTheme.fontFamily.serif],
+        display: ['Magnet Display', 'Magnet', ...defaultTheme.fontFamily.sans]
       },
     },
     colors: {

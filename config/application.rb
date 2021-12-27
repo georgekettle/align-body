@@ -26,5 +26,8 @@ module AlignFitness
       g.helper false
       g.stylesheets false
     end
+
+    # Default url for sending emails
+    config.action_mailer.default_url_options = { host: ENV['domain'] }
   end
 end

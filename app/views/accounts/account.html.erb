@@ -1,0 +1,30 @@
+<%= render 'components/header' do %>
+	<h1 class="font-serif text-4xl">Hey <%= current_user.name.first&.capitalize %><br></h1>
+	<p class="font-serif opacity-80">This is your account page</p>
+<% end %>
+<div class="p-4">
+	<div class="container">
+		<!-- Plans -->
+		<div class="mb-8">
+			<div class="flex items-center justify-between mb-4">
+				<h4 class="uppercase font-medium">Your account</h4>
+			</div>
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+				<%= button_to destroy_user_session_path, method: :delete, class: "text-black border px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+			    Logout
+			  <% end %>
+			</div>
+		</div>
+		<!-- Plans -->
+		<div class="mb-8">
+			<div class="flex items-center justify-between mb-4">
+				<h4 class="uppercase font-medium">Your plan</h4>
+			</div>
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+				<% @plans.each do |plan| %>
+					<%= render 'accounts/plan', plan: plan %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

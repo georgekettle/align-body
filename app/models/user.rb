@@ -6,4 +6,11 @@ class User < ApplicationRecord
 
   has_many :saves, class_name: "Save", foreign_key: "user_id", dependent: :destroy
   has_many :workouts, through: :saves
+
+  pay_customer
+  has_person_name
+
+  def active_subscriptions
+    subscriptions.where(status: "active")
+  end
 end
