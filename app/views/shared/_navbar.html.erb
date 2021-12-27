@@ -1,11 +1,17 @@
 <% @navbar_fixed ||= false %>
 
-<div class="<%= @navbar_fixed ? 'fixed' : 'sticky' %> top-0 left-0 w-screen z-10">
+<div data-controller="navbar" class="<%= @navbar_fixed ? 'fixed' : 'sticky' %> top-0 left-0 w-screen z-10">
 	<div class="container h-12 flex items-center justify-between">
 		<div class="flex-grow-1 flex items-center justify-start h-full w-1/2 text-xs md:text-base">
-			<%= link_to 'Workouts', workouts_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
+			<%= link_to workouts_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' do %>
+				<%= render 'icons/workout', klass: "text-black w-4.5 h-4.5 md:hidden" %>
+				<span class="hidden md:inline">Workouts</span>
+			<% end %>
 			<% if user_signed_in? %>
-				<%= link_to 'Saves', saves_path, class: 'px-4 h-full hidden md:inline-flex items-center justify-center uppercase' %>
+				<%= link_to saves_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' do %>
+					<%= render 'icons/bookmark', klass: "text-black w-4.5 h-4.5 md:hidden" %>
+					<span class="hidden md:inline">Saves</span>
+				<% end %>
 			<% end %>
 		</div>
 		<%= link_to root_path, class:'h-8 flex-shrink-0' do %>
@@ -13,10 +19,16 @@
 		<% end %>
 		<div class="flex-grow-1 flex items-center justify-end h-full w-1/2 text-xs md:text-base">
 			<% if user_signed_in? %>
-				<%= link_to 'Account', account_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
+				<%= link_to account_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' do %>
+					<%= render 'icons/account', klass: "text-black w-4.5 h-4.5 md:hidden" %>
+					<span class="hidden md:inline">Account</span>
+				<% end %>
 			<% else %>
-				<%= link_to 'Login', new_user_session_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
-				<%= link_to 'Signup', new_user_registration_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' %>
+				<%= link_to 'Login', new_user_session_path, class: 'px-4 h-full hidden md:inline-flex items-center justify-center uppercase' %>
+				<%= link_to new_user_registration_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase' do %>
+					<%= render 'icons/account', klass: "text-black w-4.5 h-4.5 md:hidden" %>
+					<span class="hidden md:inline">Signup</span>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
