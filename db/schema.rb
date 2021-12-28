@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_033450) do
+ActiveRecord::Schema.define(version: 2021_12_28_051930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 2021_12_28_033450) do
     t.integer "mins"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "membership", default: true, null: false
     t.index ["category_id"], name: "index_workouts_on_category_id"
     t.index ["instructor_id"], name: "index_workouts_on_instructor_id"
   end
