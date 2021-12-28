@@ -13,4 +13,12 @@ class User < ApplicationRecord
   def active_subscriptions
     subscriptions.where(status: "active")
   end
+
+  def subscribed?
+    subscriptions.where(status: "active").present?
+  end
+
+  def admin?
+    admin
+  end
 end
