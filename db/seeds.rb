@@ -1,7 +1,20 @@
 require "open-uri"
 
+images = [
+		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/PDP_Paloma_Midnight1_1200x_a2bc90d7-e9b5-4ef4-ba75-caff4d5ec40a_1198x1800.jpg?v=1620655672',
+		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/PDP_BikeShort_Midnight3_1200x_04fd676a-29e7-460d-b0d4-23e6612e0ae3_1198x1800.jpg?v=1607139590',
+		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/PDP_BikeShort_Midnight2_1200x_bd86356f-bca5-4ed8-93ca-f3c9d1d93277_1198x1800.jpg?v=1607139590',
+		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/purabra-merlot-1_1024x1024-2_658x985.jpg?v=1603149189',
+		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/3_1200x_c162eb50-85e5-4b49-9f3b-5e82094beb8c_1200x1800.jpg?v=1593021795',
+	]
+
 puts "Creating Users"
-	george = User.create!(email: 'george@gmail.com', password: 'secret', first_name: "George", last_name: "Kettle")
+	george = User.create!(
+							email: 'george@gmail.com',
+							password: 'secret',
+							first_name: "George",
+							last_name: "Kettle",
+							admin: true)
 puts "Finished creating Users"
 
 
@@ -23,7 +36,14 @@ puts "Creating Categories"
 			description: 'Our signature style Yin Class. To embrace both masculine & female energy. A full body relaxation class that serves one intention - to release, stretch & let go. Focusing on relieving areas of discomfort and tension throughout the body. Our FLEX class explore different intentions & stretches so you can gain the most from your practice. FLEX is suitable for all levels.'
 		}
 	]
-	categories.each { |cat| Category.create!(cat) }
+	categories.map! { |cat| Category.create!(cat) }
+
+	categories.each_with_index do |category, index|
+		img_index = images.length % (index + 1)
+		new_category_photo_url = images[img_index]
+		new_category_photo = URI.open(new_category_photo_url)
+		category.photo.attach(io: new_category_photo, filename: "#{category.name.downcase}.jpeg", content_type: 'image/jpeg')
+	end
 puts "Finished creating Categories"
 
 puts "Creating Instructors"
@@ -70,18 +90,10 @@ puts "Creating Workouts"
 		},
 	]
 
-	workout_images = [
-		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/PDP_Paloma_Midnight1_1200x_a2bc90d7-e9b5-4ef4-ba75-caff4d5ec40a_1198x1800.jpg?v=1620655672',
-		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/PDP_BikeShort_Midnight3_1200x_04fd676a-29e7-460d-b0d4-23e6612e0ae3_1198x1800.jpg?v=1607139590',
-		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/PDP_BikeShort_Midnight2_1200x_bd86356f-bca5-4ed8-93ca-f3c9d1d93277_1198x1800.jpg?v=1607139590',
-		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/purabra-merlot-1_1024x1024-2_658x985.jpg?v=1603149189',
-		'https://cdn.shopify.com/s/files/1/0114/5995/2698/products/3_1200x_c162eb50-85e5-4b49-9f3b-5e82094beb8c_1200x1800.jpg?v=1593021795',
-	]
-
 	workouts.each_with_index do |workout, index|
 		new_workout = Workout.create!(workout)
-		img_index = workout_images.length % (index + 1)
-		new_workout_photo_url = workout_images[img_index]
+		img_index = images.length % (index + 1)
+		new_workout_photo_url = images[img_index]
 		new_workout_photo = URI.open(new_workout_photo_url)
 		new_workout.photo.attach(io: new_workout_photo, filename: "#{new_workout.name.downcase}.jpeg", content_type: 'image/jpeg')
 	end

@@ -4,13 +4,25 @@
 <% end %>
 <div class="p-4">
 	<div class="container">
-		<div class="flex items-center justify-between mb-4">
-			<h4 class="uppercase font-medium">Workouts</h4>
+		<div class="mb-8">
+			<div class="flex items-center justify-between mb-4">
+				<h4 class="uppercase font-medium">Categories</h4>
+			</div>
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+				<% @categories.each do |category| %>
+					<%= render 'categories/category', category: category %>
+				<% end %>
+			</div>
 		</div>
-		<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-			<% @workouts.each do |workout| %>
-				<%= render 'workout', workout: workout %>
-			<% end %>
+		<div class="mb-8">
+			<div class="flex items-center justify-between mb-4">
+				<h4 class="uppercase font-medium">Recommended for you</h4>
+			</div>
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+				<% @workouts.each do |workout| %>
+					<%= render 'workout', workout: workout %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

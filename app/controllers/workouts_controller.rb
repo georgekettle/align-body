@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
 	def index
 		@workouts = Workout.includes(:category, :instructor).all
+		@categories = Category.all
 		policy_scope(@workouts)
 	end
 
