@@ -8,4 +8,8 @@ class Workout < ApplicationRecord
     medium: 1,
     hard: 2
   }
+
+  def membership?
+    membership
+  end
 end
