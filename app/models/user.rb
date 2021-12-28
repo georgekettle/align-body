@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
 
   def subscribed?
-    subscriptions.where(status: "active").present?
+    active_subscriptions.any?
   end
 
   def admin?
