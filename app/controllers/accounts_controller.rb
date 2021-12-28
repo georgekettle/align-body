@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+	skip_after_action :verify_authorized
 	def account
 		current_user.set_payment_processor :stripe
 		@portal_session = current_user.payment_processor.billing_portal
