@@ -86,3 +86,5 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'pay', '~> 3.0'
 # For payments with Stripe
 gem 'stripe', '>= 2.8', '< 6.0'
+# Authorization
+gem "pundit"
