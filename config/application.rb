@@ -28,6 +28,6 @@ module AlignFitness
     end
 
     # Default url for sending emails
-    config.action_mailer.default_url_options = { host: ENV['domain'] }
+    config.action_mailer.default_url_options = { host: ENV['DOMAIN'] }
   end
 end
