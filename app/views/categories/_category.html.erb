@@ -1,0 +1,7 @@
+<%= link_to category_path(category), class: 'bg-white aspect-w-5 aspect-h-3 w-full relative leading-none group overflow-hidden block' do %>
+	<%= cl_image_tag(category.photo.key, height: 450, width: 750, crop: :fill, class:'absolute inset-0 transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out') if category.photo.attached? %>
+	<div class="w-full h-full p-4">
+		<h4 class="font-medium uppercase inline-block text-xl md:text-3xl"><%= category.name %></h4>
+		<p class="opacity-80 text-sm"><%= pluralize(category.workouts.count, 'wrkt') %></p>
+	</div>
+<% end %>

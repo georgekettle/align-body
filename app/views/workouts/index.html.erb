@@ -2,15 +2,43 @@
 	<h1 class="font-serif text-4xl">Hey groovin,<br>let’s get movin</h1>
 	<p class="font-serif opacity-80">Random motivating text to help people get movin</p>
 <% end %>
-<div class="p-4">
-	<div class="container">
+<div class="mb-8 md:p-4">
+	<div class="container hidden md:block">
 		<div class="flex items-center justify-between mb-4">
-			<h4 class="uppercase font-medium">Workouts</h4>
+			<h4 class="uppercase font-medium">Categories</h4>
 		</div>
-		<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-			<% @workouts.each do |workout| %>
-				<%= render 'workout', workout: workout %>
+		<div class="snap-x flex items-center overflow-x-scroll">
+			<% @categories.each do |category| %>
+				<div class="snap-start bg-black mr-4 shrink-0 w-2/3 md:w-2/5">
+					<%= render 'categories/category', category: category %>
+				</div>
 			<% end %>
+		</div>
+	</div>
+	<div class="md:hidden block">
+		<div class="flex items-center justify-between mb-4 pl-4">
+			<h4 class="uppercase font-medium">Categories</h4>
+		</div>
+		<div class="scroll-pl-4 pl-4 snap-x flex items-center overflow-x-scroll">
+			<% @categories.each do |category| %>
+				<div class="snap-start bg-black mr-4 shrink-0 w-2/3 md:w-2/5">
+					<%= render 'categories/category', category: category %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="p-4 pt-0">
+	<div class="container">
+		<div class="mb-8">
+			<div class="flex items-center justify-between mb-4">
+				<h4 class="uppercase font-medium">Recommended for you</h4>
+			</div>
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+				<% @workouts.each do |workout| %>
+					<%= render 'workout', workout: workout %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

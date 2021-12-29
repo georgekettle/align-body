@@ -1,0 +1,9 @@
+<% if records.empty? %>
+	<div class="bg-black bg-opacity-10 text-center font-serif p-4">
+		<% if message %>
+			<h4><%= message %></h4>
+		<% else %>
+			<h4>No results found...</h4>
+		<% end %>
+	</div>
+<% end %>

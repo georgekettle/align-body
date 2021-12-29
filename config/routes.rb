@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     post 'toggle_save', to: 'saves#toggle', as: :toggle_save
   end
   get 'account', to: 'accounts#account', as: :account
-  resources :saves, only: [:index]
+  resources :saves, only: :index
+  resources :categories, only: :show
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -10,13 +10,21 @@
       <h1 class="text-4xl tracking-tight font-serif"><%= @workout.name %></h1>
       <p class="text-sm mt-2 mb-6 opacity-80"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
       
-      <div data-controller="workout-vimeo" data-workout-vimeo-id-value="659918390">
-        <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4" do %>
-          <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
+      <% if policy(@workout).locked? %>
+        <div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed">
+          <%= render 'icons/locked', klass: 'text-white w-4 h-4 mr-4', fill: true %>
           Start workout
-        <% end %>
-        <div data-workout-vimeo-target="embed" class="hidden"></div>
-      </div>
+        </div>
+        <%= link_to "Upgrade plan to participate", account_path, class: "text-center mb-4 hover:opacity-80 transition-opacity duration-300 ease-out text-sm mt-1 text-mandarin" %>
+      <% else %>
+        <div data-controller="workout-vimeo" data-workout-vimeo-id-value="659918390">
+          <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4" do %>
+            <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
+            Start workout
+          <% end %>
+          <div data-workout-vimeo-target="embed" class="hidden"></div>
+        </div>
+      <% end %>
 
       <%= render 'workouts/save_btn', workout: @workout, show_page: true %>
     </div>
