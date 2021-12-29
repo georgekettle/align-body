@@ -6,7 +6,7 @@ class WorkoutPolicy < ApplicationPolicy
   end
 
   def show?
-    unlocked?
+    true
   end
 
   def locked?

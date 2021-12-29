@@ -25,7 +25,7 @@ module.exports = {
       'carrot': '#BE6731',
       'earth': '#76704C',
       'shale': '#545E45',
-      'forest': '#545E45',
+      'forest': '#1F2D16',
     },
   },
   plugins: [
