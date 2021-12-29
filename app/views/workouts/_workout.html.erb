@@ -8,7 +8,7 @@
 	<div class="flex items-center">
 		<h3 class="opacity-80 text-sm"><%= workout.mins %> mins</h3>
 		<% if policy(workout).locked? %>
-			<div class="inline-flex items-center justify-center w-5 h-5 ml-2 p-1 bg-forest rounded-full">
+			<div class="inline-flex items-center justify-center w-5 h-5 ml-2 p-1 bg-shale rounded-full">
 				<%= render 'icons/locked', klass:'text-cream w-2.5 h-2.5', fill:true %>
 			</div>
 		<% end %>
