@@ -23,6 +23,7 @@
 						<%= render 'workouts/workout', workout: workout %>
 					<% end %>
 				</div>
+				<%= render 'components/if_empty', records: @workouts, message: "No workouts found..." %>
 			</div>
 		</div>
 	</div>
