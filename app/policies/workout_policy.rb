@@ -6,7 +6,15 @@ class WorkoutPolicy < ApplicationPolicy
   end
 
   def show?
-    return user.subscribed? if record.membership?
-    true
+    unlocked?
+  end
+
+  def locked?
+    return !user.subscribed? if record.membership?
+    false
+  end
+
+  def unlocked?
+    !locked?
   end
 end
