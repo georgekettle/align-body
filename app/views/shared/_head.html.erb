@@ -1,4 +1,12 @@
-<title>AlignFitness</title>
+<title>
+  <%= if content_for?(:title) then yield(:title) + ' | ' end %>
+  Align Body
+</title>
+<meta name='description'
+      content='<%= yield_meta_tag(:description, 'Online pilates & HIIT workouts for women. Join in from anywhere with our custom online workout station. Designed by Emma Lyons to help you strengthen, empower and embrace the woman within.') %>' />
+<meta name='keywords'
+      content='<%= yield_meta_tag(:keywords, 'hiit, pilates, workout, home, women') %>' />
+
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
