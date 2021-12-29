@@ -1,13 +1,7 @@
-<% if category.photo.attached? %>
-	<%= link_to category_path(category), style:"background-image: url(#{cl_image_path(category.photo.key, height: 500, width: 500, crop: :fill)})", class: 'bg-white aspect-w-3 aspect-h-2 bg-cover' do %>
-		<div class="w-full h-full p-4">
-			<h4 class="font-medium uppercase inline-block text-xl"><%= category.name %></h4>
-		</div>
-	<% end %>
-<% else %>
-	<%= link_to category_path(category), class: 'bg-white aspect-w-3 aspect-h-2' do %>
-		<div class="w-full h-full p-4">
-			<h4 class="font-medium uppercase inline-block text-xl"><%= category.name %></h4>
-		</div>
-	<% end %>
+<%= link_to category_path(category), class: 'bg-white aspect-w-5 aspect-h-3 relative group overflow-hidden' do %>
+	<%= cl_image_tag(category.photo.key, height: 450, width: 750, crop: :fill, class:'absolute inset-0 transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out') if category.photo.attached? %>
+	<div class="w-full h-full p-4">
+		<h4 class="font-medium uppercase inline-block text-xl"><%= category.name %></h4>
+		<p class="opacity-80 text-sm"><%= pluralize(category.workouts.count, 'workout') %></p>
+	</div>
 <% end %>

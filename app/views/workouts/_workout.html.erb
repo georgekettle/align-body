@@ -1,7 +1,7 @@
 <div class="relative ">
 	<%= link_to workout_path(workout), class: 'aspect-w-1 aspect-h-1 bg-white mb-1 block group overflow-hidden' do %>
 		<% if workout.photo.attached? %>
-			<%= cl_image_tag workout.photo.key, height: 500, width: 500, crop: :fill, class:"h-full w-full object-cover object-center transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-in-out" %>
+			<%= cl_image_tag workout.photo.key, height: 500, width: 500, crop: :fill, class:"h-full w-full object-cover object-center transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out" %>
 		<% end %>
 	<% end %>
 	<h3 class="font-medium uppercase text-lg inline"><%= workout.name %></h3>
