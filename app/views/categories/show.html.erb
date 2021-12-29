@@ -5,13 +5,24 @@
 <div class="p-4">
 	<div class="container">
 		<div class="mb-8">
-			<div class="flex items-center justify-between mb-4">
-				<h4 class="uppercase font-medium">Workouts</h4>
-			</div>
-			<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-				<% @workouts.each do |workout| %>
-					<%= render 'workouts/workout', workout: workout %>
-				<% end %>
+			<div>
+				<div class="sm:flex items-center justify-between mb-4">
+					<h4 class="uppercase font-medium mb-2 sm:mb-0">Workouts</h4>
+					<div class="flex items-center sm:justify-end flex-wrap mb-2 sm:mb-0">
+						<% Workout::DURATIONS.each do |key, value| %>
+							<% if params[:duration] == key.to_s %>
+								<%= link_to key, category_path(@category), class:"px-4 py-2 border uppercase font-medium text-sm sm:ml-2 mr-2 sm:mr-0 hover:bg-black hover:text-white #{params[:duration] == key.to_s ? 'bg-black text-white' : ''}" %>
+							<% else %>
+								<%= link_to key, category_path(@category, duration: key), class:"px-4 py-2 border uppercase font-medium text-sm sm:ml-2 mr-2 sm:mr-0 hover:bg-black hover:text-white #{params[:duration] == key.to_s ? 'bg-black text-white' : ''}" %>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+				<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+					<% @workouts.each do |workout| %>
+						<%= render 'workouts/workout', workout: workout %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

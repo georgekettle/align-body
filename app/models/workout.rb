@@ -9,6 +9,12 @@ class Workout < ApplicationRecord
     hard: 2
   }
 
+  DURATIONS = {
+    short: 0...20,
+    medium: 20...35,
+    long: 35...9999
+  }
+
   def membership?
     membership
   end

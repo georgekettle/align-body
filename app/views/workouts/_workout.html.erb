@@ -4,7 +4,7 @@
 			<%= cl_image_tag workout.photo.key, height: 500, width: 500, crop: :fill, class:"h-full w-full object-cover object-center transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out" %>
 		<% end %>
 	<% end %>
-	<h3 class="font-medium uppercase text-lg inline"><%= workout.name %></h3>
+	<h3 class="capitalize font-serif text-xl inline"><%= workout.name %></h3>
 	<div class="flex items-center">
 		<h3 class="opacity-80 text-sm"><%= workout.mins %> mins</h3>
 		<% if policy(workout).locked? %>
