@@ -53,12 +53,14 @@ class RecommenderService
   	recombee_client.send(AddPurchase.new(user.recombee_id, item.recombee_id, { cascade_create: true }))
   end
 
-  def self.report_bookmark(user, item, recomm_id = nil)
-  	if recomm_id
-  		recombee_client.send(AddBookmark.new(user.recombee_id, item.recombee_id, { cascade_create: true, recomm_id: recomm_id }))
-  	else
-  		recombee_client.send(AddBookmark.new(user.recombee_id, item.recombee_id, { cascade_create: true }))
-  	end
+  def self.report_bookmark(user, item, bookmark, recomm_id = nil)
+    options = recomm_id ? { recomm_id: recomm_id } : {}
+    if bookmark.destroyed?
+      recombee_client.send(DeleteBookmark.new(user.recombee_id, item.recombee_id, options))
+    else
+      options[:cascade_create] = true
+  	  recombee_client.send(AddBookmark.new(user.recombee_id, item.recombee_id, options))
+    end
   end
 
   def self.report_view_portion(user, item, portion, session_id, recomm_id = nil)

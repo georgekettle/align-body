@@ -16,9 +16,17 @@ class SavesController < ApplicationController
 			@save.save
 		end
 
+		report_bookmark
+
 		respond_to do |format|
 			format.turbo_stream
 	    format.html         { redirect_to workout_url(@workout) }
 	  end
 	end
+
+	private
+
+	def report_bookmark
+    RecommenderService.report_bookmark(current_user, @workout, @save, params[:recomm_id])
+  end
 end
