@@ -41,33 +41,34 @@ class RecommenderService
 
   # 😄 USERS
   def self.add_user(user)
-  	recombee_client.send(AddUser.new(user.id))
+  	AddUser.new(user.id)
   end
 
   # ✋ INTERACTIONS
-  def self.report_view(user, item)
-  	recombee_client.send(AddDetailView.new(user.recombee_id, item.recombee_id, { cascade_create: true }))
+  def self.add_view(user, item)
+  	AddDetailView.new(user.recombee_id, item.recombee_id, { cascade_create: true })
   end
 
-  def self.report_purchase(user, item)
-  	recombee_client.send(AddPurchase.new(user.recombee_id, item.recombee_id, { cascade_create: true }))
+  def self.add_purchase(user, item)
+  	AddPurchase.new(user.recombee_id, item.recombee_id, { cascade_create: true })
   end
 
-  def self.report_bookmark(user, item, bookmark, recomm_id = nil)
+  def self.add_bookmark(user, item, recomm_id = nil)
     options = recomm_id ? { recomm_id: recomm_id } : {}
-    if bookmark.destroyed?
-      recombee_client.send(DeleteBookmark.new(user.recombee_id, item.recombee_id, options))
-    else
-      options[:cascade_create] = true
-  	  recombee_client.send(AddBookmark.new(user.recombee_id, item.recombee_id, options))
-    end
+    options[:cascade_create] = true
+	  AddBookmark.new(user.recombee_id, item.recombee_id, options)
   end
 
-  def self.report_view_portion(user, item, portion, session_id, recomm_id = nil)
+  def self.delete_bookmark(user, item, recomm_id = nil)
+    options = recomm_id ? { recomm_id: recomm_id } : {}
+    DeleteBookmark.new(user.recombee_id, item.recombee_id, options)
+  end
+
+  def self.add_view_portion(user, item, portion, session_id, recomm_id = nil)
   	if recomm_id
-  		recombee_client.send(SetViewPortion.new(user.recombee_id, item.recombee_id, portion, { cascade_create: true, session_id: session_id, recomm_id: recomm_id }))
+  		SetViewPortion.new(user.recombee_id, item.recombee_id, portion, { cascade_create: true, session_id: session_id, recomm_id: recomm_id })
   	else
-  		recombee_client.send(AddBookmark.new(user.recombee_id, item.recombee_id, portion, { cascade_create: true, session_id: session_id }))
+  		AddBookmark.new(user.recombee_id, item.recombee_id, portion, { cascade_create: true, session_id: session_id })
   	end
   end
 end

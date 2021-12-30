@@ -10,23 +10,18 @@ class SavesController < ApplicationController
 			@save = Save.find_by(workout: @workout, user: current_user)
 			authorize @save
 			@save.destroy
+			Recommender::DeleteBookmarkJob.perform_later(current_user, @workout, params[:recomm_id])
 		else
 			@save = Save.new(workout: @workout, user: current_user)
 			authorize @save
 			@save.save
+			Recommender::AddBookmarkJob.perform_later(current_user, @workout, params[:recomm_id])
 		end
 
-		report_bookmark
 
 		respond_to do |format|
 			format.turbo_stream
 	    format.html         { redirect_to workout_url(@workout) }
 	  end
 	end
-
-	private
-
-	def report_bookmark
-    RecommenderService.report_bookmark(current_user, @workout, @save, params[:recomm_id])
-  end
 end
