@@ -45,7 +45,8 @@ class RecommenderService
   end
 
   # ✋ INTERACTIONS
-  def self.add_view(user, item)
+  def self.add_view(user, item, recomm_id = nil)
+    options = recomm_id ? { recomm_id: recomm_id, cascade_create: true } : { cascade_create: true }
   	AddDetailView.new(user.recombee_id, item.recombee_id, { cascade_create: true })
   end
 
@@ -54,8 +55,7 @@ class RecommenderService
   end
 
   def self.add_bookmark(user, item, recomm_id = nil)
-    options = recomm_id ? { recomm_id: recomm_id } : {}
-    options[:cascade_create] = true
+    options = recomm_id ? { recomm_id: recomm_id, cascade_create: true } : { cascade_create: true }
 	  AddBookmark.new(user.recombee_id, item.recombee_id, options)
   end
 
