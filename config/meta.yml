@@ -1,6 +1,6 @@
 meta_product_name: "Align Body"
-meta_title: "Align Body | Empowering women"
+meta_title: "Align Body"
 meta_description: "Online pilates & HIIT workouts for women. Join in from anywhere with our custom online workout station. Designed by Emma Lyons to help you strengthen, empower and embrace the woman within."
 meta_keywords: "hiit, pilates, workout, home, women"
 meta_image: "cover.jpg" # should exist in `app/assets/images/`
-twitter_account: "@align-body"   # required for Twitter Cards
+twitter_account: "@align-body" # required for Twitter Cards
