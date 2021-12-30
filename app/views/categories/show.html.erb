@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@category.name}" %>
+<% content_for :meta_description, @category.description %>
+
 <%= render 'components/header' do %>
 	<h1 class="font-serif text-4xl"><%= @category.name %></h1>
 	<p class="font-serif opacity-80 max-w-2xl"><%= @category.description %></p>

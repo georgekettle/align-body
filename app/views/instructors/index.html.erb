@@ -1,3 +1,5 @@
+<% content_for :meta_title, 'Instructors' %>
+
 <h1 class="font-bold text-4xl">Instructors</h1>
 <% @instructors.each do |instructor| %>
 	<%= render 'instructor', instructor: instructor %>

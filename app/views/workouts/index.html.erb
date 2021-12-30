@@ -1,3 +1,5 @@
+<% content_for :meta_title, 'Workouts' %>
+
 <%= render 'components/header' do %>
 	<h1 class="font-serif text-4xl">Hey groovin,<br>let’s get movin</h1>
 	<p class="font-serif opacity-80">Random motivating text to help people get movin</p>
@@ -7,7 +9,7 @@
 		<div class="flex items-center justify-between mb-4">
 			<h4 class="uppercase font-medium">Categories</h4>
 		</div>
-		<div class="snap-x flex items-center overflow-x-scroll">
+		<div class="snap-mandatory snap-x flex items-center overflow-x-scroll">
 			<% @categories.each do |category| %>
 				<div class="snap-start bg-black mr-4 shrink-0 w-2/3 md:w-2/5">
 					<%= render 'categories/category', category: category %>
