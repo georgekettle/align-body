@@ -1,5 +1,5 @@
-<% title "#{@category.name}" %>
-<% meta_tag :description, @category.description %>
+<% content_for :meta_title, "#{@category.name}" %>
+<% content_for :meta_description, @category.description %>
 
 <%= render 'components/header' do %>
 	<h1 class="font-serif text-4xl"><%= @category.name %></h1>
