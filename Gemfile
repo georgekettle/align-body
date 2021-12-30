@@ -90,3 +90,6 @@ gem 'stripe', '>= 2.8', '< 6.0'
 gem "pundit"
 # Recommendations
 gem 'recombee_api_client'
+# Background jobs
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'

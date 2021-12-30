@@ -22,7 +22,7 @@ class RecommenderService
   	p error
   end
 
-  # ITEMS
+  # 📦 ITEMS
   def self.add_item(item)
   	AddItem.new(item.recombee_id)
   end
@@ -39,12 +39,12 @@ class RecommenderService
   	SetItemValues.new(item.recombee_id, values, { cascade_create: true })
   end
 
-  # USERS
+  # 😄 USERS
   def self.add_user(user)
   	recombee_client.send(AddUser.new(user.id))
   end
 
-  # INTERACTIONS
+  # ✋ INTERACTIONS
   def self.report_view(user, item)
   	recombee_client.send(AddDetailView.new(user.recombee_id, item.recombee_id, { cascade_create: true }))
   end
