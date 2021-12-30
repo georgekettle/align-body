@@ -88,3 +88,5 @@ gem 'pay', '~> 3.0'
 gem 'stripe', '>= 2.8', '< 6.0'
 # Authorization
 gem "pundit"
+# Recommendations
+gem 'recombee_api_client'
