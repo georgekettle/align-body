@@ -43,9 +43,15 @@ export default class extends Controller {
   }
 
   initFullscreenListener() {
+    const _this = this
     const embed = this.embedTarget
-    this.player.on('fullscreenchange', (e) => {
-      e.fullscreen ? embed.classList.remove('hidden') : embed.classList.add('hidden')
+    this.player.on('fullscreenchange', (data) => {
+      if (data.fullscreen) {
+        embed.classList.remove('hidden')
+      } else {
+        embed.classList.add('hidden')
+        _this.player.pause()
+      }
     })
   }
 
