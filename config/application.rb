@@ -29,5 +29,7 @@ module AlignFitness
 
     # Default url for sending emails
     config.action_mailer.default_url_options = { host: ENV['DOMAIN'] }
+    # Implement sidekiq for background jobs
+    config.active_job.queue_adapter = :sidekiq
   end
 end

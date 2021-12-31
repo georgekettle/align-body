@@ -38,9 +38,10 @@
 			</div>
 			<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
 				<% @workouts.each do |workout| %>
-					<%= render 'workout', workout: workout %>
+					<%= render 'workout', workout: workout, recomm_id: @recomm_id %>
 				<% end %>
 			</div>
+			<%= render 'components/if_empty', records: @workouts, message: "We couldn't find any suggestions, check your saves instead..." %>
 		</div>
 	</div>
 </div>
