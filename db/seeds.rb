@@ -63,6 +63,7 @@ puts "Creating Workouts"
 			instructor: emma,
 			difficulty: 'hard',
 			mins: 22,
+			membership: false
 		},
 		{
 			name: 'Yin yoga',
@@ -71,6 +72,7 @@ puts "Creating Workouts"
 			instructor: emma,
 			difficulty: 'medium',
 			mins: 35,
+			membership: false
 		},
 		{
 			name: 'Booty workout',
