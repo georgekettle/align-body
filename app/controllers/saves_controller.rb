@@ -18,7 +18,6 @@ class SavesController < ApplicationController
 			Recommender::AddBookmarkJob.perform_later(current_user, @workout, params[:recomm_id])
 		end
 
-
 		respond_to do |format|
 			format.turbo_stream
 	    format.html         { redirect_to workout_url(@workout) }

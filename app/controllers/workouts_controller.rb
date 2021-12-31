@@ -1,8 +1,9 @@
 class WorkoutsController < ApplicationController
 	def index
 		recommendations = RecommenderService.send_batch([ RecommenderService.get_recommendations(current_user, 20, 'workouts_index') ])
-		recommended_ids = recommendations.first['json']['recomms'].map{ |item| item["id"].gsub(/[^\d]/, '') }
-		@workouts = Workout.includes(:category, :instructor).where(id: recommended_ids)
+		recommended_workout_ids = recommendations.first['json']['recomms'].map{ |item| item["id"].gsub(/[^\d]/, '') }
+		@recomm_id = recommendations.first['json']['recommId']
+		@workouts = Workout.includes(:category, :instructor).where(id: recommended_workout_ids)
 		@categories = Category.all
 		policy_scope(@workouts)
 	end
