@@ -9,7 +9,7 @@ module Recommendable
 	  def add_item
 	  	details = id == 1 ? update_recommender_columns : []
 			details << RecommenderService.add_item(self)
-			details << RecommenderService.set_item_values(self, self.attributes.except('id'))
+			details << set_item_values
 			RecommenderService.send_batch(details)
 	  end
 
@@ -19,7 +19,7 @@ module Recommendable
 	  end
 
 	  def update_item
-	  	items = [ RecommenderService.set_item_values(self, self.attributes.except('id')) ]
+	  	items = [ set_item_values ]
 			RecommenderService.send_batch(items)
 	  end
 
@@ -33,7 +33,14 @@ module Recommendable
 				type = RecommenderService::COLUMN_TYPE[metadata_type]
 				columns << RecommenderService.add_item_property(property_name, type)
 			end
+			columns << RecommenderService.add_item_property('rails_model', "string")
 			columns
+	  end
+
+	  def set_item_values
+	  	attributes = self.attributes.except('id')
+			attributes['rails_model'] = self.class.to_s.downcase
+			RecommenderService.set_item_values(self, attributes)
 	  end
   end
 end

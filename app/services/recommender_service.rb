@@ -17,9 +17,14 @@ class RecommenderService
   end
 
   def self.send_batch(items)
+    retries ||= 0
   	recombee_client.send(Batch.new(items))
   rescue RecombeeApiClient::ResponseError => error
   	p error
+  rescue RecombeeApiClient::ApiTimeout => error
+    p error
+    puts "Trying again..."
+    retry if (retries += 1) < 5
   end
 
   # 📦 ITEMS
@@ -50,10 +55,6 @@ class RecommenderService
   	AddDetailView.new(user.recombee_id, item.recombee_id, { cascade_create: true })
   end
 
-  def self.add_purchase(user, item)
-  	AddPurchase.new(user.recombee_id, item.recombee_id, { cascade_create: true })
-  end
-
   def self.add_bookmark(user, item, recomm_id = nil)
     options = recomm_id ? { recomm_id: recomm_id, cascade_create: true } : { cascade_create: true }
 	  AddBookmark.new(user.recombee_id, item.recombee_id, options)
@@ -64,11 +65,12 @@ class RecommenderService
     DeleteBookmark.new(user.recombee_id, item.recombee_id, options)
   end
 
-  def self.add_view_portion(user, item, portion, session_id, recomm_id = nil)
-  	if recomm_id
-  		SetViewPortion.new(user.recombee_id, item.recombee_id, portion, { cascade_create: true, session_id: session_id, recomm_id: recomm_id })
-  	else
-  		AddBookmark.new(user.recombee_id, item.recombee_id, portion, { cascade_create: true, session_id: session_id })
-  	end
+  # ✨ Recommendations
+  def self.get_recommendations(user, count, scenario)
+    options = {
+                cascade_create: true,
+                scenario: scenario
+              }
+    RecommendItemsToUser.new(user.recombee_id, count, options)
   end
 end

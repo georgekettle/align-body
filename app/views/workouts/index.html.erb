@@ -41,6 +41,7 @@
 					<%= render 'workout', workout: workout %>
 				<% end %>
 			</div>
+			<%= render 'components/if_empty', records: @workouts, message: "We couldn't find any suggestions, check your saves instead..." %>
 		</div>
 	</div>
 </div>
