@@ -15,6 +15,10 @@ export default class extends Controller {
     lastReportedPercent: {
       type: Number,
       default: 0
+    },
+    reportedPurchase: {
+      type: Boolean,
+      default: false
     }
   }
 
@@ -66,6 +70,10 @@ export default class extends Controller {
       }
       this.hasRecommIdValue && (options.recommId = `${this.recommIdValue}`)
       this.recommenderClient.send(new recombee.SetViewPortion(userId, itemId, data.percent, options), () => {_this.lastReportedPercentValue = data.percent});
+      if (data.percent > 0.95 && !this.reportedPurchaseValue) {
+        _this.reportedPurchaseValue = true
+        this.recommenderClient.send(new recombee.AddPurchase(userId, itemId, options));
+      }
     }
   }
 }
