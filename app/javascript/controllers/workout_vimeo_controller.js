@@ -7,7 +7,10 @@ export default class extends Controller {
   static targets = ['embed']
   static values = {
     id: Number,
-    recommId: String,
+    recommId: {
+      type: String,
+      default: ''
+    },
     userId: String,
     workoutId: String,
     recombeeId: String,
@@ -74,7 +77,7 @@ export default class extends Controller {
         'sessionId': `${this.uuid}`,
         'cascadeCreate': true
       }
-      this.hasRecommIdValue && (options.recommId = `${this.recommIdValue}`)
+      this.recommIdValue != '' && (options.recommId = `${this.recommIdValue}`)
       this.recommenderClient.send(new recombee.SetViewPortion(userId, itemId, data.percent, options), () => {_this.lastReportedPercentValue = data.percent});
       if (data.percent > 0.95 && !this.reportedPurchaseValue) {
         _this.reportedPurchaseValue = true
