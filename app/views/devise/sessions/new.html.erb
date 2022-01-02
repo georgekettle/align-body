@@ -20,8 +20,8 @@
         </div>
 
         <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
+          <div class="field mt-2 flex items-center">
+            <%= f.check_box :remember_me, class: 'mr-2 focus:ring-0 border checked:bg-black', checked: true %>
             <%= f.label :remember_me %>
           </div>
         <% end %>
