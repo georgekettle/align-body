@@ -1,6 +1,7 @@
 <% @navbar_fixed ||= false %>
 
 <div data-controller="navbar" class="<%= @navbar_fixed ? 'fixed' : 'sticky' %> top-0 left-0 w-screen z-10 sm:px-4">
+	<div data-native-target="spacerTop" class="w-full"></div>
 	<div class="container h-12 flex items-center justify-between">
 		<div class="flex-grow-1 flex items-center justify-start h-full w-1/2 text-xs md:text-base">
 			<%= link_to workouts_path, class: 'px-4 md:pl-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
