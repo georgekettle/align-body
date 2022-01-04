@@ -4,11 +4,14 @@ export default class extends Controller {
 	static targets = ['spacerTop', 'spacerBottom']
 
   connect() {
-  	if (window.insets) {
-  		// apply already exisiting insets
-  		this.applySafeAreaInsets(window.insets)
-  	} else {
-  		this.listenForInsets()
+  	if (window.isNative) {
+	  	if (window.insets) {
+	  		// apply already exisiting insets
+	  		this.applySafeAreaInsets(window.insets)
+	  	} else {
+	  		// listen for insets, save to window.insets and apply
+	  		this.listenForInsets()
+	  	}
   	}
   }
 
