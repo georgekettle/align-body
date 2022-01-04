@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-	static targets = ['spacerTop', 'spacerBottom']
+	static targets = ['spacerTop', 'spacerBottom', 'onlyNative']
 
   connect() {
   	if (window.isNative) {
@@ -36,7 +36,9 @@ export default class extends Controller {
   	})
 	}
 
-	// spacerTopTargetConnected(elem) {
-	// 	elem.style.height = `${window.insets["top"]}px`
-	// }
+	onlyNativeTargetConnected(elem) {
+		if (!window.isNative) {
+			elem.classList.add('hidden')
+		}
+	}
 }
