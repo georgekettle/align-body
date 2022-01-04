@@ -1,9 +1,22 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static values = {
+    context: String
+  }
+  
   connect() {
-    this.initScrollEvent()
-    this.toggleNavbarBackground()
+    if (this.contextValue === 'web') {
+      this.initScrollEvent()
+      this.toggleNavbarBackground()
+      window.isNative && this.hide()
+    } else if (this.contextValue === 'native') {
+      !window.isNative && this.hide()
+    }
+  }
+
+  hide() {
+    this.element.classList.add("hidden")
   }
 
   initScrollEvent() {
