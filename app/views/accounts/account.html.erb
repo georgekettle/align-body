@@ -1,8 +1,8 @@
 <% content_for :meta_title, 'Your account' %>
 
 <%= render 'components/header' do %>
-	<h1 class="font-serif text-4xl">Hey <%= current_user.name.first&.capitalize %><br></h1>
-	<p class="font-serif opacity-80">This is your account page</p>
+	<h1 class="font-serif text-4xl">Your account<br></h1>
+	<p class="font-serif opacity-80">Hey <%= current_user.name.first&.capitalize %>, here you can upgrade your plan, logout and more</p>
 <% end %>
 <div class="p-4">
 	<div class="container">

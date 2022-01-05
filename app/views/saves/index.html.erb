@@ -1,13 +1,13 @@
 <% content_for :meta_title, 'Your saves' %>
 
 <%= render 'components/header' do %>
-	<h1 class="font-serif text-4xl">Hey this is handy!<br></h1>
+	<h1 class="font-serif text-4xl">Your saves<br></h1>
 	<p class="font-serif opacity-80">All your favourite workouts in one convenient location</p>
 <% end %>
 <div class="p-4">
 	<div class="container">
 		<div class="flex items-center justify-between mb-4">
-			<h4 class="uppercase font-medium">Your saves</h4>
+			<h4 class="uppercase font-medium">Workouts</h4>
 		</div>
 		<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
 			<% @workouts.each do |workout| %>
