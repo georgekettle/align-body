@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
     @navbar_fixed = true
   end
+
+  def contact
+  end
 end

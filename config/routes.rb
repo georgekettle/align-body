@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :categories, only: :show
   get 'terms', to: 'policies#terms', as: :terms
   get 'privacy', to: 'policies#privacy', as: :privacy
+  get 'contact', to: 'pages#contact', as: :contact
 
   # Defines the root path route ("/")
   root "pages#home"
