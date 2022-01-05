@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :saves, only: :index
   resources :categories, only: :show
   get 'terms', to: 'policies#terms', as: :terms
+  get 'privacy', to: 'policies#privacy', as: :privacy
 
   # Defines the root path route ("/")
   root "pages#home"
