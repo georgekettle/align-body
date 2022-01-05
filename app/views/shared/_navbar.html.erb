@@ -37,21 +37,19 @@
 
 <div data-controller="navbar"  data-navbar-context-value="native" class="fixed bottom-0 left-0 w-screen z-10 sm:px-4 bg-white">
 	<div class="flex-grow-1 flex items-center justify-center h-full w-full text-xs md:text-base h-14">
-		<%= link_to workouts_path, class: 'px-8 md:pl-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-			<%= render 'icons/workout', klass: "text-black w-6 h-6 md:hidden" %>
-		<% end %>
 		<% if user_signed_in? %>
+			<%= link_to workouts_path, class: 'px-8 md:pl-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+				<%= render 'icons/workout', klass: "text-black w-6 h-6" %>
+			<% end %>
 			<%= link_to saves_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-				<%= render 'icons/bookmark', klass: "text-black w-6 h-6 md:hidden" %>
+				<%= render 'icons/bookmark', klass: "text-black w-6 h-6" %>
 			<% end %>
 			<%= link_to account_path, class: 'px-8 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-				<%= render 'icons/account', klass: "text-black w-6 h-6 md:hidden" %>
+				<%= render 'icons/account', klass: "text-black w-6 h-6" %>
 			<% end %>
 		<% else %>
 			<%= link_to 'Login', new_user_session_path, class: 'px-8 h-full hidden md:inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300' %>
-			<%= link_to new_user_registration_path, class: 'px-8 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-				<%= render 'icons/account', klass: "text-black w-6 h-6 md:hidden" %>
-			<% end %>
+			<%= link_to 'Signup', new_user_registration_path, class: 'px-8 h-full hidden md:inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300' %>
 		<% end %>
 	</div>
 	<div data-native-target="spacerBottom"></div>
