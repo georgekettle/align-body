@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'account', to: 'accounts#account', as: :account
   resources :saves, only: :index
   resources :categories, only: :show
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'terms', to: 'policies#terms', as: :terms
 
   # Defines the root path route ("/")
   root "pages#home"
