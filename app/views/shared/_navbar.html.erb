@@ -48,8 +48,8 @@
 				<%= render 'icons/account', klass: "text-black w-6 h-6" %>
 			<% end %>
 		<% else %>
-			<%= link_to 'Login', new_user_session_path, class: 'px-8 h-full hidden md:inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300' %>
-			<%= link_to 'Signup', new_user_registration_path, class: 'px-8 h-full hidden md:inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300' %>
+			<%= link_to 'Login', new_user_session_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300 text-base' %>
+			<%= link_to 'Signup', new_user_registration_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300 text-base' %>
 		<% end %>
 	</div>
 	<div data-native-target="spacerBottom"></div>
