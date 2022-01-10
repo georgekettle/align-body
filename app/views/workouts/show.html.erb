@@ -19,7 +19,7 @@
         </div>
         <%= link_to "Upgrade plan to participate", account_path, class: "text-center mb-4 hover:opacity-80 transition-opacity duration-300 ease-out text-sm mt-1 text-mandarin" %>
       <% else %>
-        <div data-controller="workout-vimeo" data-workout-vimeo-id-value="659918390" data-workout-vimeo-user-id-value="<%= current_user.recombee_id %>" data-workout-vimeo-workout-id-value="<%= @workout.recombee_id %>" data-workout-vimeo-recomm-id-value="<%= params[:recomm_id] %>" data-workout-vimeo-recombee-id-value="<%= ENV['RECOMBEE_DB_ID'] %>" data-workout-vimeo-recombee-public-token-value="<%= ENV['RECOMBEE_PUBLIC_TOKEN'] %>">
+        <div data-controller="workout-vimeo" data-workout-vimeo-id-value="663614262" data-workout-vimeo-user-id-value="<%= current_user.recombee_id %>" data-workout-vimeo-workout-id-value="<%= @workout.recombee_id %>" data-workout-vimeo-recomm-id-value="<%= params[:recomm_id] %>" data-workout-vimeo-recombee-id-value="<%= ENV['RECOMBEE_DB_ID'] %>" data-workout-vimeo-recombee-public-token-value="<%= ENV['RECOMBEE_PUBLIC_TOKEN'] %>">
           <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4" do %>
             <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
             Start workout
