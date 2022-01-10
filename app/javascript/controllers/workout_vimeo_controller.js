@@ -60,6 +60,7 @@ export default class extends Controller {
 
   fullscreen(e) {
     e.preventDefault()
+    this.player.play()
     this.player.requestFullscreen()
   }
 
