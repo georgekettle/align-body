@@ -15,6 +15,9 @@
 				<%= render 'icons/locked', klass:'text-cream w-2.5 h-2.5', fill:true %>
 			</div>
 		<% end %>
+		<div class="ml-2">
+			<%= render 'workouts/intensity', workout: workout %>
+		</div>
 	</div>
 	<div class="absolute top-2 right-2 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10">
 		<% if user_signed_in? %>

@@ -8,9 +8,12 @@
   </div>
   <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
     <div class="max-w-md flex flex-col items-center justify-center text-center mx-auto">
-      <%= render 'components/difficulty', workout: @workout %>
       <h1 class="text-4xl tracking-tight font-serif"><%= @workout.name %></h1>
-      <p class="text-sm mt-2 mb-6 opacity-80"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
+      <p class="text-sm mt-2 opacity-80"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
+      <div class="flex items-center justify-center mt-1 mb-6">
+        <%= render 'workouts/intensity', workout: @workout %>
+        <p class="ml-2 text-sm opacity-80"><%= @workout.intensity %> intensity</p>
+      </div>
       
       <% if policy(@workout).locked? %>
         <div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed">

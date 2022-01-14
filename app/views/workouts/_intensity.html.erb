@@ -1,0 +1,9 @@
+<% if workout.intensity == 'high' %>
+	<div class="inline-flex items-center justify-center w-5 h-5 p-1 bg-terracotta rounded-full">
+		<%= render 'icons/flame_fill', klass:'text-cream w-3 h-3' %>
+	</div>
+<% else %>
+	<div class="inline-flex items-center justify-center w-5 h-5 p-1 bg-shale rounded-full">
+		<%= render 'icons/flame_fill', klass:'text-cream w-3 h-3' %>
+	</div>
+<% end %>

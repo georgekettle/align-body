@@ -26,6 +26,7 @@ module.exports = {
       'earth': '#76704C',
       'shale': '#545E45',
       'forest': '#1F2D16',
+      'water': '#82B9D8',
     },
   },
   plugins: [

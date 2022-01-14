@@ -4,10 +4,9 @@ class Workout < ApplicationRecord
   belongs_to :instructor
   has_one_attached :photo
 
-  enum difficulty: {
-    easy: 0,
-    medium: 1,
-    hard: 2
+  enum intensity: {
+    low: 0,
+    high: 2
   }
 
   DURATIONS = {
