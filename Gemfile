@@ -93,3 +93,5 @@ gem 'recombee_api_client'
 # Background jobs
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+# SMS/Text messages
+gem 'twilio-ruby'
