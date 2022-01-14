@@ -12,11 +12,11 @@
 				<div class="sm:flex items-center justify-between mb-4">
 					<h4 class="uppercase font-medium mb-2 sm:mb-0">Workouts</h4>
 					<div class="flex items-center sm:justify-end flex-wrap mb-2 sm:mb-0">
-						<% Workout::DURATIONS.each do |key, value| %>
-							<% if params[:duration] == key.to_s %>
-								<%= link_to key, category_path(@category), class:"px-4 py-2 border uppercase font-medium text-sm sm:ml-2 mr-2 sm:mr-0 hover:bg-black hover:text-white #{params[:duration] == key.to_s ? 'bg-black text-white' : ''}" %>
+						<% Workout.intensities.each do |key, value| %>
+							<% if params[:intensity] == key.to_s %>
+								<%= link_to "#{key} intensity", category_path(@category), class:"px-4 py-2 border uppercase font-medium text-sm sm:ml-2 mr-2 sm:mr-0 hover:bg-black hover:text-white #{params[:intensity] == key.to_s ? 'bg-black text-white' : ''}" %>
 							<% else %>
-								<%= link_to key, category_path(@category, duration: key), class:"px-4 py-2 border uppercase font-medium text-sm sm:ml-2 mr-2 sm:mr-0 hover:bg-black hover:text-white #{params[:duration] == key.to_s ? 'bg-black text-white' : ''}" %>
+								<%= link_to "#{key} intensity", category_path(@category, intensity: key), class:"px-4 py-2 border uppercase font-medium text-sm sm:ml-2 mr-2 sm:mr-0 hover:bg-black hover:text-white #{params[:intensity] == key.to_s ? 'bg-black text-white' : ''}" %>
 							<% end %>
 						<% end %>
 					</div>
