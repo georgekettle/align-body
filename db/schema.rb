@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2021_12_28_051930) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -166,7 +165,7 @@ ActiveRecord::Schema.define(version: 2021_12_28_051930) do
     t.string "video_url"
     t.bigint "category_id", null: false
     t.bigint "instructor_id", null: false
-    t.integer "difficulty", default: 0, null: false
+    t.integer "intensity", default: 0, null: false
     t.integer "mins"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

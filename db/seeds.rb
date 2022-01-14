@@ -21,18 +21,19 @@ puts "Finished creating Users"
 puts "Creating Categories"
 	categories = [
 		{
-			name: 'HIIT',
-			color: '#FFCFBB',
+			name: 'Luteal phase',
 			description: 'Our effective & high energy class. Incorporating different methods of body weight & light equipment based training. ALIGN. HIIT is a seamless 30 minute HIIT class focused on optimal burn & cardiovascular endurance. We use a variety of timing methods such as Tabata, EMOM, etc. ALIGN. HIIT is suitable for all levels and can be done in the comfort of your living room.'
 		},
 		{
-			name: 'Flow',
-			color: '#FFEDB8',
+			name: 'Folicular phase',
 			description: 'Is our most known signature styled class. It is 30 minutes of shaping and toning. An engaging, high energy & low intensity class. FLOW incorporates minimal bouncing, for maximum burning. Focusing on the stabilising muscles, FLOW combines the benefits of Barre and Mat pilates. FLOW is suitable for all levels and has its own Pre & Postnatal safe library.'
 		},
 		{
-			name: 'Flex',
-			color: '#CAE5FF',
+			name: 'Foundations',
+			description: "A great place to start if you're new to pilates or HIIT workouts. This is your go to for getting up to scratch and starting your fitness and strength goals the correct way."
+		},
+		{
+			name: 'Stretch',
 			description: 'Our signature style Yin Class. To embrace both masculine & female energy. A full body relaxation class that serves one intention - to release, stretch & let go. Focusing on relieving areas of discomfort and tension throughout the body. Our FLEX class explore different intentions & stretches so you can gain the most from your practice. FLEX is suitable for all levels.'
 		}
 	]
@@ -59,36 +60,44 @@ puts "Creating Workouts"
 		{
 			name: 'HIIT session',
 			video_url: 'https://player.vimeo.com/video/209288527',
-			category: Category.find_by_name('HIIT'),
+			category: Category.find_by_name('Luteal phase'),
 			instructor: emma,
-			difficulty: 'hard',
+			intensity: 'high',
 			mins: 22,
 			membership: false
 		},
 		{
 			name: 'Yin yoga',
 			video_url: 'https://player.vimeo.com/video/209288527',
-			category: Category.find_by_name('Flex'),
+			category: Category.find_by_name('Folicular phase'),
 			instructor: emma,
-			difficulty: 'medium',
+			intensity: 'low',
 			mins: 35,
 			membership: false
 		},
 		{
 			name: 'Booty workout',
 			video_url: 'https://player.vimeo.com/video/209288527',
-			category: Category.find_by_name('HIIT'),
+			category: Category.find_by_name('Luteal phase'),
 			instructor: emma,
-			difficulty: 'easy',
+			intensity: 'high',
 			mins: 32,
 		},
 		{
 			name: 'Abs be burnin',
 			video_url: 'https://player.vimeo.com/video/209288527',
-			category: Category.find_by_name('Flow'),
+			category: Category.find_by_name('Foundations'),
 			instructor: emma,
-			difficulty: 'medium',
+			intensity: 'high',
 			mins: 43,
+		},
+		{
+			name: 'Stretchy',
+			video_url: 'https://player.vimeo.com/video/209288527',
+			category: Category.find_by_name('Stretch'),
+			instructor: emma,
+			intensity: 'low',
+			mins: 22,
 		},
 	]
 
