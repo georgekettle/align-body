@@ -24,6 +24,11 @@
         </div>
 
         <div class="field">
+          <%= f.label :phone %><br />
+          <%= f.telephone_field :phone, autocomplete: "tel", class:'w-full' %>
+        </div>
+
+        <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autocomplete: "email", class:'w-full' %>
         </div>
@@ -36,10 +41,13 @@
           <%= f.password_field :password, autocomplete: "new-password", class:'w-full' %>
         </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'w-full' %>
-        </div>
+        <%# Disable password confirmation so that the user doesn't have to enter a password twice %>
+        <% if false %>
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'w-full' %>
+          </div>
+        <% end %>
 
         <div class="actions">
           <%= f.submit "Sign up", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4' %>
