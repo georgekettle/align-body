@@ -14,6 +14,7 @@ puts "Creating Users"
 							password: 'secret',
 							first_name: "George",
 							last_name: "Kettle",
+							phone: "+61403978505",
 							admin: true)
 puts "Finished creating Users"
 
