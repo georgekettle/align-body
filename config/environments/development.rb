@@ -44,6 +44,9 @@ Rails.application.configure do
   # Default url for sending emails (needed for devise)
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Add ngrok as host option for testing webhooks etc
+  config.hosts = nil
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
