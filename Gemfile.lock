@@ -172,6 +172,7 @@ GEM
     pay (3.0.24)
       rails (>= 6.0.0)
     pg (1.2.3)
+    phonelib (0.6.55)
     public_suffix (4.0.6)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -297,6 +298,7 @@ DEPENDENCIES
   name_of_person
   pay (~> 3.0)
   pg (~> 1.1)
+  phonelib
   puma (~> 5.0)
   pundit
   rails (~> 7.0.0)
