@@ -7,9 +7,9 @@
       <h1 class="text-4xl md:text-5xl font-serif leading-none mb-2">Pilates and HIIT workouts for women of all fitness levels</h1>
       <p class="font-serif leading-normal mb-6">We do pilates & HIIT differently. Find the perfect workout for you with personalised recommendations to suit your life.</p>
       <% if user_signed_in? %>
-        <%= link_to 'Start a workout', workouts_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase" %>
+        <%= link_to 'Start a workout', workouts_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
       <% else %>
-        <%= link_to 'Get started', new_user_registration_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase" %>
+        <%= link_to 'Get started', new_user_registration_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
       <% end %>
     </div>
   </div>
