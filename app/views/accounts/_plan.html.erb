@@ -2,11 +2,10 @@
 	<div class="h-full w-full flex flex-col justify-end p-4">
 		<h3 class="text-6xl font-medium font-display uppercase"><%= plan.product.name %></h3>
 		<% price = number_with_precision(plan.unit_amount.fdiv(100), precision: 2) %>
-		<h6 class="font-medium mb-6 text-lg">
+		<h6 class="font-medium text-lg">
 			<%= number_to_currency(price) %> <span class="opacity-50 font-thin text-xs">per <%= plan.recurring.interval %> (<%= plan.currency.upcase %>)</span>
 		</h6>
 
 		<%= render 'accounts/subscribe_btn', plan: plan %>
-
 	</div>
 </div>

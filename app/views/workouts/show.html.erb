@@ -15,7 +15,7 @@
       <p class="text-sm mt-2 opacity-80 mb-6"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
       
       <% if policy(@workout).locked? %>
-        <div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed">
+        <div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed font-medium">
           <%= render 'icons/locked', klass: 'text-white w-4 h-4 mr-4', fill: true %>
           Start workout
         </div>
@@ -23,7 +23,7 @@
         <p class="text-center text-sm mt-1 text-black opacity-50" data-native-target="onlyNative">This workout is locked for your plan</p>
       <% else %>
         <div data-controller="workout-vimeo" data-workout-vimeo-id-value="663614262" data-workout-vimeo-user-id-value="<%= current_user.recombee_id %>" data-workout-vimeo-workout-id-value="<%= @workout.recombee_id %>" data-workout-vimeo-recomm-id-value="<%= params[:recomm_id] %>" data-workout-vimeo-recombee-id-value="<%= ENV['RECOMBEE_DB_ID'] %>" data-workout-vimeo-recombee-public-token-value="<%= ENV['RECOMBEE_PUBLIC_TOKEN'] %>">
-          <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4" do %>
+          <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4 font-medium" do %>
             <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
             Start workout
           <% end %>
