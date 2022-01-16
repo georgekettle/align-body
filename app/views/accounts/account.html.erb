@@ -2,14 +2,16 @@
 
 <%= render 'components/header' do %>
 	<h1 class="font-serif text-4xl">Your account<br></h1>
-	<p class="font-serif opacity-80">Hey <%= current_user.name.first&.capitalize %>, here you can upgrade your plan, logout and more</p>
+	<p class="font-serif opacity-80" data-native-target="onlyWeb">Hey <%= current_user.name.first&.capitalize %>, here you can upgrade your plan, logout and more</p>
+	<p class="font-serif opacity-80" data-native-target="onlyNative">Hey <%= current_user.name.first&.capitalize %>, here you can view your plan, logout and more</p>
 <% end %>
 <div class="p-4">
 	<div class="container">
 		<!-- Plans -->
 		<div class="mb-8">
-			<div class="flex items-center justify-between mb-4">
+			<div class="mb-4">
 				<h4 class="uppercase font-medium">Your plan</h4>
+				<p class="mt-0.5 opacity-50 text-sm" data-native-target="onlyNative">Subscriptions managed online</p>
 			</div>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<% @plans.each do |plan| %>

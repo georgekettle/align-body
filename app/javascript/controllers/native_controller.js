@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-	static targets = ['spacerTop', 'spacerBottom', 'onlyNative']
+	static targets = ['spacerTop', 'spacerBottom', 'onlyNative', 'onlyWeb']
 
   connect() {
   	if (window.isNative) {
@@ -38,6 +38,12 @@ export default class extends Controller {
 
 	onlyNativeTargetConnected(elem) {
 		if (!window.isNative) {
+			elem.classList.add('hidden')
+		}
+	}
+
+	onlyWebTargetConnected(elem) {
+		if (window.isNative) {
 			elem.classList.add('hidden')
 		}
 	}

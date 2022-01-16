@@ -1,0 +1,34 @@
+/* FORMS */
+.input {
+	width:  100%;
+}
+
+.input label,
+.input input {
+	display:  block;
+	width:  100%;
+}
+
+.input label abbr[title="required"] {
+	display: none;
+}
+
+.input .hint {
+	opacity: 0.5;
+	font-size: 0.8rem;
+  display: block;
+}
+
+.input.field_with_errors input {
+	background: #ff000017;
+	border-color: #a92b2b;
+}
+
+.input span.error {
+	color: #a92b2b;
+	font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: block;
+  text-align: right;
+}

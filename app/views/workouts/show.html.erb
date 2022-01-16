@@ -1,37 +1,38 @@
 <% content_for :meta_title, @workout.name %>
 
 <div class="w-screen h-screen md:flex">
-  <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden">
+  <div class="md:w-1/2 bg-black bg-opacity-10 h-96 md:max-h-screen md:h-full overflow-hidden">
     <% if @workout.photo.attached? %>
       <%= cl_image_tag @workout.photo.key, class: "object-cover object-center h-full w-full" %>
     <% end %>
   </div>
   <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
-    <div class="max-w-md flex flex-col items-center justify-center text-center mx-auto">
-      <h1 class="text-4xl tracking-tight font-serif"><%= @workout.name %></h1>
-      <p class="text-sm mt-2 opacity-80"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
-      <div class="flex items-center justify-center mt-1 mb-6">
-        <%= render 'workouts/intensity', workout: @workout %>
-        <p class="ml-2 text-sm opacity-80"><%= @workout.intensity %> intensity</p>
+    <div class="max-w-md flex flex-col items-center justify-center text-center mx-auto p-4">
+      <div class="flex items-center justify-center mb-4">
+        <%= render 'workouts/intensity', workout: @workout, include_intensity: true %>
       </div>
+      <h1 class="text-4xl tracking-tight font-serif"><%= @workout.name %></h1>
+      <p class="text-sm mt-2 opacity-80 mb-6"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
       
       <% if policy(@workout).locked? %>
-        <div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed">
+        <div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed font-medium">
           <%= render 'icons/locked', klass: 'text-white w-4 h-4 mr-4', fill: true %>
           Start workout
         </div>
-        <%= link_to "Upgrade plan to participate", account_path, class: "text-center mb-4 hover:opacity-80 transition-opacity duration-300 ease-out text-sm mt-1 text-mandarin" %>
+        <%= link_to "Upgrade plan to participate", account_path, class: "text-center hover:opacity-80 transition-opacity duration-300 ease-out text-sm mt-1 text-mandarin", data: {native_target: "onlyWeb"} %>
+        <p class="text-center text-sm mt-1 text-black opacity-50" data-native-target="onlyNative">This workout is locked for your plan</p>
       <% else %>
         <div data-controller="workout-vimeo" data-workout-vimeo-id-value="663614262" data-workout-vimeo-user-id-value="<%= current_user.recombee_id %>" data-workout-vimeo-workout-id-value="<%= @workout.recombee_id %>" data-workout-vimeo-recomm-id-value="<%= params[:recomm_id] %>" data-workout-vimeo-recombee-id-value="<%= ENV['RECOMBEE_DB_ID'] %>" data-workout-vimeo-recombee-public-token-value="<%= ENV['RECOMBEE_PUBLIC_TOKEN'] %>">
-          <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4" do %>
+          <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4 font-medium" do %>
             <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
             Start workout
           <% end %>
           <div data-workout-vimeo-target="embed" class="hidden"></div>
         </div>
       <% end %>
-
-      <%= render 'workouts/save_btn', workout: @workout, show_page: true, recomm_id: params[:recomm_id] %>
+      <div class="mt-4">
+        <%= render 'workouts/save_btn', workout: @workout, show_page: true, recomm_id: params[:recomm_id] %>
+      </div>
     </div>
   </div>
 </div>

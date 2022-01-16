@@ -1,9 +1,6 @@
-<% if workout.intensity == 'high' %>
-	<div class="inline-flex items-center justify-center w-5 h-5 p-1 bg-terracotta rounded-full">
-		<%= render 'icons/flame_fill', klass:'text-cream w-3 h-3' %>
-	</div>
-<% else %>
-	<div class="inline-flex items-center justify-center w-5 h-5 p-1 bg-shale rounded-full">
-		<%= render 'icons/flame_fill', klass:'text-cream w-3 h-3' %>
-	</div>
-<% end %>
+<% include_intensity ||= false %>
+<% bg_color = workout.intensity == 'high' ? 'bg-mandarin' : 'bg-water' %>
+<div class="<%= bg_color %> inline-flex items-center justify-center h-5 p-1 pr-2 rounded-full">
+	<%= render 'icons/flame_fill', klass:'text-cream w-3 h-3' %>
+	<span class="text-cream ml-0.5 text-xs"><%= workout.intensity&.capitalize %><%= include_intensity ? ' intensity' : '' %></span>
+</div>

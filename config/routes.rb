@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'terms', to: 'policies#terms', as: :terms
   get 'privacy', to: 'policies#privacy', as: :privacy
   get 'contact', to: 'pages#contact', as: :contact
+  post 'sms_upgrade_callback/:user_id', to: 'sms_upgrade#twilio_callback', as: :sms_upgrade_callback
 
   # Defines the root path route ("/")
   root "pages#home"

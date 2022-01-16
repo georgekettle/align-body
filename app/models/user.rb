@@ -10,6 +10,11 @@ class User < ApplicationRecord
   pay_customer
   has_person_name
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+  validates :phone, phone: { possible: true, types: [:voip, :mobile] }, presence: true
+
   def active_subscriptions
     subscriptions.where(status: "active")
   end
