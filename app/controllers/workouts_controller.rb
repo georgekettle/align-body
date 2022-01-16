@@ -1,9 +1,10 @@
 class WorkoutsController < ApplicationController
 	def index
-		recommendations = RecommenderService.send_batch([ RecommenderService.get_recommendations(current_user, 20, 'workouts_index') ])
-		recommended_workout_ids = recommendations ? recommendations.first['json']['recomms'].map{ |item| item["id"].gsub(/[^\d]/, '') } : []
-		@recomm_id = recommendations&.first['json']['recommId'] || nil
-		@workouts = Workout.includes(:category, :instructor).where(id: recommended_workout_ids)
+		# recommendations = RecommenderService.send_batch([ RecommenderService.get_recommendations(current_user, 20, 'workouts_index') ])
+		# recommended_workout_ids = recommendations ? recommendations.first['json']['recomms'].map{ |item| item["id"].gsub(/[^\d]/, '') } : []
+		# @recomm_id = recommendations&.first['json']['recommId'] || nil
+		# @workouts = Workout.includes(:category, :instructor).where(id: recommended_workout_ids)
+		@workouts = Workout.order(:created_at)
 		@categories = Category.all
 		policy_scope(@workouts)
 	end
@@ -20,7 +21,7 @@ class WorkoutsController < ApplicationController
 
 	def send_upgrade_sms
 		recipient = current_user.phone
-		content = "Hi #{current_user.first_name&.capitalize}, to upgrade and UNLOCK ALL WORKOUTS on Align Body, go to #{account_url} Love you girl! (We do this to avoid 30% tax by apple/google)"
+		content = "Hi #{current_user.first_name&.capitalize}, we saw you tried to access a locked workout. To upgrade your membership, go to #{account_url}\n\nPs. you’re doing amazing"
 		callback = Rails.env == "production" ? sms_upgrade_callback_url(current_user.id) : "#{ENV['DOMAIN']}#{sms_upgrade_callback_path(current_user.id)}"
 		message = SmsService.send_message(recipient, content, callback)
 	end
