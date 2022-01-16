@@ -1,0 +1,1 @@
+DASHBOARD_CLASSES = %w(Workout Category Instructor User)

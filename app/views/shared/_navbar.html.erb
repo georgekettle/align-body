@@ -20,6 +20,10 @@
 		<% end %>
 		<div class="flex-grow-1 flex items-center justify-end h-full w-1/2 text-xs md:text-base">
 			<% if user_signed_in? %>
+				<%= link_to dashboard_path, class: 'px-4 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+					<%= render 'icons/dashboard', klass: "text-black w-4.5 h-4.5 md:hidden" %>
+					<span class="hidden md:inline font-medium">Dashboard</span>
+				<% end %>
 				<%= link_to account_path, class: 'px-4 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 					<%= render 'icons/account', klass: "text-black w-4.5 h-4.5 md:hidden" %>
 					<span class="hidden md:inline font-medium">Account</span>
@@ -46,6 +50,9 @@
 			<% end %>
 			<%= link_to account_path, class: 'px-8 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 				<%= render 'icons/account', klass: "text-black w-6 h-6" %>
+			<% end %>
+			<%= link_to dashboard_path, class: 'px-8 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+				<%= render 'icons/dashboard', klass: "text-black w-6 h-6" %>
 			<% end %>
 		<% else %>
 			<%= link_to 'Login', new_user_session_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300 text-base' %>

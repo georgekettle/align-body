@@ -9,6 +9,10 @@ class WorkoutPolicy < ApplicationPolicy
     true
   end
 
+  def create?
+    user.admin?
+  end
+
   def locked?
     return !user.subscribed? if record.membership?
     false
