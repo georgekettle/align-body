@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
-    get 'dashboards/dashboard', to: 'dashboards#dashboard', as: :dashboard
+    get 'dashboard', to: 'dashboard#dashboard', as: :dashboard
     namespace :dashboard do
       # DASHBOARD_CLASSES set in 'config/initializers/dashboard_classes.rb'
       DASHBOARD_CLASSES.each do |klass|

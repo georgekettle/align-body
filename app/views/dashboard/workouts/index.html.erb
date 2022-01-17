@@ -1,0 +1,22 @@
+<%= render 'components/header' do %>
+	<%= link_to dashboard_path, class:"mb-2 inline-flex items-center opacity-50 hover:opacity-100 transition-opacity duration-300 ease-out" do %>
+		<%= render "icons/chevron_left_small", klass: "text-black h-2.5 w-2.5 mr-1" %>
+		Dashboard
+	<% end %>
+	<h1 class="font-serif text-4xl">Workouts</h1>
+<% end %>
+<div class="p-4 pt-0">
+	<div class="container">
+		<div class="mb-8">
+			<div class="flex items-center justify-between mb-4">
+				<h4 class="uppercase font-medium">Workouts</h4>
+			</div>
+			<div class="grid grid-cols-2 gap-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
+				<% @workouts.each do |workout| %>
+					<%= render 'workouts/workout', workout: workout, admin: true %>
+				<% end %>
+			</div>
+			<%= render 'components/if_empty', records: @workouts, message: "There are no workouts..." %>
+		</div>
+	</div>
+</div>

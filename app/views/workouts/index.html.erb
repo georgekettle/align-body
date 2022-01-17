@@ -36,7 +36,7 @@
 			<div class="flex items-center justify-between mb-4">
 				<h4 class="uppercase font-medium">Recommended for you</h4>
 			</div>
-			<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+			<div class="grid grid-cols-2 gap-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
 				<% @workouts.each do |workout| %>
 					<%= render 'workout', workout: workout, recomm_id: @recomm_id %>
 				<% end %>

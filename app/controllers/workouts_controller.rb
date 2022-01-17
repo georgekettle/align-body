@@ -17,11 +17,6 @@ class WorkoutsController < ApplicationController
 		report_view_to_recommender_later
 	end
 
-	def new
-		@workout = Workout.new
-		authorize @workout
-	end
-
 	private
 
 	def send_upgrade_sms

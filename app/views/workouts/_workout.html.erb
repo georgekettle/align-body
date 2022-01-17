@@ -1,5 +1,10 @@
+<% admin ||= false %>
 <% recomm_id ||= nil %>
-<% workout_link = recomm_id ? workout_path(workout, recomm_id: recomm_id) : workout_path(workout) %>
+<% if admin %>
+	<% workout_link = edit_dashboard_workout_path(workout) %>
+<% else %>
+	<% workout_link = recomm_id ? workout_path(workout, recomm_id: recomm_id) : workout_path(workout) %>
+<% end %>
 
 <div class="relative ">
 	<%= link_to workout_link, class: 'aspect-w-1 aspect-h-1 bg-white mb-1 block group overflow-hidden' do %>
