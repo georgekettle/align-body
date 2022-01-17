@@ -1,12 +1,12 @@
 class Dashboard::WorkoutsController < ApplicationController
-	before_action :set_workout, only: [:edit, :update]
+	before_action :set_workout, only: [:edit, :update, :destroy]
 
 	def index
 		@workouts = Workout.order(:created_at)
 		policy_scope(@workouts)
 	end
 
-	def edit	
+	def edit
 	end
 
 	def update
@@ -15,6 +15,11 @@ class Dashboard::WorkoutsController < ApplicationController
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		@workout.destroy
+		redirect_to dashboard_workouts_path, notice: "Workout successfully deleted"
 	end
 
 	private

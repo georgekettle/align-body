@@ -8,5 +8,6 @@
 <div class="p-4 pt-0">
 	<div class="container">
 		<%= render 'form', workout: @workout %>
+		<%= button_to "or Delete workout", dashboard_workout_path(@workout), method: :delete, form: { data: { turbo_confirm: "Are you sure? (You can't reverse this)" } }, class: "text-terracotta underline underline-offset-4 text-center inline-block mx-auto mt-6" %>
 	</div>
 </div>
