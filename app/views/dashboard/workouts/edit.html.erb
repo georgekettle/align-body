@@ -7,6 +7,15 @@
 <% end %>
 <div class="p-4 pt-0">
 	<div class="container">
+		<div class="w-36 h-36 bg-black bg-opacity-10 mb-4">
+			<% if @workout.photo.attached? %>
+				<%= cl_image_tag @workout.photo.key, width: 500, height: 500, crop: 'fill' %>
+			<% else %>
+				<div class="bg-shale flex items-center justify-center text-cream h-full w-full">
+					<h4 class="font-serif">No image</h4>
+				</div>
+			<% end %>
+		</div>
 		<%= render 'form', workout: @workout %>
 		<%= button_to "or Delete workout", dashboard_workout_path(@workout), method: :delete, form: { data: { turbo_confirm: "Are you sure? (You can't reverse this)" } }, class: "text-terracotta underline underline-offset-4 text-center inline-block mx-auto mt-6" %>
 	</div>
