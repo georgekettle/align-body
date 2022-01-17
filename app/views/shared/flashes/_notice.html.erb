@@ -1,0 +1,16 @@
+<div data-controller="alert" class="overflow-hidden max-w-sm w-full shadow-xl rounded-full relative bg-black text-white pointer-events-auto mb-1 ease-out transition-transform duration-300 transform -translate-y-24" data-alert-dismiss-after-value="5000">
+  <div class="p-2">
+    <div class="flex items-center p-4 py-2">
+      <div class="w-0 flex-1">
+        <p class="text-sm leading-5 font-medium">
+          <%= notice %>
+        </p>
+      </div>
+      <div class="ml-4 flex-shrink-0 flex">
+        <button data-action="alert#close" class="icon-btn hover:bg-white hover:bg-opacity-20">
+          <%= render 'icons/close', klass: "text-white h-2.5 w-2.5" %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

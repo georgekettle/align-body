@@ -4,9 +4,15 @@
 }
 
 .input label,
-.input input {
+.input input:not([type=checkbox]),
+.input select {
 	display:  block;
 	width:  100%;
+}
+
+.input input[type="checkbox"] {
+	display:  inline-block;
+	margin-right:  0.5rem;
 }
 
 .input label abbr[title="required"] {

@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
+    get 'dashboard', to: 'dashboard#dashboard', as: :dashboard
+    namespace :dashboard do
+      # DASHBOARD_CLASSES set in 'config/initializers/dashboard_classes.rb'
+      DASHBOARD_CLASSES.each do |klass|
+        resources klass.pluralize.underscore.to_sym
+      end
+    end
   end
   devise_for :users, controllers: {
     sessions: 'users/sessions',
