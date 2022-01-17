@@ -6,6 +6,21 @@ class Dashboard::WorkoutsController < ApplicationController
 		policy_scope(@workouts)
 	end
 
+	def new
+		@workout = Workout.new
+		authorize @workout
+	end
+
+	def create
+		@workout = Workout.new(workout_params)
+		authorize @workout
+		if @workout.save
+			redirect_to edit_dashboard_workout_path(@workout), notice: "Workout successfully created"
+		else
+			render :new, alert: 'Something went wrong'
+		end
+	end
+
 	def edit
 	end
 
@@ -13,7 +28,7 @@ class Dashboard::WorkoutsController < ApplicationController
 		if @workout.update(workout_params)
 			redirect_to edit_dashboard_workout_path(@workout), notice: "Workout successfully updated"
 		else
-			render :edit
+			render :edit, alert: 'Something went wrong'
 		end
 	end
 

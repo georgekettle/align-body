@@ -10,6 +10,7 @@
 		<div class="mb-8">
 			<div class="flex items-center justify-between mb-4">
 				<h4 class="uppercase font-medium">Workouts</h4>
+				<%= link_to "+ Create workout", new_dashboard_workout_path, class:"px-4 py-2 uppercase font-medium text-sm bg-black text-white" %>
 			</div>
 			<div class="grid grid-cols-2 gap-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
 				<% @workouts.each do |workout| %>
