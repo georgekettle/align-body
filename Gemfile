@@ -88,8 +88,6 @@ gem 'pay', '~> 3.0'
 gem 'stripe', '>= 2.8', '< 6.0'
 # Authorization
 gem "pundit"
-# Recommendations
-gem 'recombee_api_client'
 # Background jobs
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
@@ -99,3 +97,5 @@ gem 'twilio-ruby'
 gem 'phonelib'
 # Form generator
 gem 'simple_form'
+# Paginate results
+gem 'kaminari'

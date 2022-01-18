@@ -1,5 +1,4 @@
 class Workout < ApplicationRecord
-  include Recommendable
   belongs_to :category
   belongs_to :instructor
   has_one_attached :photo
