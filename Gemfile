@@ -99,3 +99,5 @@ gem 'twilio-ruby'
 gem 'phonelib'
 # Form generator
 gem 'simple_form'
+# Paginate results
+gem 'kaminari'
