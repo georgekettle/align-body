@@ -22,7 +22,7 @@
         <%= link_to "Upgrade plan to participate", account_path, class: "text-center hover:opacity-80 transition-opacity duration-300 ease-out text-sm mt-1 text-mandarin", data: {native_target: "onlyWeb"} %>
         <p class="text-center text-sm mt-1 text-black opacity-50" data-native-target="onlyNative">This workout is locked for your plan</p>
       <% else %>
-        <div data-controller="workout-vimeo" data-workout-vimeo-id-value="663614262" data-workout-vimeo-user-id-value="<%= current_user.recombee_id %>" data-workout-vimeo-workout-id-value="<%= @workout.recombee_id %>" data-workout-vimeo-recomm-id-value="<%= params[:recomm_id] %>" data-workout-vimeo-recombee-id-value="<%= ENV['RECOMBEE_DB_ID'] %>" data-workout-vimeo-recombee-public-token-value="<%= ENV['RECOMBEE_PUBLIC_TOKEN'] %>">
+        <div data-controller="workout-vimeo" data-workout-vimeo-id-value="663614262">
           <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4 font-medium" do %>
             <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
             Start workout
@@ -31,7 +31,7 @@
         </div>
       <% end %>
       <div class="mt-4">
-        <%= render 'workouts/save_btn', workout: @workout, show_page: true, recomm_id: params[:recomm_id] %>
+        <%= render 'workouts/save_btn', workout: @workout, show_page: true %>
       </div>
     </div>
   </div>

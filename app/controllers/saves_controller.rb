@@ -10,12 +10,10 @@ class SavesController < ApplicationController
 			@save = Save.find_by(workout: @workout, user: current_user)
 			authorize @save
 			@save.destroy
-			Recommender::DeleteBookmarkJob.perform_later(current_user, @workout, params[:recomm_id])
 		else
 			@save = Save.new(workout: @workout, user: current_user)
 			authorize @save
 			@save.save
-			Recommender::AddBookmarkJob.perform_later(current_user, @workout, params[:recomm_id])
 		end
 
 		respond_to do |format|

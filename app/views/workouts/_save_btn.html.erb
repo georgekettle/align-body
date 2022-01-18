@@ -1,12 +1,9 @@
 <% btn_klass ||= "" %>
 <% icon_klass ||= "" %>
 <% show_page ||= false %>
-<% recomm_id ||= nil %>
-
-<% save_link = recomm_id ? workout_toggle_save_path(workout, recomm_id: recomm_id) : workout_toggle_save_path(workout) %>
 
 <% if show_page %>
-	<%= button_to save_link, method: :post, form: {id: "workout_#{workout.id}_save_show_page"}, class:"p-2 flex items-center justify-center w-24 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300 ease-in-out #{btn_klass}" do %>
+	<%= button_to workout_toggle_save_path(workout), method: :post, form: {id: "workout_#{workout.id}_save_show_page"}, class:"p-2 flex items-center justify-center w-24 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300 ease-in-out #{btn_klass}" do %>
 		<% if current_user.workouts.include?(workout) %>
 			<%= render 'icons/bookmark', klass: "text-black w-4 h-4 mr-2 #{icon_klass}", fill: true %>
 			Saved
@@ -16,7 +13,7 @@
 		<% end %>
 	<% end %>
 <% else %>
-	<%= button_to save_link, method: :post, form: {id: "workout_#{workout.id}_save", class:'h-full w-full'}, class:"bg-white rounded-full p-2 backdrop-blur-lg bg-white/70 flex items-center justify-center w-full h-full #{btn_klass}" do %>
+	<%= button_to workout_toggle_save_path(workout), method: :post, form: {id: "workout_#{workout.id}_save", class:'h-full w-full'}, class:"bg-white rounded-full p-2 backdrop-blur-lg bg-white/70 flex items-center justify-center w-full h-full #{btn_klass}" do %>
 		<% if current_user.workouts.include?(workout) %>
 			<%= render 'icons/bookmark', klass: "text-black w-2/3 #{icon_klass}", fill: true %>
 		<% else %>

@@ -2,7 +2,7 @@ class Dashboard::WorkoutsController < ApplicationController
 	before_action :set_workout, only: [:edit, :update, :destroy]
 
 	def index
-		@workouts = Workout.order(:created_at)
+		@workouts = Workout.order(:created_at).page(params[:page])
 		policy_scope(@workouts)
 	end
 
