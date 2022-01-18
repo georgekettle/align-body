@@ -17,6 +17,7 @@
 					<%= render 'workouts/workout', workout: workout, admin: true %>
 				<% end %>
 			</div>
+			<%= paginate @workouts %>
 			<%= render 'components/if_empty', records: @workouts, message: "There are no workouts..." %>
 		</div>
 	</div>
