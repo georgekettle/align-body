@@ -15,7 +15,9 @@ class SmsUpgradeController < ApplicationController
 		recipient = current_user.phone
 		content = "Hi #{current_user.first_name&.capitalize}, we saw you tried to access a locked workout. To upgrade your membership, go to #{account_url}\n\nPs. you’re doing amazing"
 		callback = Rails.env == "production" ? sms_upgrade_callback_url(current_user.id) : "#{ENV['DOMAIN']}#{sms_upgrade_callback_path(current_user.id)}"
-		message = SmsService.send_message(recipient, content, callback)
+		if !current_user.upgrade_sms_sent
+			SmsService.send_message(recipient, content, callback)
+		end
 		render json: { success: true }
 	end
 end
