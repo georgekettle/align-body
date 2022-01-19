@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post 'sms_upgrade/:user_id', to: 'sms_upgrade#create', as: :sms_upgrade
   post 'sms_upgrade_callback/:user_id', to: 'sms_upgrade#twilio_callback', as: :sms_upgrade_callback
 
-  # Defines the root path route ("/")
+  # Defines route for logged in user ("/")
+  root to: "workouts#index", constraints: -> (r) { r.env["warden"].authenticate? }, as: :authenticated_root
   root "pages#home"
 end
