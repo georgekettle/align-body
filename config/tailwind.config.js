@@ -14,6 +14,9 @@ module.exports = {
         serif: ['Value Serif', ...defaultTheme.fontFamily.serif],
         display: ['Magnet Display', 'Magnet', ...defaultTheme.fontFamily.sans]
       },
+      aspectRatio: {
+        '3/2': '3 / 2',
+      },
     },
     colors: {
       transparent: 'transparent',

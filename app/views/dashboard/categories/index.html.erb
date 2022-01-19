@@ -3,23 +3,22 @@
 		<%= render "icons/chevron_left_small", klass: "text-black h-2.5 w-2.5 mr-1" %>
 		Dashboard
 	<% end %>
-	<h1 class="font-serif text-4xl">Workouts</h1>
+	<h1 class="font-serif text-4xl">Categories</h1>
 <% end %>
-
 <div class="p-4 pt-0">
 	<div class="container">
 		<div class="mb-8">
 			<div class="flex items-center justify-between mb-4">
-				<h4 class="uppercase font-medium">Workouts</h4>
-				<%= link_to "+ Create workout", new_dashboard_workout_path, class:"px-4 py-2 uppercase font-medium text-sm bg-black text-white" %>
+				<h4 class="uppercase font-medium">Categories</h4>
+				<%= link_to "+ Create category", new_dashboard_category_path, class:"px-4 py-2 uppercase font-medium text-sm bg-black text-white" %>
 			</div>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-				<% @workouts.each do |workout| %>
-					<%= render 'workout', workout: workout, admin: true %>
+				<% @categories.each do |category| %>
+					<%= render 'category', category: category, admin: true %>
 				<% end %>
 			</div>
-			<%= paginate @workouts %>
-			<%= render 'components/if_empty', records: @workouts, message: "There are no workouts..." %>
+			<%= paginate @categories %>
+			<%= render 'components/if_empty', records: @categories, message: "There are no categories..." %>
 		</div>
 	</div>
 </div>
