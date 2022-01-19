@@ -6,6 +6,6 @@
 	<%= f.association :category, include_blank: false %>
 	<%= f.association :instructor, include_blank: false %>
 	<%= f.input :photo, as: :file, hint: "1:1 square dimensions", input_html: { class: "bg-white p-2 border border-gray-500 text-center cursor-pointer inline-block uppercase flex items-center justify-center font-medium text-sm" } %>
-	<%= f.input :membership, label: "Requires membership", wrapper_html: {class: "md:col-span-2 block"} %>
+	<%= f.input :membership, label: "Requires membership", wrapper_html: {class: "md:col-span-2 block"}, input_html: {class: "checked:bg-black"} %>
 	<%= f.submit class: 'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium md:col-span-2' %>
 <% end %>
