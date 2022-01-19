@@ -5,7 +5,8 @@
 
 .input label,
 .input input:not([type=checkbox]),
-.input select {
+.input select,
+.input textarea {
 	display:  block;
 	width:  100%;
 }

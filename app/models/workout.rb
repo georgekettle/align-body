@@ -8,6 +8,8 @@ class Workout < ApplicationRecord
     high: 2
   }
 
+  default_scope { order(created_at: :desc) }
+
   def membership?
     membership
   end
