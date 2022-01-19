@@ -1,0 +1,22 @@
+<%= render 'components/header' do %>
+	<%= link_to dashboard_instructors_path, class:"mb-2 inline-flex items-center opacity-50 hover:opacity-100 transition-opacity duration-300 ease-out" do %>
+		<%= render "icons/chevron_left_small", klass: "text-black h-2.5 w-2.5 mr-1" %>
+		All instructors
+	<% end %>
+	<h1 class="font-serif text-4xl">New instructor</h1>
+<% end %>
+<div class="p-4 pt-0">
+	<div class="container">
+		<div class="w-36 h-36 relative bg-black bg-opacity-10 mb-4">
+			<% if @instructor.photo.attached? %>
+				<%= cl_image_tag(@instructor.photo.key, height: 400, width: 600, crop: :fill, class:'object-cover') if @instructor.photo.attached? %>
+			<% else %>
+				<div class="bg-shale flex flex-col items-center justify-center text-cream h-full w-full">
+					<h4 class="font-serif">No image</h4>
+					<p class="text-white opacity-50 text-sm">1:1 ratio</p>
+				</div>
+			<% end %>
+		</div>
+		<%= render 'form', instructor: @instructor %>
+	</div>
+</div>
