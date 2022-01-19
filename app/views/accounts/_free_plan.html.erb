@@ -1,0 +1,19 @@
+<div style="background-image: url(<%= image_path('freedom_plan.jpg') %>)" class="w-full bg-cover bg-center aspect-w-2 aspect-h-3 bg-white">
+	<div class="h-full w-full flex flex-col justify-end p-4">
+		<h3 class="text-6xl font-medium font-display uppercase">Freedom</h3>
+		<h6 class="font-medium text-lg">FREE <span class="opacity-50 font-thin text-xs">with limited workouts</span></h6>
+
+		<div class="mt-6">
+			<% if current_user.active_subscriptions.empty? %>
+				<div class="bg-white text-black px-6 py-4 text-center inline-block uppercase w-full flex items-center justify-center font-medium cursor-default">
+					<%= render 'icons/check', klass: 'text-black h-5 w-5 mr-2' %>
+			    Subscribed
+				</div>
+			<% else %>
+				<%= link_to @portal_session.url, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+			    Downgrade
+			  <% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
