@@ -1,0 +1,8 @@
+<%= simple_form_for [:dashboard, user], html: { class:"grid md:grid-cols-2 gap-4" } do |f| %>
+	<%= f.input :first_name %>
+	<%= f.input :last_name %>
+	<%= f.input :email %>
+	<%= f.input :phone, hint: 'Format with country code like so: +61403978503' %>
+	<%= f.input :admin, label: "Admin user", wrapper_html: {class: "md:col-span-2 block"}, input_html: {class: "checked:bg-black #{'disabled:opacity-50 cursor-not-allowed' if current_user == user}"}, disabled: current_user == user %>
+	<%= f.submit class: 'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium md:col-span-2' %>
+<% end %>
