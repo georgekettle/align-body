@@ -3,6 +3,8 @@ class PagesController < ApplicationController
   
   def home
     @navbar_fixed = true
+    flash[:notice] = "Notice"
+    flash[:alert] = "alert"
   end
 
   def contact
