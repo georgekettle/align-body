@@ -2,46 +2,20 @@
 
 <%= render 'components/header' do %>
 	<h1 class="font-serif text-4xl">Workouts</h1>
-	<p class="font-serif opacity-80">Choose a category of workout or a specific workout from 'recommended for you'</p>
+	<p class="font-serif opacity-80">Select from our categories of workouts, designed for practising mindful movement</p>
 <% end %>
-<div class="mb-8 md:p-4">
-	<div class="container hidden md:block">
-		<div class="flex items-center justify-between mb-4">
-			<h4 class="uppercase font-medium">Categories</h4>
-		</div>
-		<div class="snap-mandatory snap-x flex items-center overflow-x-scroll">
-			<% @categories.each do |category| %>
-				<div class="snap-start bg-black mr-4 shrink-0 w-2/3 md:w-2/5">
-					<%= render 'categories/category', category: category %>
-				</div>
-			<% end %>
-		</div>
-	</div>
-	<div class="md:hidden block">
-		<div class="flex items-center justify-between mb-4 pl-4">
-			<h4 class="uppercase font-medium">Categories</h4>
-		</div>
-		<div class="scroll-pl-4 pl-4 snap-x flex items-center overflow-x-scroll">
-			<% @categories.each do |category| %>
-				<div class="snap-start bg-black mr-4 shrink-0 w-2/3 md:w-2/5">
-					<%= render 'categories/category', category: category %>
-				</div>
-			<% end %>
-		</div>
-	</div>
-</div>
-<div class="p-4 pt-0">
+
+<%= render 'todays_workouts' %>
+
+<div class="p-4 pb-8">
 	<div class="container">
-		<div class="mb-8">
-			<div class="flex items-center justify-between mb-4">
-				<h4 class="uppercase font-medium">Recommended for you</h4>
-			</div>
-			<div class="grid grid-cols-2 gap-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
-				<% @workouts.each do |workout| %>
-					<%= render 'workout', workout: workout %>
-				<% end %>
-			</div>
-			<%= render 'components/if_empty', records: @workouts, message: "We couldn't find any suggestions, check your saves instead..." %>
+		<div class="flex items-center justify-between mb-4">
+			<h2 class="uppercase font-medium text-lg mb-0 leading-none">Categories</h2>
+		</div>
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			<% @categories.each do |category| %>
+				<%= render 'categories/category', category: category %>
+			<% end %>
 		</div>
 	</div>
 </div>
