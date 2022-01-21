@@ -39,3 +39,13 @@
   display: block;
   text-align: right;
 }
+
+button .show-when-enabled,
+button[disabled] .show-when-disabled {
+	display:  initial;
+}
+
+button .show-when-disabled,
+button[disabled] .show-when-enabled {
+	display:  none;
+}
