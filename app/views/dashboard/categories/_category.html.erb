@@ -1,11 +1,11 @@
 <%= link_to edit_dashboard_category_path(category), class: 'bg-white w-full flex items-center group' do %>
-	<div class="w-40 md:w-36">
-		<div class="aspect-w-3 aspect-h-2 w-full relative leading-none overflow-hidden block bg-black bg-opacity-10">
-			<%= cl_image_tag(category.photo.key, height: 400, width: 400, crop: :fill, class:'absolute inset-0 transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out object-cover') if category.photo.attached? %>
+	<div class="w-2/5 flex-shrink-0">
+		<div class="aspect-w-2 aspect-h-1 w-full relative leading-none overflow-hidden block bg-black bg-opacity-10">
+			<%= cl_image_tag(category.photo.key, height: 200, width: 400, crop: :fill, class:'absolute inset-0 transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out object-cover') if category.photo.attached? %>
 		</div>
 	</div>
 	<div class="w-full h-full p-4 flex flex-col justify-center">
-		<h4 class="font-medium uppercase inline-block text-md leading-none"><%= category.name %></h4>
+		<h4 class="capitalize font-serif text-lg sm:text-xl inline leading-none"><%= category.name %></h4>
 		<p class="opacity-50 text-sm"><%= pluralize(category.workouts.count, 'wrkt') %></p>
 	</div>
 <% end %>
