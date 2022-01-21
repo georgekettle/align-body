@@ -4,9 +4,9 @@
 			<%= cl_image_tag workout.photo.key, height: 500, width: 500, crop: :fill, class:"h-full w-full object-cover object-center transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out" %>
 		<% end %>
 	<% end %>
-	<h3 class="capitalize font-serif text-xl inline"><%= workout.name %></h3>
-	<div class="flex items-center">
-		<h3 class="opacity-80 text-sm"><%= workout.mins %> mins</h3>
+	<h3 class="capitalize font-serif text-xl leading-none mt-2"><%= workout.name %></h3>
+	<div class="flex items-center mt-1">
+		<p class="opacity-80 text-sm"><%= workout.mins %> mins</p>
 		<% if policy(workout).locked? %>
 			<div class="inline-flex items-center justify-center w-5 h-5 ml-2 p-1 bg-shale rounded-full">
 				<%= render 'icons/locked', klass:'text-cream w-2.5 h-2.5', fill:true %>

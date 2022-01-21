@@ -7,17 +7,19 @@
   <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
     <div class="max-w-sm w-full mx-auto">
       <h1 class="text-4xl md:text-5xl font-serif leading-none mb-8">Log in</h1>
-      
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autocomplete: "email", class: 'w-full' %>
-        </div>
 
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password", class: 'w-full' %>
-        </div>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= devise_error_messages! %>
+
+      
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+        <%= f.input :email,
+                required: false,
+                input_html: { autocomplete: "email" } %>
+
+        <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
 
         <% if devise_mapping.rememberable? %>
           <div class="field mt-2 flex items-center">
@@ -27,7 +29,7 @@
         <% end %>
 
         <div class="actions">
-          <%= f.submit "Log in", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4' %>
+          <%= f.submit 'Log in', class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4' %>
         </div>
       <% end %>
 

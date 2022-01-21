@@ -1,8 +1,7 @@
 class WorkoutsController < ApplicationController
 	def index
-		@workouts = Workout.order(:created_at)
+		@todays_workouts = policy_scope(Workout).first(8)
 		@categories = Category.all
-		policy_scope(@workouts)
 	end
 
 	def show

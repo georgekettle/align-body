@@ -12,7 +12,7 @@
 				<h4 class="uppercase font-medium">Categories</h4>
 				<%= link_to "+ Create category", new_dashboard_category_path, class:"px-4 py-2 uppercase font-medium text-sm bg-black text-white" %>
 			</div>
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<% @categories.each do |category| %>
 					<%= render 'category', category: category, admin: true %>
 				<% end %>
