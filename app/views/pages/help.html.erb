@@ -26,7 +26,7 @@
         <p class="font-serif">You can't sign up for Align Body in the app. We know it's a hassle. Join and come back to start working out within the app.</p>
         <p class="mt-4 font-serif">Already have an account?</p>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-4">
-          <%= link_to new_password_path(User), class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+          <%= link_to new_user_password_path(back_path: help_path), class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
             Recover password
           <% end %>
         </div>
