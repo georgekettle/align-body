@@ -1,0 +1,46 @@
+<%= render 'components/native/show_if_native', klass: 'w-screen h-screen fixed top-0 left-0' do %>
+  <!-- FIXED TOP -->
+  <div class="fixed inset-x-0 top-0 flex items-end justify-right px-4 py-4 sm:py-6 sm:p-6 justify-center flex-col items-center pointer-events-none z-10">
+    <div data-native-target="spacerTop"></div>
+    <div class="w-full flex items-center justify-between h-6">
+      <% back_path = params[:back_path] ? params[:back_path] : root_path %>
+      <%= link_to back_path, class: 'pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center' do %>
+        <%= render 'icons/arrow_left', klass: 'w-6 h-6 text-black' %>
+      <% end %>
+      <%= image_tag 'logo.svg', class:'h-6' %>
+      <%= link_to help_path, class: 'opacity-0 w-8 h-8 rounded-full flex items-center justify-center' do %>
+        <%= render 'icons/help', klass: 'w-5 h-5 text-black' %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'components/header' do %>
+    <h1 class="font-serif text-4xl">Find help online</h1>
+  <% end %>
+  <div class="p-4">
+    <div class="container">
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="uppercase font-medium text-lg mb-0 leading-none">We're here for you</h2>
+        </div>
+        <p class="font-serif">You can't sign up for Align Body in the app. We know it's a hassle. Join and come back to start working out within the app.</p>
+        <p class="mt-4 font-serif">Already have an account?</p>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-4">
+          <%= link_to new_password_path(User), class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+            Recover password
+          <% end %>
+        </div>
+      </div>
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="uppercase font-medium text-lg mb-0 leading-none">Contact us</h2>
+        </div>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <%= mail_to 'hello@alignbody.com.au', class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+            Email us
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

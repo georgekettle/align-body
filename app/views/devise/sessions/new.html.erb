@@ -45,12 +45,13 @@
   <div class="fixed inset-x-0 top-0 flex items-end justify-right px-4 py-4 sm:py-6 sm:p-6 justify-center flex-col items-center pointer-events-none z-10">
     <div data-native-target="spacerTop"></div>
     <div class="w-full flex items-center justify-between h-6">
-      <%= link_to root_path, class: 'pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center' do %>
+      <% back_path = params[:back_path] ? params[:back_path] : root_path %>
+      <%= link_to back_path, class: 'pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center' do %>
         <%= render 'icons/arrow_left', klass: 'w-6 h-6 text-black' %>
       <% end %>
       <%= image_tag 'logo.svg', class:'h-6' %>
-      <%= link_to root_path, class: 'opacity-0 w-8 h-8 rounded-full flex items-center justify-center' do %>
-        <%= render 'icons/arrow_left', klass: 'w-6 h-6 text-black' %>
+      <%= link_to help_path(back_path: new_user_session_path), class: 'pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center md:bg-mandarin text-black md:text-cream' do %>
+        <%= render 'icons/help', klass: 'w-5 h-5' %>
       <% end %>
     </div>
   </div>
