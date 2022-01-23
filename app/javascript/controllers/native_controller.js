@@ -37,14 +37,10 @@ export default class extends Controller {
 	}
 
 	onlyNativeTargetConnected(elem) {
-		if (!window.isNative) {
-			elem.classList.add('hidden')
-		}
+		window.isNative ? elem.classList.remove('hidden') : elem.classList.add('hidden')
 	}
 
 	onlyWebTargetConnected(elem) {
-		if (window.isNative) {
-			elem.classList.add('hidden')
-		}
+		window.isNative ? elem.classList.add('hidden') : elem.classList.remove('hidden')
 	}
 }

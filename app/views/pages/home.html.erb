@@ -1,16 +1,18 @@
-<div class="w-screen h-screen md:flex">
-  <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden">
-    <%= image_tag 'default_1.jpg', class: "object-cover object-center h-full w-full" %>
-  </div>
-  <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
-    <div class="max-w-sm mx-auto">
-      <h1 class="text-4xl md:text-5xl font-serif leading-none mb-2">Pilates and HIIT workouts for women of all fitness levels</h1>
-      <p class="font-serif leading-normal mb-6">We do pilates & HIIT differently. Find the perfect workout for you with personalised recommendations to suit your life.</p>
-      <% if user_signed_in? %>
-        <%= link_to 'Start a workout', workouts_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
-      <% else %>
-        <%= link_to 'Get started', new_user_registration_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
-      <% end %>
+<%= render 'components/native/show_if_web', klass: 'w-screen h-screen' do %>
+  <div class="w-screen h-screen md:flex">
+    <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden">
+      <%= image_tag 'default_1.jpg', class: "object-cover object-center h-full w-full" %>
+    </div>
+    <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
+      <div class="max-w-sm mx-auto">
+        <h1 class="text-4xl md:text-5xl font-serif leading-none mb-2">Pilates and HIIT workouts for women of all fitness levels</h1>
+        <p class="font-serif leading-normal mb-6">We do pilates & HIIT differently. Find the perfect workout for you with personalised recommendations to suit your life.</p>
+        <% if user_signed_in? %>
+          <%= link_to 'Start a workout', workouts_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
+        <% else %>
+          <%= link_to 'Get started', new_user_registration_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

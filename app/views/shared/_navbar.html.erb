@@ -41,9 +41,9 @@
 	</div>
 </div>
 
-<div data-controller="navbar"  data-navbar-context-value="native" class="fixed bottom-0 left-0 w-screen z-10 sm:px-4 bg-white">
-	<div class="flex-grow-1 flex items-center justify-center h-full w-full text-xs md:text-base h-14">
-		<% if user_signed_in? %>
+<% if user_signed_in? %>
+	<div data-controller="navbar"  data-navbar-context-value="native" class="fixed bottom-0 left-0 w-screen z-10 sm:px-4 bg-white">
+		<div class="flex-grow-1 flex items-center justify-center h-full w-full text-xs md:text-base h-14">
 			<%= link_to workouts_path, class: 'px-8 md:pl-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 				<%= render 'icons/workout', klass: "text-black w-6 h-6" %>
 			<% end %>
@@ -58,10 +58,7 @@
 					<%= render 'icons/dashboard', klass: "text-black w-6 h-6" %>
 				<% end %>
 			<% end %>
-		<% else %>
-			<%= link_to 'Login', new_user_session_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300 text-base' %>
-			<%= link_to 'Signup', new_user_registration_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300 text-base' %>
-		<% end %>
+		</div>
+		<div data-native-target="spacerBottom"></div>
 	</div>
-	<div data-native-target="spacerBottom"></div>
-</div>
+<% end %>
