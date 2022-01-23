@@ -50,11 +50,11 @@
 			<%= link_to saves_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 				<%= render 'icons/bookmark', klass: "text-black w-6 h-6" %>
 			<% end %>
-			<%= link_to account_path, class: 'px-8 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+			<%= link_to account_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 				<%= render 'icons/account', klass: "text-black w-6 h-6" %>
 			<% end %>
 			<% if current_user.admin? %>
-				<%= link_to dashboard_path, class: 'px-8 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+				<%= link_to dashboard_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 					<%= render 'icons/dashboard', klass: "text-black w-6 h-6" %>
 				<% end %>
 			<% end %>
