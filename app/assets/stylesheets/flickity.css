@@ -1,0 +1,18 @@
+.flickity-page-dots {
+	display:  flex;
+	align-items:  center;
+	justify-content:  center;
+}
+
+.dot {
+	width:  0.4rem;
+	height:  0.4rem;
+	margin:  0rem 0.2rem;
+	border-radius: 50%;
+	background: black;
+	opacity:  0.15;
+}
+
+.dot.is-selected {
+	opacity:  1;
+}

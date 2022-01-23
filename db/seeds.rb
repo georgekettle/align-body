@@ -23,19 +23,19 @@ puts "Creating Categories"
 	categories = [
 		{
 			name: 'Luteal phase',
-			description: 'Our effective & high energy class. Incorporating different methods of body weight & light equipment based training. ALIGN. HIIT is a seamless 30 minute HIIT class focused on optimal burn & cardiovascular endurance. We use a variety of timing methods such as Tabata, EMOM, etc. ALIGN. HIIT is suitable for all levels and can be done in the comfort of your living room.'
+			description: "The Luteal phase is all about slowing down and connecting with your body. These workouts are designed for the second half of your menstrual cycle, where it’s important to be mindful of the current changes happening in your body. Often we feel low energy during this time, for all natural reasons. It’s important to acknowledge this for an optimal workout."
 		},
 		{
 			name: 'Folicular phase',
-			description: 'Is our most known signature styled class. It is 30 minutes of shaping and toning. An engaging, high energy & low intensity class. FLOW incorporates minimal bouncing, for maximum burning. Focusing on the stabilising muscles, FLOW combines the benefits of Barre and Mat pilates. FLOW is suitable for all levels and has its own Pre & Postnatal safe library.'
+			description: "These workouts will push you and make you sweat (AKA glow). They are purposely filled with dynamic movements and are specifically designed for the first half of your menstrual cycle. Over this time you will feel your energy rise (Hooray!). Which means more energy for high intensity workouts. You've got this girl!"
 		},
 		{
-			name: 'Foundations',
-			description: "A great place to start if you're new to pilates or HIIT workouts. This is your go to for getting up to scratch and starting your fitness and strength goals the correct way."
+			name: 'Fundamentals',
+			description: "Not sure where to start? Don’t worry, we have you covered with Fundamentals. Start your fitness journey with a collection of workouts to help you learn the fundamentals of pilates and strength training movements. After just 5 workouts, you’ll be ready to transition to our Folicular and Luteal phase workouts."
 		},
 		{
 			name: 'Stretch',
-			description: 'Our signature style Yin Class. To embrace both masculine & female energy. A full body relaxation class that serves one intention - to release, stretch & let go. Focusing on relieving areas of discomfort and tension throughout the body. Our FLEX class explore different intentions & stretches so you can gain the most from your practice. FLEX is suitable for all levels.'
+			description: "These workouts are specifically designed to keep your muscles flexible, strong, and healthy. Stretching helps us to feel light and free of pain. But also to reduce lactic acid build up and muscle soreness after workouts. Meet me on the mat and let's stretch it out!"
 		}
 	]
 	categories.map! { |cat| Category.create!(cat) }

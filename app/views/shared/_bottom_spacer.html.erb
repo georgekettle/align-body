@@ -1,4 +1,8 @@
+<% no_navbar ||= false %>
+
 <div data-native-target="onlyNative">
-	<div class="h-10"></div>
+	<% unless no_navbar %>
+		<div class="h-10"></div>
+	<% end %>
 	<div data-native-target="spacerBottom"></div>
 </div>
