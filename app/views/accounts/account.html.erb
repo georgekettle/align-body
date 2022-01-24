@@ -6,24 +6,38 @@
 	<p class="font-serif opacity-80" data-native-target="onlyNative">Hey <%= current_user.name.first&.capitalize %>, here you can view your plan, logout and more</p>
 <% end %>
 <div class="p-4">
-	<div class="container">
-		<!-- Plans -->
-		<div class="mb-8">
-			<div class="mb-4">
-				<h4 class="uppercase font-medium">Your plan</h4>
-				<p class="mt-0.5 opacity-50 text-sm" data-native-target="onlyNative">Subscriptions managed online</p>
+<div class="container">
+		<% if is_web? %>
+			<!-- Plans -->
+			<div class="mb-8">
+				<div class="mb-4">
+					<h4 class="uppercase font-medium">Your plan</h4>
+					<p class="mt-0.5 opacity-50 text-sm" data-native-target="onlyNative">Subscriptions managed online</p>
+				</div>
+				<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+					<%= render 'accounts/free_plan' %>
+					<% @plans.each do |plan| %>
+						<%= render 'accounts/plan', plan: plan %>
+					<% end %>
+				</div>
 			</div>
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-				<%= render 'accounts/free_plan' %>
-				<% @plans.each do |plan| %>
-					<%= render 'accounts/plan', plan: plan %>
-				<% end %>
+		<% else %>
+			<!-- Account settings -->
+			<div class="mb-8">
+				<div class="flex items-center justify-between mb-4">
+					<h4 class="uppercase font-medium">Account settings</h4>
+				</div>
+				<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+					<%= link_to account_settings_path, class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+				    Go to settings
+				  <% end %>
+				</div>
 			</div>
-		</div>
+		<% end %>
 		<!-- Logout button -->
 		<div class="mb-8">
 			<div class="flex items-center justify-between mb-4">
-				<h4 class="uppercase font-medium">Actions</h4>
+				<h4 class="uppercase font-medium">Session</h4>
 			</div>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<%= button_to destroy_user_session_path, method: :delete, class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>

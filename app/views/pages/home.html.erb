@@ -1,3 +1,4 @@
+
 <%= render 'components/native/show_if_web', klass: 'w-screen h-screen' do %>
   <div class="w-screen h-screen md:flex">
     <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden">
@@ -17,7 +18,7 @@
   </div>
 <% end %>
 
-<%= render 'components/native/show_if_native', klass: 'w-screen h-screen fixed top-0 left-0' do %>
+<div class="w-screen h-screen fixed top-0 left-0">
   <!-- FIXED TOP -->
   <div class="fixed inset-x-0 top-0 flex items-end justify-right px-4 py-4 sm:py-6 sm:p-6 justify-center flex-col items-center pointer-events-none z-10">
     <div data-native-target="spacerTop"></div>
@@ -77,4 +78,4 @@
       <%= render 'shared/bottom_spacer', no_navbar: true %>
     </div>
   </div>
-<% end %>
+</div>

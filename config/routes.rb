@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     post 'toggle_save', to: 'saves#toggle', as: :toggle_save
   end
   get 'account', to: 'accounts#account', as: :account
+  get 'account_settings', to: 'accounts#account_settings', as: :account_settings
   resources :saves, only: :index
   resources :categories, only: :show
   get 'terms', to: 'policies#terms', as: :terms
