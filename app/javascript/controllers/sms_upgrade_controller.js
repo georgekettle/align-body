@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { isNative } from "../helpers/native"
 
 export default class extends Controller {
 	static values = {
@@ -20,7 +21,7 @@ export default class extends Controller {
   }
 
   userEligibleForUpgradeSMS() {
-  	return(window.isNative && this.lockedValue && this.hasUrlValue && !this.upgradeSmsSentValue)
+  	return(isNative() && this.lockedValue && this.hasUrlValue && !this.upgradeSmsSentValue)
   }
 
   sendUpgradeSMS() {
