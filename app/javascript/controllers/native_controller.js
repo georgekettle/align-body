@@ -12,8 +12,19 @@ export default class extends Controller {
 	  	} else {
 	  		// listen for insets, save to window.insets and apply
 	  		this.listenForInsets()
+	  		this.askNativeToSendInsets() // necessary for first load
 	  	}
   	}
+  }
+
+  askNativeToSendInsets() {
+  	if (window.ReactNativeWebView) {
+    	window.ReactNativeWebView.postMessage(
+    			JSON.stringify({
+		        type: 'sendInsets',
+		      })
+    		);
+	  }
   }
 
   listenForInsets() {
