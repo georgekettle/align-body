@@ -48,11 +48,10 @@
 												      success_url: account_url,
 												      cancel_url: account_url
 												    ) %>
-		<div data-native-target="onlyWeb">
-			<%= render "pay/stripe/checkout_button", session: checkout_session, title: "Upgrade", class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" %>
-		</div>
-		<div data-native-target="onlyNative">
+		<% if is_native? %>
 			<div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium">Not subscribed</div>
-		</div>
+		<% else %>
+			<%= render "pay/stripe/checkout_button", session: checkout_session, title: "Upgrade", class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" %>
+		<% end %>
 	</div>
 <% end %>

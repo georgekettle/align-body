@@ -1,12 +1,24 @@
 <% content_for :meta_title, "Forgotten password" %>
 
-<%= render 'components/native/show_if_web', klass: 'w-screen h-screen fixed top-0 left-0' do %>
-  <div class="w-full h-full md:flex">
-    <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden">
-      <%= image_tag 'default_1.jpg', class: "object-cover object-center h-full w-full" %>
+<% if is_native? %>
+  <div class="w-screen h-screen fixed top-0 left-0">
+    <!-- FIXED TOP -->
+    <div class="fixed inset-x-0 top-0 flex items-end justify-right px-4 py-4 sm:py-6 sm:p-6 justify-center flex-col items-center pointer-events-none z-10">
+      <div data-native-target="spacerTop"></div>
+      <div class="w-full flex items-center justify-between h-6">
+        <% back_path = params[:back_path] ? params[:back_path] : root_path %>
+        <%= link_to back_path, class: 'pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center' do %>
+          <%= render 'icons/arrow_left', klass: 'w-6 h-6 text-black' %>
+        <% end %>
+        <%= image_tag 'logo.svg', class:'h-6' %>
+        <%= link_to help_path(back_path: new_user_password_path), class: 'pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center md:bg-mandarin text-black md:text-cream' do %>
+          <%= render 'icons/help', klass: 'w-5 h-5' %>
+        <% end %>
+      </div>
     </div>
-    <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
-      <div class="max-w-sm w-full mx-auto">
+
+    <div class="w-full h-full flex flex-col items-center justify-center">
+      <div class="max-w-sm w-full mx-auto p-4">
         <h1 class="text-4xl md:text-5xl font-serif leading-none mb-8">Forgot your password?</h1>
         
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -18,7 +30,7 @@
           </div>
 
           <div class="actions">
-            <%= f.submit "Send me reset instructions", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4' %>
+            <%= f.submit "Send me reset instructions", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4 rounded-none' %>
           </div>
         <% end %>
 
@@ -26,42 +38,32 @@
       </div>
     </div>
   </div>
-<% end %>
+<% else %>
+  <div class="w-screen h-screen fixed top-0 left-0">
+    <div class="w-full h-full md:flex">
+      <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden">
+        <%= image_tag 'default_1.jpg', class: "object-cover object-center h-full w-full" %>
+      </div>
+      <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
+        <div class="max-w-sm w-full mx-auto">
+          <h1 class="text-4xl md:text-5xl font-serif leading-none mb-8">Forgot your password?</h1>
+          
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= render 'components/native/show_if_native', klass: 'w-screen h-screen fixed top-0 left-0' do %>
-  <!-- FIXED TOP -->
-  <div class="fixed inset-x-0 top-0 flex items-end justify-right px-4 py-4 sm:py-6 sm:p-6 justify-center flex-col items-center pointer-events-none z-10">
-    <div data-native-target="spacerTop"></div>
-    <div class="w-full flex items-center justify-between h-6">
-      <% back_path = params[:back_path] ? params[:back_path] : root_path %>
-      <%= link_to back_path, class: 'pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center' do %>
-        <%= render 'icons/arrow_left', klass: 'w-6 h-6 text-black' %>
-      <% end %>
-      <%= image_tag 'logo.svg', class:'h-6' %>
-      <%= link_to help_path(back_path: new_user_password_path), class: 'pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center md:bg-mandarin text-black md:text-cream' do %>
-        <%= render 'icons/help', klass: 'w-5 h-5' %>
-      <% end %>
-    </div>
-  </div>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autocomplete: "email", class:'w-full' %>
+            </div>
 
-  <div class="w-full h-full flex flex-col items-center justify-center">
-    <div class="max-w-sm w-full mx-auto p-4">
-      <h1 class="text-4xl md:text-5xl font-serif leading-none mb-8">Forgot your password?</h1>
-      
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="actions">
+              <%= f.submit "Send me reset instructions", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4' %>
+            </div>
+          <% end %>
 
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autocomplete: "email", class:'w-full' %>
+          <%= render "devise/shared/links" %>
         </div>
-
-        <div class="actions">
-          <%= f.submit "Send me reset instructions", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4 rounded-none' %>
-        </div>
-      <% end %>
-
-      <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 <% end %>

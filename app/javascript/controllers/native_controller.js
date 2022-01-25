@@ -1,18 +1,30 @@
 import { Controller } from "@hotwired/stimulus"
+import { isNative } from "../helpers/native"
 
 export default class extends Controller {
-	static targets = ['spacerTop', 'spacerBottom', 'onlyNative', 'onlyWeb']
+	static targets = ['spacerTop', 'spacerBottom']
 
   connect() {
-  	if (window.isNative) {
+  	if (isNative()) {
 	  	if (window.insets) {
 	  		// apply already exisiting insets
 	  		this.applySafeAreaInsets(window.insets)
 	  	} else {
 	  		// listen for insets, save to window.insets and apply
 	  		this.listenForInsets()
+	  		this.askNativeToSendInsets() // necessary for first load
 	  	}
   	}
+  }
+
+  askNativeToSendInsets() {
+  	if (window.ReactNativeWebView) {
+    	window.ReactNativeWebView.postMessage(
+    			JSON.stringify({
+		        type: 'sendInsets',
+		      })
+    		);
+	  }
   }
 
   listenForInsets() {
@@ -34,13 +46,5 @@ export default class extends Controller {
   	this.spacerBottomTargets.forEach((spacerBottom) => {
   		spacerBottom.style.height = `${insets["bottom"]}px`
   	})
-	}
-
-	onlyNativeTargetConnected(elem) {
-		window.isNative ? elem.classList.remove('hidden') : elem.classList.add('hidden')
-	}
-
-	onlyWebTargetConnected(elem) {
-		window.isNative ? elem.classList.add('hidden') : elem.classList.remove('hidden')
 	}
 }
