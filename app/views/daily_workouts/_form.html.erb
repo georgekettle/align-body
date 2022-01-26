@@ -1,0 +1,7 @@
+<% date ||= Date.today %>
+
+<%= simple_form_for daily_workout, data: {turbo: false}, html: { class:"grid md:grid-cols-2 gap-4" } do |f| %>
+	<%= f.input :date, as: :string, input_html: { value: localize(date, format: "%d/%-m/%Y") } %>
+	<%= f.association :workout, include_blank: false %>
+	<%= f.submit 'Schedule workout', class: 'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium md:col-span-2 mt-2' %>
+<% end %>

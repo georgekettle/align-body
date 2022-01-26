@@ -1,22 +1,29 @@
-<div class="simple-calendar">
-  <div class="calendar-heading">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+<div class="w-full">
+  <div class="py-16 flex items-center">
+    <span class="font-serif capitalize text-4xl"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    <div class="flex items-center ml-6">
+      <%= link_to calendar.url_for_previous_view, class: "text-black opacity-30 hover:opacity-100 hover:bg-black hover:bg-opacity-10 transition-opacity duration-300 w-8 h-8 rounded-full flex items-center justify-center" do %>
+        <%= render 'icons/chevron_left_small', klass:'w-4 h-4' %>
+      <% end %>
+      <span class="w-1 h-1 mx-1 rounded-full bg-black"></span>
+      <%= link_to calendar.url_for_next_view, class: "text-black opacity-30 hover:opacity-100 hover:bg-black hover:bg-opacity-10 transition-opacity duration-300 w-8 h-8 rounded-full flex items-center justify-center" do %>
+        <%= render 'icons/chevron_right_small', klass:'w-4 h-4' %>
+      <% end %>
+    </div>
   </div>
 
-  <table class="table table-striped">
-    <thead>
+  <table class="w-full">
+    <thead class="w-full h-36">
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <th class="text-left font-thin font-serif capitalize <%= 'text-terracotta underline underline-offset-4' if day.wday == Date.today.wday %>" style="width: calc(100% / 7)"><%= t('date.abbr_day_names')[day.wday] %></th>
         <% end %>
       </tr>
     </thead>
 
     <tbody>
       <% date_range.each_slice(7) do |week| %>
-        <tr>
+        <tr class="pt-2">
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
