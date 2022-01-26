@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { isNative } from "../helpers/native.js"
+import { isNative } from "helpers/native"
 
 export default class extends Controller {
 	static targets = ['spacerTop', 'spacerBottom']
