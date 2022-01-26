@@ -31,5 +31,7 @@ module AlignFitness
     config.action_mailer.default_url_options = { host: ENV['DOMAIN'] }
     # Implement sidekiq for background jobs
     config.active_job.queue_adapter = :sidekiq
+    # default timezone to australia
+    config.time_zone = 'Australia/Sydney'
   end
 end
