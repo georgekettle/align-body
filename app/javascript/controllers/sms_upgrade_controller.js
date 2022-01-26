@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { isNative } from "../helpers/native"
+import { isNative } from "../helpers/native.js"
 
 export default class extends Controller {
 	static values = {
