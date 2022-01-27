@@ -3,7 +3,7 @@
 
 <% unless @hide_navbar %>
 	<% if is_web? %>
-		<div data-controller="navbar"  data-navbar-context-value="web" class="<%= @navbar_fixed ? 'fixed' : 'sticky' %> top-0 left-0 w-screen z-10 sm:px-4 backdrop-brightness-150">
+		<div data-controller="navbar"  data-navbar-context-value="web" class="<%= @navbar_fixed ? 'fixed' : 'sticky' %> top-0 left-0 w-screen z-10 sm:px-4">
 			<div data-native-target="spacerTop" class="w-full"></div>
 			<div class="container h-12 flex items-center justify-between">
 				<div class="flex-grow-1 flex items-center justify-start h-full w-1/2 text-xs md:text-base">

@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
 	def index
-		@todays_workouts = policy_scope(Workout).first(8)
+		@daily_workouts = DailyWorkout.where(date: Date.today)
+		@todays_workouts = policy_scope(Workout.where(daily_workouts: @daily_workouts))
 		@categories = Category.all
 	end
 
