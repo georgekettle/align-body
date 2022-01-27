@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :workouts, only: [:show, :index] do
     post 'toggle_save', to: 'saves#toggle', as: :toggle_save
   end
+  resources :daily_workouts, only: [:index, :new, :create, :destroy]
   get 'account', to: 'accounts#account', as: :account
   get 'account_settings', to: 'accounts#account_settings', as: :account_settings
   resources :saves, only: :index

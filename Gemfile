@@ -99,3 +99,5 @@ gem 'phonelib'
 gem 'simple_form'
 # Paginate results
 gem 'kaminari'
+# calendar
+gem "simple_calendar", "~> 2.4"

@@ -1,0 +1,26 @@
+<% workout = daily_workout.workout %>
+<div class="w-full flex group mb-4 relative" id="<%= dom_id(daily_workout) %>">
+  
+  <div class="w-10 flex-shrink-0">
+    <div class="aspect-w-1 aspect-h-1 w-full relative leading-none overflow-hidden block bg-black bg-opacity-10">
+      <%= cl_image_tag(workout.photo.key, height: 100, width: 100, crop: :fill, class:"h-full w-full object-cover object-center transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out") if workout.photo.attached? %>
+    </div>
+  </div>
+
+  <div class="w-full h-full pl-2 flex flex-col justify-center">
+    <h3 class="capitalize font-serif text-sm inline leading-none"><%= workout.name %></h3>
+    <div class="flex items-center">
+      <p class="opacity-50 text-xs leading-none mt-1"><%= workout.instructor.name %> · <%= workout.category.name %></p>
+    </div>
+  </div>
+
+  <div class="hover:opacity-100 opacity-0 absolute inset-0">
+    <div class="relative h-full w-full flex items-center justify-center">
+      <%= button_to daily_workout_path(daily_workout), method: :delete, class: "flex items-center justify-center bg-white rounded-full h-8 px-4 text-terracotta shadow text-sm font-medium uppercase transform-gpu scale-100 hover:scale-105 transition-transform duration-300 ease-out" do %>
+        <%= render 'icons/close', klass:"w-2.5 h-2.5" %>
+        <span class="ml-2 mb-0.5">Remove</span>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

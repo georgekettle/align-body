@@ -1,0 +1,40 @@
+<div class="p-4">
+  <div class="container">
+    <div class="hidden lg:block">
+      <%= turbo_frame_tag 'calendar' do %>
+        <%= month_calendar do |date| %>
+          <div class="pb-2">
+            <div class="aspect-h-4 aspect-w-3 w-full">
+              <% is_today = date == Date.today %>
+              <% daily_workouts = @daily_workouts.where(date: date) %>
+              <div class="pr-4 h-full <%= 'opacity-30 hover:opacity-100' unless @date_range.include?(date) %>">
+                <div class="border-t-2 w-full h-full relative flex flex-col group <%= is_today ? 'p-2 border-terracotta bg-mandarin bg-opacity-5' : 'border-black pt-2' %>">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-4xl mb-2 flex-shrink-0 <%= 'text-terracotta' if is_today %>"><%= date.day %></h4>
+                  </div>
+                  <% if daily_workouts.count.positive? %>
+                    <%= render 'daily_workouts/workout_count', count: daily_workouts.count, date: date %>
+                    <div class="hidden group-hover:block overflow-scroll flex-grow-1">
+                      <% daily_workouts.each do |daily_workout| %>
+                        <%= render 'daily_workouts/daily_workout', daily_workout: daily_workout %>
+                      <% end %>
+                      <div class="h-10"></div>
+                    </div>
+                    <div class="group-hover:block hidden absolute bg-gradient-to-t pointer-events-none from-cream bottom-0 left-0 w-full h-12"></div>
+                  <% end %>
+                  <%= link_to new_daily_workout_path(start_date: date.to_s), data: {turbo_frame: "_top"}, class: 'rounded-full bg-black h-8 w-8 hidden group-hover:flex items-center justify-center absolute bottom-4 right-4 shadow-lg hover:scale-110 transform scale-100 transition-transform duration-300' do %>
+                    <%= render 'icons/plus', klass: 'text-white h-3 w-3' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="text-center max-w-sm mx-auto lg:hidden py-24">
+      <h2 class="font-serif text-3xl mb-4">Your screen is too small</h2>
+      <p class="max-w-sm font-serif">Please go to Align Body on the web to manage scheduled workouts.</p>
+    </div>
+  </div>
+</div>
