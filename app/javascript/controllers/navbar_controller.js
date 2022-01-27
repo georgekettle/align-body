@@ -23,9 +23,9 @@ export default class extends Controller {
   toggleNavbarBackground() {
   	const navbar = this.element
   	if (window.pageYOffset >= 50) {
-			navbar.classList.add('bg-white/95', 'backdrop-blur-md')
+			navbar.classList.add('bg-white/80', 'backdrop-blur-lg')
 		} else {
-			navbar.classList.remove('bg-white/95', 'backdrop-blur-md')
+			navbar.classList.remove('bg-white/80', 'backdrop-blur-lg')
 		}
   }
 }
