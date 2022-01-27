@@ -1,0 +1,11 @@
+<%= turbo_stream.remove dom_id(@daily_workout) %>
+
+<% date = @daily_workout.date %>
+<% daily_workout_count = DailyWorkout.where(date: date).count %>
+<% if daily_workout_count == 0 %>
+	<!-- DESTROY -->
+	<%= turbo_stream.remove "workout_count_#{date.to_s}" %>
+<% else %>
+	<!-- REPLACE -->
+	<%= turbo_stream.replace("workout_count_#{date.to_s}", partial: "daily_workouts/workout_count", locals: { count: daily_workout_count, date: date }) %>
+<% end %>

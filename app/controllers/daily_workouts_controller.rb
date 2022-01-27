@@ -24,6 +24,16 @@ class DailyWorkoutsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@daily_workout = DailyWorkout.find(params[:id])
+		authorize(@daily_workout)
+		@daily_workout.destroy
+		respond_to do |format|
+			format.turbo_stream
+	    format.html         { redirect_to daily_workouts_path(start_date: @daily_workout.date), notice: "Workout successfully removed from schedule" }
+	  end
+	end
+
 	private
 
 	def daily_workout_params
