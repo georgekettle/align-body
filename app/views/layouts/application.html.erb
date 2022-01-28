@@ -7,7 +7,7 @@
     <%= render 'shared/navbar' %>
     <main>
       <%= yield %>
-      <%= render 'shared/bottom_spacer' %>
+      <%= render('shared/bottom_spacer') if is_native? %>
     </main>
     <%= render 'shared/flashes/flashes' %>
   </body>
