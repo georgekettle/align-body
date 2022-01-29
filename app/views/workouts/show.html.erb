@@ -14,7 +14,7 @@
       <%= cl_image_tag @workout.photo.key, class: "object-cover object-center h-full w-full" %>
     <% end %>
   </div>
-  <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center md:h-full">
+  <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-center justify-center md:h-full" style="min-height: calc(100vh / 2)">
     <div class="max-w-md flex flex-col items-center justify-center text-center mx-auto p-4">
       <div class="flex items-center justify-center mb-4">
         <%= render 'workouts/intensity', workout: @workout, include_intensity: true %>
