@@ -1,6 +1,6 @@
 <% content_for :meta_title, @workout.name %>
 
-<div class="w-screen h-screen md:flex" data-controller="sms-upgrade" data-sms-upgrade-locked-value="<%= policy(@workout).locked? %>" data-sms-upgrade-url-value="<%= sms_upgrade_url(current_user.id) %>" data-sms-upgrade-upgrade-sms-sent-value="<%= current_user.upgrade_sms_sent %>">
+<div class="w-screen md:h-screen md:flex" data-controller="sms-upgrade" data-sms-upgrade-locked-value="<%= policy(@workout).locked? %>" data-sms-upgrade-url-value="<%= sms_upgrade_url(current_user.id) %>" data-sms-upgrade-upgrade-sms-sent-value="<%= current_user.upgrade_sms_sent %>">
   <% if is_native? %>
     <div class="fixed top-4 left-4 z-10">
       <div data-native-target="spacerTop"></div>
