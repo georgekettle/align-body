@@ -32,9 +32,15 @@
         <% end %>
       <% end %>
     </div>
-    <div class="text-center max-w-sm mx-auto lg:hidden py-24">
-      <h2 class="font-serif text-3xl mb-4">Your screen is too small</h2>
-      <p class="max-w-sm font-serif">Please go to Align Body on the web to manage scheduled workouts.</p>
+    <div class="text-center max-w-sm h-screen flex flex-col justify-center items-center mx-auto lg:hidden pb-14">
+      <% if is_native? %>
+        <div class="fixed top-2 left-4 z-10">
+          <div data-native-target="spacerTop"></div>
+          <%= render 'components/back/icon_link', klass:'pointer-events-auto' %>
+        </div>
+      <% end %>
+      <h2 class="font-serif text-3xl mb-4">Your screen<br>is too small</h2>
+      <p class="max-w-sm font-serif">Please go to Align Body on the web<br>to manage scheduled workouts.</p>
     </div>
   </div>
 </div>

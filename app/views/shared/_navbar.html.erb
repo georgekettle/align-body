@@ -1,8 +1,9 @@
 <% @navbar_fixed ||= false %>
-<% @hide_navbar ||= false %>
+<% @hide_web_navbar ||= false %>
+<% @hide_native_navbar ||= false %>
 
 <% unless @hide_navbar %>
-	<% if is_web? %>
+	<% if is_web? && !@hide_web_navbar  %>
 		<div data-controller="navbar"  data-navbar-context-value="web" class="<%= @navbar_fixed ? 'fixed' : 'sticky' %> top-0 left-0 w-screen z-10 sm:px-4">
 			<div data-native-target="spacerTop" class="w-full"></div>
 			<div class="container h-12 flex items-center justify-between">
@@ -43,7 +44,7 @@
 				</div>
 			</div>
 		</div>
-	<% else %>
+	<% elsif is_native? && !@hide_native_navbar %>
 		<% if user_signed_in? %>
 			<div class="fixed bottom-0 left-0 w-screen z-10 sm:px-4 bg-white">
 				<div class="flex-grow-1 flex items-center justify-center h-full w-full text-xs md:text-base h-14">

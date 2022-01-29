@@ -1,6 +1,7 @@
+<%= render 'components/status_bar_fade' if is_native? %>
 <div data-native-target="spacerTop" class="w-screen"></div>
-<div class="w-full p-4 h-80">
-	<div class="container flex items-center h-full">
+<div class="w-full flex flex-col justify-center p-4 py-20" style="min-height: 16rem">
+	<div class="container">
 		<div>
 			<%= yield %>
 		</div>

@@ -9,5 +9,6 @@ class WorkoutsController < ApplicationController
 		@workout = Workout.find(params[:id])
 		authorize @workout
 		@navbar_fixed = true
+		@hide_native_navbar = true
 	end
 end
