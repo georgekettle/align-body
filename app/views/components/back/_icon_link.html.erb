@@ -1,0 +1,7 @@
+<% path ||= :back %>
+<% path = params[:back_path] if params[:back_path] %>
+<% klass ||= '' %>
+
+<%= link_to path, class: "#{klass} w-8 h-8 rounded-full flex items-center justify-center" do %>
+  <%= render 'icons/arrow_left', klass: 'w-6 h-6 text-black' %>
+<% end %>

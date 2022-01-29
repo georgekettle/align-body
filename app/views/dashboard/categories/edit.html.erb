@@ -1,8 +1,5 @@
 <%= render 'components/header' do %>
-	<%= link_to dashboard_categories_path, class:"mb-2 inline-flex items-center opacity-50 hover:opacity-100 transition-opacity duration-300 ease-out" do %>
-		<%= render "icons/chevron_left_small", klass: "text-black h-2.5 w-2.5 mr-1" %>
-		All categories
-	<% end %>
+	<%= render 'components/back/text_link', text: 'All categories', path: dashboard_categories_path, klass:'mb-2' %>
 	<h1 class="font-serif text-4xl">Edit category</h1>
 <% end %>
 <div class="p-4 pt-0">

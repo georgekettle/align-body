@@ -2,11 +2,9 @@
 
 <div class="w-screen md:h-screen md:flex" data-controller="sms-upgrade" data-sms-upgrade-locked-value="<%= policy(@workout).locked? %>" data-sms-upgrade-url-value="<%= sms_upgrade_url(current_user.id) %>" data-sms-upgrade-upgrade-sms-sent-value="<%= current_user.upgrade_sms_sent %>">
   <% if is_native? %>
-    <div class="fixed top-4 left-4 z-10">
+    <div class="fixed top-2 left-4 z-10">
       <div data-native-target="spacerTop"></div>
-      <%= link_to :back, class:'w-10 h-10 bg-white shadow rounded-full flex items-center justify-center' do %>
-        <%= render 'icons/chevron_left_small', klass:'w-4 h-4' %>
-      <% end %>
+      <%= render 'components/back/icon_link', klass:'pointer-events-auto' %>
     </div>
   <% end %>
   <div class="md:w-1/2 bg-black bg-opacity-10 h-96 md:max-h-screen md:h-full overflow-hidden relative">

@@ -1,0 +1,9 @@
+<% text ||= 'Back' %>
+<% path ||= :back %>
+<% path = params[:back_path] if params[:back_path] %>
+<% klass ||= '' %>
+
+<%= link_to path, class:"#{klass} inline-flex items-center opacity-50 hover:opacity-100 transition-opacity duration-300 ease-out" do %>
+	<%= render "icons/chevron_left_small", klass: "text-black h-2.5 w-2.5 mr-1" %>
+	<%= text %>
+<% end %>
