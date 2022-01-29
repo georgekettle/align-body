@@ -8,18 +8,16 @@
 
 <div class="p-4 pt-0">
 	<div class="container">
-		<div class="mb-8">
-			<div class="flex items-center justify-between mb-4">
-				<h4 class="uppercase font-medium">Workouts</h4>
-				<%= link_to "+ Create workout", new_dashboard_workout_path, class:"px-4 py-2 uppercase font-medium text-sm bg-black text-white" %>
-			</div>
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-				<% @workouts.each do |workout| %>
-					<%= render 'workout', workout: workout, admin: true %>
-				<% end %>
-			</div>
-			<%= paginate @workouts %>
-			<%= render 'components/if_empty', records: @workouts, message: "There are no workouts..." %>
+		<div class="flex items-center justify-between mb-4">
+			<h4 class="uppercase font-medium">Workouts</h4>
+			<%= link_to "+ Create", new_dashboard_workout_path, class:"px-4 py-2 uppercase font-medium text-sm bg-black text-white" %>
 		</div>
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+			<% @workouts.each do |workout| %>
+				<%= render 'workout', workout: workout, admin: true %>
+			<% end %>
+		</div>
+		<%= paginate @workouts %>
+		<%= render 'components/if_empty', records: @workouts, message: "There are no workouts..." %>
 	</div>
 </div>
