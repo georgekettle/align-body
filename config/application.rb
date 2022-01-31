@@ -33,5 +33,7 @@ module AlignFitness
     config.active_job.queue_adapter = :sidekiq
     # default timezone to australia
     config.time_zone = 'Australia/Sydney'
+    # Use own routes for exceptions
+    config.exceptions_app = self.routes
   end
 end

@@ -1,0 +1,14 @@
+<div class="w-screen h-screen fixed top-0 left-0">
+  <!-- FIXED TOP -->
+  <!-- CONTENT -->
+  <div class="h-full w-full p-4 pb-14 md:pb-24 flex flex-col items-center justify-center text-center">
+    <%= render 'icons/warning', klass: "w-10 h-10 text-black opacity-50 mb-8" %>
+    <h2 class="font-serif text-3xl mb-4">Page not found</h2>
+    <p class="max-w-sm font-serif">It looks like this page doesn't exist</p>
+    <%= link_to :back, class:'bg-black text-white py-2 px-4 flex items-center justify-center w-56 mt-8 uppercase' do %>
+      <%= render 'icons/arrow_left', klass:'h-5 w-5 mr-1 inline' %>
+      Go back
+    <% end %>
+    <%= link_to 'or go to home', root_path, class:'mt-2 hover:underline underline-offset-4 opacity-50 hover:opacity-100 transition-opacity duration-300' %>
+  </div>
+</div>
