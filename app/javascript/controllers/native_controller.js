@@ -38,6 +38,20 @@ export default class extends Controller {
 		})
 	}
 
+	openExternalLink(e) {
+		if (isNative()) {
+			e.preventDefault()
+			if (window.ReactNativeWebView) {
+	    	window.ReactNativeWebView.postMessage(
+	    			JSON.stringify({
+			        type: 'openExternalLink',
+			        url: e.currentTarget.href
+			      })
+	    		);
+		  }
+		}
+	}
+
 	applySafeAreaInsets = (insets) => {
 		const _this = this
 		this.spacerTopTargets.forEach((spacerTop) => {
