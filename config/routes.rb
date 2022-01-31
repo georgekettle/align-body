@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+  get 'errors/internal_server_error'
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
   post 'sms_upgrade/:user_id', to: 'sms_upgrade#create', as: :sms_upgrade
   post 'sms_upgrade_callback/:user_id', to: 'sms_upgrade#twilio_callback', as: :sms_upgrade_callback
 
+  # direct errors to errors_controller
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
   # Defines route for logged in user ("/")
   root to: "workouts#index", constraints: -> (r) { r.env["warden"].authenticate? }, as: :authenticated_root
   root "pages#home"
