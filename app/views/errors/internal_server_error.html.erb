@@ -5,8 +5,8 @@
     <%= render 'icons/warning', klass: "w-10 h-10 text-black opacity-50 mb-8" %>
     <h2 class="font-serif text-3xl mb-4">Something went wrong</h2>
     <p class="max-w-sm font-serif">Let me just grab my boyfriend to fix this.<br>He's the tech guy haha</p>
-    <%= link_to :back, class:'bg-black text-white py-2 px-4 flex items-center justify-center w-56 mt-8 uppercase' do %>
-      <%= render 'icons/arrow_left', klass:'h-5 w-5 mr-1 inline' %>
+    <%= link_to :back, class:'group bg-black text-white py-2 px-4 flex items-center justify-center w-56 mt-8 uppercase font-medium' do %>
+      <%= render 'icons/arrow_left', klass:'h-5 w-5 mr-1 inline group-hover:-translate-x-0.5 transform-gpu translate-x-0 transition-transform duration-300 ease-out' %>
       Go back
     <% end %>
     <%= link_to 'or go to home', root_path, class:'mt-2 hover:underline underline-offset-4 opacity-50 hover:opacity-100 transition-opacity duration-300' %>
