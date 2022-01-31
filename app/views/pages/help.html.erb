@@ -37,7 +37,7 @@
             <h2 class="uppercase font-medium text-lg mb-0 leading-none">Contact us</h2>
           </div>
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <%= mail_to 'hello@alignbody.com.au', class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+            <%= mail_to 'hello@alignbody.com.au', class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium", data: { action: 'click->native#openExternalLink' } do %>
               Email us
             <% end %>
           </div>
