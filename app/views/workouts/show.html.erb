@@ -1,9 +1,9 @@
 <% content_for :meta_title, @workout.name %>
 
 <div class="w-screen md:h-screen md:flex" data-controller="sms-upgrade" data-sms-upgrade-locked-value="<%= policy(@workout).locked? %>" data-sms-upgrade-url-value="<%= sms_upgrade_url(current_user.id) %>" data-sms-upgrade-upgrade-sms-sent-value="<%= current_user.upgrade_sms_sent %>">
-  <div class="fixed top-2 left-4 z-10 lg:top-8 lg:left-8">
+  <div class="fixed top-2 left-4 z-10 <%= 'left-4 top-16 lg:top-16 lg:left-8' unless is_native? %>">
     <div data-native-target="spacerTop"></div>
-    <%= render 'components/back/icon_link', klass:'pointer-events-auto' %>
+    <%= render 'components/back/icon_link', klass:"pointer-events-auto #{'bg-white' unless is_native?}" %>
   </div>
   <div class="md:w-1/2 bg-black bg-opacity-10 h-96 md:max-h-screen md:h-full overflow-hidden relative">
     <% if @workout.photo.attached? %>
