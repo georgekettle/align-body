@@ -29,7 +29,16 @@ export default class extends Controller {
 
   listenForInsets() {
   	const _this = this
+  	// For IOS
 		window.addEventListener("message", (event)=>{
+			const data = JSON.parse(event.data)
+			if (data && data["type"] === 'expo:safe-area-insets') {
+				window.insets = data["insets"]
+				_this.applySafeAreaInsets(window.insets)
+			}
+		})
+		// For Android
+		document.addEventListener("message", (event)=>{
 			const data = JSON.parse(event.data)
 			if (data && data["type"] === 'expo:safe-area-insets') {
 				window.insets = data["insets"]
