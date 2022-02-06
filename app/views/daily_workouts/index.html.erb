@@ -22,7 +22,7 @@
                     </div>
                     <div class="group-hover:block hidden absolute bg-gradient-to-t pointer-events-none from-cream bottom-0 left-0 w-full h-12"></div>
                   <% end %>
-                  <%= link_to new_daily_workout_path(start_date: date.to_s), data: {turbo_frame: "_top"}, class: 'rounded-full bg-black h-8 w-8 hidden group-hover:flex items-center justify-center absolute bottom-4 right-4 shadow-lg hover:scale-110 transform scale-100 transition-transform duration-300' do %>
+                  <%= link_to new_daily_workout_path(start_date: date.to_s), data: {turbo_frame: "_top"}, class: 'rounded-full bg-black h-8 w-8 hidden group-hover:flex items-center justify-center absolute bottom-4 right-4 shadow-lg hover:scale-110 active:scale-100 transform scale-100 transition-transform duration-300' do %>
                     <%= render 'icons/plus', klass: 'text-white h-3 w-3' %>
                   <% end %>
                 </div>
