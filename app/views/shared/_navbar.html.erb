@@ -46,20 +46,20 @@
 		</div>
 	<% elsif is_native? && !@hide_native_navbar %>
 		<% if user_signed_in? %>
-			<div class="fixed bottom-0 left-0 w-screen z-10 sm:px-4 bg-white">
+			<div data-controller="native-navbar" class="fixed bottom-0 left-0 w-screen z-10 sm:px-4 bg-white" id="navbar" data-turbo-permanent>
 				<div class="flex-grow-1 flex items-center justify-center h-full w-full text-xs md:text-base h-14">
-					<%= link_to workouts_path, class: 'px-8 md:pl-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-						<%= render 'icons/workout', klass: "text-black w-6 h-6" %>
+					<%= link_to root_path, class: 'px-8 md:pl-0 h-full inline-flex items-center justify-center uppercase text-black border-black', data: {native_navbar_target: 'tab'} do %>
+						<%= render 'icons/workout', klass: "w-6 h-6" %>
 					<% end %>
-					<%= link_to saves_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-						<%= render 'icons/bookmark', klass: "text-black w-6 h-6" %>
+					<%= link_to saves_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase text-black border-black', data: {native_navbar_target: 'tab'} do %>
+						<%= render 'icons/bookmark', klass: "w-6 h-6" %>
 					<% end %>
-					<%= link_to account_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-						<%= render 'icons/account', klass: "text-black w-6 h-6" %>
+					<%= link_to account_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase text-black border-black', data: {native_navbar_target: 'tab'} do %>
+						<%= render 'icons/account', klass: "w-6 h-6" %>
 					<% end %>
 					<% if current_user.admin? %>
-						<%= link_to dashboard_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-							<%= render 'icons/dashboard', klass: "text-black w-6 h-6" %>
+						<%= link_to dashboard_path, class: 'px-8 h-full inline-flex items-center justify-center uppercase text-black border-black', data: {native_navbar_target: 'tab'} do %>
+							<%= render 'icons/dashboard', klass: "w-6 h-6" %>
 						<% end %>
 					<% end %>
 				</div>
@@ -67,5 +67,4 @@
 			</div>
 		<% end %>
 	<% end %>
-
 <% end %>
