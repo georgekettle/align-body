@@ -8,15 +8,14 @@ const delay = (ms) => {
 export default class extends Controller {
   connect() {
   	this.initPageTransitionListener()
-  	// this.initVisitListener()
   }
 
   initPageTransitionListener() {
   	document.addEventListener('turbo:before-render', async (event) => {
 		  event.preventDefault()
 
-		  document.body.classList.add('opacity-0', 'transition-opacity', 'duration-300', 'ease-out')
-		  // event.detail.newBody.classList.add('opacity-0')
+		  const content = document.getElementById('content')
+		  content.classList.add('opacity-0', 'transition-opacity', 'duration-300', 'ease-out')
 		  await delay(300)
 
 		  event.detail.resume()
@@ -25,13 +24,15 @@ export default class extends Controller {
 
   forwardAnimation(e) {
   	e.preventDefault()
-  	document.body.classList.add('transition-all', 'duration-300', '-translate-x-1/2', 'opacity-0', 'transform')
-  	Turbo.visit(e.currentTarget.href, { action: 'advance' })
+  	const content = document.getElementById('content')
+  	content.classList.add('transition-all', 'duration-300', '-translate-x-1/2', 'opacity-0', 'transform')
+  	Turbo.visit(e.currentTarget.href)
   }
 
   backAnimation(e) {
   	e.preventDefault()
-  	document.body.classList.add('transition-all', 'duration-300', 'translate-x-1/2', 'opacity-0', 'transform')
-  	Turbo.visit(e.currentTarget.href, { action: 'advance' })
+  	const content = document.getElementById('content')
+  	content.classList.add('transition-all', 'duration-300', 'translate-x-1/2', 'opacity-0', 'transform')
+  	Turbo.visit(e.currentTarget.href)
   }
 }

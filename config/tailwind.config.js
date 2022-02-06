@@ -17,6 +17,9 @@ module.exports = {
       aspectRatio: {
         '3/2': '3 / 2',
       },
+      screens: {
+        'hover-hover': {'raw': '(hover: hover)'},
+      }
     },
     colors: {
       transparent: 'transparent',

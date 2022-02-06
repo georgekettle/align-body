@@ -5,7 +5,7 @@
   </head>
   <body data-controller="native page-transition" class="bg-cream">
     <%= render 'shared/navbar' %>
-    <main>
+    <main id="content">
       <%= yield %>
       <%= render('shared/bottom_spacer') if is_native? %>
     </main>
