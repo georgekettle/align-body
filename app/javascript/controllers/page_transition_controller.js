@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import { Turbo } from "@hotwired/turbo-rails"
+import { isNative } from "helpers/native"
 
 const delay = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -8,7 +9,7 @@ const delay = (ms) => {
 export default class extends Controller {
   connect() {
   	this.initPageTransitionListener()
-  	this.initRemoveOpacityOnRender()
+  	isNative() && this.initRemoveOpacityOnRender()
   }
 
   initPageTransitionListener() {
@@ -24,11 +25,13 @@ export default class extends Controller {
   }
 
   initRemoveOpacityOnRender() {
-  	const content = document.getElementById('content')
-  	const removalClasses = ['opacity-0', '-translate-x-1/2', 'translate-x-1/2']
-  	removalClasses.forEach((cssClass) => {
-  		content.classList.contains(cssClass) && content.classList.remove(cssClass)
-  	})
+    document.addEventListener('turbo:render', (e) => {
+    	const content = document.getElementById('content')
+    	const removalClasses = ['opacity-0', '-translate-x-1/2', 'translate-x-1/2']
+    	removalClasses.forEach((cssClass) => {
+    		content.classList.contains(cssClass) && content.classList.remove(cssClass)
+    	})
+    })
   }
 
   forwardAnimation(e) {
