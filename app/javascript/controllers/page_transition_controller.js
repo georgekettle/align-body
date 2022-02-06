@@ -25,7 +25,7 @@ export default class extends Controller {
   }
 
   initRemoveOpacityOnRender() {
-    document.addEventListener('turbo:render', (e) => {
+    document.addEventListener('turbo:load', (e) => {
     	const content = document.getElementById('content')
     	const removalClasses = ['opacity-0', '-translate-x-1/2', 'translate-x-1/2']
     	removalClasses.forEach((cssClass) => {
