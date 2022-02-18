@@ -44,6 +44,10 @@ Rails.application.configure do
   # Default url for sending emails (needed for devise)
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Letter opener email testing
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+
   # Add ngrok as host option for testing webhooks etc
   config.hosts = nil
 
