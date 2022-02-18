@@ -27,8 +27,14 @@ module AlignFitness
       g.stylesheets false
     end
 
+    config.to_prepare do
+      # configure devise mailer layout
+      Devise::Mailer.layout "mailer"
+    end
+
     # Default url for sending emails
     config.action_mailer.default_url_options = { host: ENV['DOMAIN'] }
+    config.action_mailer.asset_host = "#{Rails.env == 'production' ? 'https://' : 'http://'}#{ENV['DOMAIN']}"
     # Implement sidekiq for background jobs
     config.active_job.queue_adapter = :sidekiq
     # default timezone to australia
