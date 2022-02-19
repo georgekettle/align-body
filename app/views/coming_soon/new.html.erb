@@ -1,0 +1,33 @@
+<% content_for :meta_title, "Coming soon" %>
+
+<div class="fixed top-4 left-1/2 transform -translate-x-1/2">
+	<div data-native-target="spacerTop" class="w-full"></div>
+	<%= link_to root_path, class:'h-8 inline-block' do %>
+		<%= image_tag 'logo.svg', class:'h-full' %>
+	<% end %>
+</div>
+
+<div class="w-screen h-screen md:flex">
+  <div class="md:w-1/2 bg-white max-h-96 md:max-h-screen md:h-full overflow-hidden hidden md:block">
+    <%= image_tag 'default_1.jpg', class: "object-cover object-center h-full w-full" %>
+  </div>
+  <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-center justify-center h-full">
+    <div class="max-w-lg w-full mx-auto">
+      <h1 class="text-4xl md:text-5xl font-serif leading-none mb-2">Launching soon</h1>
+      <p class="mb-8">Fill in the details below to gain early access when we launch! ✨</p>
+
+      <%= simple_form_for :user, url: coming_soon_index_path, data: { turbo: false, controller: 'recaptcha' } do |f| %>
+        <div class="md:grid md:grid-cols-2 md:gap-4">
+          <%= f.input :first_name, autocomplete: "given-name", input_html:{ data: { action:"blur->recaptcha#showRecaptcha" }} %>
+          <%= f.input :last_name, autocomplete: "family-name", input_html:{ data: { action:"blur->recaptcha#showRecaptcha" }} %>
+        </div>
+        <%= f.input :email, autocomplete: "email", wrapper_html: { class: "mb-2" }, input_html:{ data: { action:"blur->recaptcha#showRecaptcha" }} %>
+        <div class="h-0 overflow-hidden opacity-0 transition-opacity duration-500 ease-out" data-recaptcha-target="recaptcha">
+        	<%= recaptcha_tags %>
+        </div>
+        <%= f.submit "Notify me", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4 rounded-none' %>
+      <% end %>
+      <%= link_to "Admin login", new_user_session_path, class:'text-center mt-4 block opacity-80 hover:opacity-100' %>
+    </div>
+  </div>
+</div>

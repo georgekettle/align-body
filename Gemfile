@@ -104,3 +104,7 @@ gem 'simple_form'
 gem 'kaminari'
 # calendar
 gem "simple_calendar", "~> 2.4"
+# airtable
+gem 'airtable'
+# recaptcha test
+gem "recaptcha"
