@@ -40,12 +40,12 @@
   text-align: right;
 }
 
-button .show-when-enabled,
-button[disabled] .show-when-disabled {
-	display:  initial;
-}
+button {
+  .show-when-enabled { display: initial; }
+  .show-when-disabled { display: none; }
 
-button .show-when-disabled,
-button[disabled] .show-when-enabled {
-	display:  none;
+  &[disabled] {
+    .show-when-enabled { display: none; }
+    .show-when-disabled { display: initial; }
+  }
 }

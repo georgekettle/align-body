@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include Authorizable
 
   before_action :set_native_cookie
+  before_action :redirect_coming_soon
 
   private
 
@@ -10,5 +11,11 @@ class ApplicationController < ActionController::Base
   	if params[:is_native] && cookies[:is_native].nil?
   		cookies[:is_native] = params[:is_native]
   	end
+  end
+
+  def redirect_coming_soon
+    unless ['coming_soon', 'sessions'].include?(controller_name)
+      redirect_to new_coming_soon_path
+    end
   end
 end
