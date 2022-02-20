@@ -16,16 +16,19 @@
       <h1 class="text-4xl md:text-5xl font-serif leading-none mb-2">Launching soon</h1>
       <p class="mb-8">Fill in the details below to gain early access when we launch! ✨</p>
 
-      <%= simple_form_for :user, url: coming_soon_index_path, data: { turbo: false, controller: 'recaptcha' } do |f| %>
+      <%= render 'components/forms/error_messages', resource: @validator, error_types:[:base] %>
+
+      <%= simple_form_for @validator, as: 'Validator', url: coming_soon_index_path, data: { controller: 'recaptcha' } do |f| %>
         <div class="md:grid md:grid-cols-2 md:gap-4">
           <%= f.input :first_name, autocomplete: "given-name", input_html:{ data: { action:"blur->recaptcha#showRecaptcha" }} %>
           <%= f.input :last_name, autocomplete: "family-name", input_html:{ data: { action:"blur->recaptcha#showRecaptcha" }} %>
         </div>
         <%= f.input :email, autocomplete: "email", wrapper_html: { class: "mb-2" }, input_html:{ data: { action:"blur->recaptcha#showRecaptcha" }} %>
-        <div class="h-0 overflow-hidden opacity-0 transition-opacity duration-500 ease-out" data-recaptcha-target="recaptcha">
-        	<%= recaptcha_tags %>
+        <div class="<%= 'h-0 opacity-0' unless @show_recaptcha %> overflow-hidden transition-opacity duration-500 ease-out" data-recaptcha-target="recaptcha">
+        	<%= recaptcha_tags(noscript: false) %>
         </div>
-        <%= f.submit "Notify me", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4 rounded-none' %>
+        
+        <%= render 'components/forms/submit', f: f, value: 'Notify me' %>
       <% end %>
       <%= link_to "Admin login", new_user_session_path, class:'text-center mt-4 block opacity-80 hover:opacity-100' %>
     </div>

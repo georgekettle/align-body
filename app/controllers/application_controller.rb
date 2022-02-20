@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
 
   def redirect_coming_soon
     unless ['coming_soon', 'sessions'].include?(controller_name)
-      # flash[:notice] = "We are launching soon! ✨"
       redirect_to new_coming_soon_path
     end
   end
