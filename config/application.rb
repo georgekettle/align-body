@@ -41,7 +41,5 @@ module AlignFitness
     config.time_zone = 'Australia/Sydney'
     # Use own routes for exceptions
     config.exceptions_app = self.routes
-    # To enable sassc rails gem to work
-    config.assets.css_compressor = nil
   end
 end
