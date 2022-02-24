@@ -8,11 +8,11 @@
 			<div data-native-target="spacerTop" class="w-full"></div>
 			<div class="container h-12 flex items-center justify-between">
 				<div class="flex-grow-1 flex items-center justify-start h-full w-1/2 text-xs md:text-base">
-					<%= link_to workouts_path, class: 'px-4 md:pl-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-						<%= render 'icons/workout', klass: "text-black w-4.5 h-4.5 md:hidden" %>
-						<span class="hidden md:inline font-medium">Workouts</span>
-					<% end %>
 					<% if user_signed_in? %>
+						<%= link_to workouts_path, class: 'px-4 md:pl-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+							<%= render 'icons/workout', klass: "text-black w-4.5 h-4.5 md:hidden" %>
+							<span class="hidden md:inline font-medium">Workouts</span>
+						<% end %>
 						<%= link_to saves_path, class: 'px-4 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 							<%= render 'icons/bookmark', klass: "text-black w-4.5 h-4.5 md:hidden" %>
 							<span class="hidden md:inline font-medium">Saves</span>
@@ -35,10 +35,18 @@
 							<span class="hidden md:inline font-medium">Account</span>
 						<% end %>
 					<% else %>
-						<%= link_to 'Login', new_user_session_path, class: 'px-4 h-full hidden md:inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300' %>
-						<%= link_to new_user_registration_path, class: 'px-4 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+
+						<%= link_to new_user_session_path, class: 'px-4 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 							<%= render 'icons/account', klass: "text-black w-4.5 h-4.5 md:hidden" %>
-							<span class="hidden md:inline font-medium">Signup</span>
+							<span class="hidden md:inline font-medium">Admin Login</span>
+						<% end %>
+
+						<% if false %>
+							<%= link_to 'Login', new_user_session_path, class: 'px-4 h-full hidden md:inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300' %>
+							<%= link_to new_user_registration_path, class: 'px-4 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+								<%= render 'icons/account', klass: "text-black w-4.5 h-4.5 md:hidden" %>
+								<span class="hidden md:inline font-medium">Signup</span>
+							<% end %>
 						<% end %>
 					<% end %>
 				</div>
