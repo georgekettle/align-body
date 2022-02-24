@@ -1,8 +1,6 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # rails sassc
-  config.sass.inline_source_maps = true
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

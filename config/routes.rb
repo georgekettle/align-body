@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   get 'account_settings', to: 'accounts#account_settings', as: :account_settings
   resources :saves, only: :index
   resources :categories, only: :show
-  resources :coming_soon, only: [:new, :create]
   get 'terms', to: 'policies#terms', as: :terms
   get 'privacy', to: 'policies#privacy', as: :privacy
   get 'contact', to: 'pages#contact', as: :contact
@@ -41,5 +40,4 @@ Rails.application.routes.draw do
   # Defines route for logged in user ("/")
   root to: "workouts#index", constraints: -> (r) { r.env["warden"].authenticate? }, as: :authenticated_root
   root "pages#home"
-  # root "coming_soon#new"
 end
