@@ -13,6 +13,7 @@ export default class extends Controller {
 	  		// listen for insets, save to window.insets and apply
 	  		this.listenForInsets()
 	  		this.askNativeToSendInsets() // necessary for first load
+	  		this.hideSplashscreenOnLoad()
 	  	}
   	}
   }
@@ -69,5 +70,17 @@ export default class extends Controller {
   	this.spacerBottomTargets.forEach((spacerBottom) => {
   		spacerBottom.style.height = `${insets["bottom"]}px`
   	})
+	}
+
+	hideSplashscreenOnLoad() {
+		document.addEventListener('turbo:load', (e) => {
+			if (window.ReactNativeWebView) {
+	    	window.ReactNativeWebView.postMessage(
+	    			JSON.stringify({
+			        type: 'hideSplashScreen'
+			      })
+	    		);
+		  }
+		})
 	}
 }
