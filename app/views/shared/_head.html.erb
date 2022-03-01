@@ -22,3 +22,8 @@
 <%= javascript_importmap_tags %>
 
 <script src="https://js.stripe.com/v3/"></script>
+
+<!-- Viral loops -->
+<% if controller_name == 'pages' && action_name == 'home' %>
+  <meta name="turbo-visit-control" content="reload">
+<% end %>

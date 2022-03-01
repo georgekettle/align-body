@@ -10,5 +10,6 @@ class WorkoutsController < ApplicationController
 		authorize @workout
 		@navbar_fixed = true
 		@hide_native_navbar = true
+		@hide_footer = true
 	end
 end

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'privacy', to: 'policies#privacy', as: :privacy
   get 'contact', to: 'pages#contact', as: :contact
   get 'help', to: 'pages#help', as: :help
+  get 'about', to: 'pages#about', as: :about
   post 'sms_upgrade/:user_id', to: 'sms_upgrade#create', as: :sms_upgrade
   post 'sms_upgrade_callback/:user_id', to: 'sms_upgrade#twilio_callback', as: :sms_upgrade_callback
 

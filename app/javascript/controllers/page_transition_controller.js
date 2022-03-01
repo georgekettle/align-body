@@ -9,7 +9,7 @@ const delay = (ms) => {
 export default class extends Controller {
   connect() {
   	this.initPageTransitionListener()
-  	isNative() && this.initRemoveOpacityOnRender()
+  	this.initRemoveOpacityOnRender()
   }
 
   initPageTransitionListener() {
