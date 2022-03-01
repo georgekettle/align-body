@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :email, presence: true
   validates :phone, phone: { possible: true, types: [:voip, :mobile] }, presence: true
+  validates :terms_of_service, acceptance: true
 
   def active_subscriptions
     subscriptions.where(status: "active")

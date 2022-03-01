@@ -16,7 +16,9 @@
         <%= f.input :phone, autocomplete: "tel", hint: 'Format with country code like so: +61403978503' %>
         <%= f.input :email, autocomplete: "email" %>
         <%= f.input :password, autocomplete: "new-password" %>
-        <%= f.submit "Sign up", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4' %>
+        <%= f.input :terms_of_service, :as => :hidden, :input_html => { :value => true } %>
+        <p class="text-sm mt-4"><span class="opacity-50">By selecting 'Agree and signup', I agree to Align Body's</span> <%= link_to 'Terms of Service', terms_path, class: 'underline' %> <span class="opacity-50">and acknowledge the </span><%= link_to 'Privacy Policy', privacy_path, class: 'underline' %></p>
+        <%= f.submit "Agree & Signup", class:'bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-4' %>
       <% end %>
 
       <%= render "devise/shared/links" %>
