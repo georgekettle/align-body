@@ -1,0 +1,29 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<footer class="mt-10 bg-forest">
+  <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+    <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+      <% footer_links = { 
+        # 'Workouts': workouts_path,
+        'About': '#',
+        'Terms & Conditions': terms_path,
+        'Privacy Policy': privacy_path
+      } %>
+
+      <% footer_links.each do |text, path| %>
+        <div class="px-5 py-2">
+          <%= link_to text, path, class: 'text-sm font-medium text-white transition-opacity duration-300 ease-out opacity-50 hover:opacity-100 uppercase' %>
+        </div>
+      <% end %>
+      <div class="px-5 py-2">
+        <%= link_to 'Instagram', 'https://www.instagram.com/alignbody_/', class: 'text-sm font-medium text-white transition-opacity duration-300 ease-out opacity-50 hover:opacity-100 uppercase', target: :_blank, data: { action: 'click->native#openExternalLink' } %>
+      </div>
+    </nav>
+    <div class="mt-8 flex justify-center space-x-6">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo_white.svg', class:'h-8' %>
+      <% end %>
+    </div>
+    <p class="mt-8 text-center text-xs text-cream opacity-50">&copy; <%= Date.today.year %> Align Body, All rights reserved.</p>
+    <p class="mt-2 text-center text-xs text-cream opacity-50">ABN 78 593 918 295</p>
+  </div>
+</footer>
