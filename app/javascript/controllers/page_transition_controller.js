@@ -15,6 +15,7 @@ export default class extends Controller {
   initPageTransitionListener() {
   	document.addEventListener('turbo:before-render', async (event) => {
 		  event.preventDefault()
+      console.log('hello')
 
 		  const content = document.getElementById('content')
 		  content.classList.add('opacity-0', 'transition-opacity', 'duration-300', 'ease-out')
@@ -29,7 +30,7 @@ export default class extends Controller {
     	const content = document.getElementById('content')
     	const removalClasses = ['opacity-0', '-translate-x-1/2', 'translate-x-1/2']
     	removalClasses.forEach((cssClass) => {
-    		content.classList.contains(cssClass) && content.classList.remove(cssClass)
+    		content.classList.remove(cssClass)
     	})
     })
   }
