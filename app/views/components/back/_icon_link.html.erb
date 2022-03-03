@@ -2,6 +2,6 @@
 <% path = params[:back_path] if params[:back_path] %>
 <% klass ||= '' %>
 
-<%= link_to path, data: { action: "click->page-transition#backAnimation" }, class: "#{klass} w-10 h-10 rounded-full flex items-center justify-center lg:bg-white lg:transform lg:hover:scale-110 lg:scale-100 lg:duration-300" do %>
+<%= link_to path, class: "#{klass} w-10 h-10 rounded-full flex items-center justify-center lg:bg-white lg:transform lg:hover:scale-110 lg:scale-100 lg:duration-300" do %>
   <%= render 'icons/arrow_left', klass: 'w-6 h-6 text-black' %>
 <% end %>

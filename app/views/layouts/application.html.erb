@@ -3,13 +3,14 @@
   <head>
     <%= render 'shared/head' %>
   </head>
-  <body data-controller="native page-transition" class="bg-cream min-h-screen">
+  <body data-controller="native" class="bg-cream min-h-screen">
     <%= render 'shared/navbar' %>
     <main id="content">
       <%= yield %>
+      <%= render('shared/footer') if !is_native? && !@hide_footer %>
+      <%= render('shared/bottom_spacer') if is_native? %>
     </main>
-    <%= render('shared/footer') if !is_native? && !@hide_footer %>
-    <%= render('shared/bottom_spacer') if is_native? %>
+    <%= render 'shared/page_loader' %>
     <%= render 'shared/flashes/flashes' %>
   </body>
 </html>
