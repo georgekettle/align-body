@@ -25,6 +25,8 @@ export default class Turn {
     this.action = action
     this.exitClasses = new Set()
     this.enterClasses = new Set()
+    this.removeClasses('enter')
+    this.removeClasses('exit')
   }
 
   exit () {
@@ -110,20 +112,16 @@ Turn.stop = function () {
 
 Turn.eventListeners = {
   'turbo:visit': function (event) {
-    console.log('turbo:visit')
     this.currentTurn = new this(event.detail.action)
     this.currentTurn.exit()
   }.bind(Turn),
   'turbo:before-render': function (event) {
-    console.log('turbo:before-render')
     this.currentTurn.beforeEnter(event)
   }.bind(Turn),
   'turbo:render': function () {
-    console.log('turbo:render')
     this.currentTurn.enter()
   }.bind(Turn),
   'turbo:load': function () {
-    console.log('turbo:load')
     if (this.currentTurn) this.currentTurn.complete()
   }.bind(Turn)
 }
