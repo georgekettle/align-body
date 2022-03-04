@@ -1,8 +1,8 @@
-import * as Native from "./native"
+import { delay } from "helpers/native"
 
 const showLoader = async (e) => {
 	const loader = document.querySelector('#transition-loader')
-	await Native.delay(1000)
+	await delay(1000)
 	loader.classList.remove('opacity-0')
 }
 
