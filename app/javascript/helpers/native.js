@@ -18,4 +18,4 @@ const hideSplashScreen = () => {
   }
 }
 
-export { isNative, hideSplashScreen }
+export { isNative, hideSplashScreen, delay }

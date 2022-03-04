@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import Turn from "helpers/turn"
 Turn.start()
+import "helpers/page_loading"
 import "helpers/cookies"
 import * as Native from "helpers/native"
 import "controllers"
