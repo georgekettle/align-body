@@ -48,6 +48,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# rest client needed for rspotify
+gem 'rest-client'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -104,3 +107,5 @@ gem 'simple_form'
 gem 'kaminari'
 # calendar
 gem "simple_calendar", "~> 2.4"
+# spotify
+gem 'rspotify'
