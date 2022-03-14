@@ -29,7 +29,7 @@
           <%= link_to "Upgrade plan to participate", account_path, class: "text-center hover:opacity-80 transition-opacity duration-300 ease-out text-sm mt-1 text-mandarin" %>
         <% end %>
       <% else %>
-        <div data-controller="workout-vimeo" data-workout-vimeo-id-value="663614262">
+        <div data-controller="workout-vimeo" data-workout-vimeo-url-value="<%= @workout.video_url %>">
           <%= link_to '#', data:{ action:'click->workout-vimeo#fullscreen' }, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center mb-4 font-medium" do %>
             <%= render 'icons/play_fill', klass: 'text-white w-4 h-4 mr-4' %>
             Start workout
