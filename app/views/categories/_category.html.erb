@@ -1,4 +1,4 @@
-<%= link_to category_path(category), class: 'bg-white aspect-w-2 aspect-h-1 w-full relative leading-none group overflow-hidden block' do %>
+<%= link_to category_path(category), class: 'bg-white aspect-w-2 aspect-h-1 w-full relative leading-none group overflow-hidden block border border-black' do %>
 	<%= cl_image_tag(category.photo.key, height: 500, width: 1000, crop: :fill, class:'absolute inset-0 transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out object-cover') if category.photo.attached? %>
 	<div class="p-4 absolute inline-block bottom-0 left-0">
 		<h4 class="font-serif capitalize inline-block text-2xl leading-none"><%= simple_format(category.name.gsub(' ','<br/>')) %></h4>
