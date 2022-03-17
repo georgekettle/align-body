@@ -2,6 +2,7 @@ class Workout < ApplicationRecord
   belongs_to :category
   belongs_to :instructor
   has_many :daily_workouts, dependent: :destroy
+  has_many :saves, dependent: :destroy
   has_one_attached :photo
 
   enum intensity: {
