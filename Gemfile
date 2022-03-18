@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 # rest client needed for rspotify
 gem 'rest-client'
 
+# needed for Warning in console
+gem "net-http"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

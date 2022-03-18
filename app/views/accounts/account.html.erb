@@ -54,9 +54,22 @@
 				<h4 class="uppercase font-medium">Music</h4>
 			</div>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-				<%= link_to spotify_login_path, method: :post, class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
-			    Connect your spotify
-			  <% end %>
+				<% if current_user.spotify_hash %>
+					<div>
+						<div class="text-black border border-black px-6 py-4 text-center inline-block uppercase w-full flex items-center justify-center font-medium">
+							<%= render 'icons/check', klass: 'text-black h-5 w-5 mr-2' %>
+							Spotify connected
+						</div>
+						<div style="background: #1db954;" class="p-2 border border-t-0 border-black text-center text-white text-sm flex items-center justify-center">
+							<%= render 'icons/spotify', klass:'w-4 h-4 text-white mr-2' %>
+							Connected to <%= current_user.spotify_user.display_name %>
+						</div>
+					</div>
+				<% else %>
+					<%= link_to spotify_login_path, method: :post, class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+				    Connect your spotify
+				  <% end %>
+				<% end %>
 			</div>
 		</div>
 		<!-- Contact -->

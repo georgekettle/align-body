@@ -183,6 +183,9 @@ GEM
     multipart-post (2.1.1)
     name_of_person (1.1.1)
       activesupport (>= 5.2.0)
+    net-http (0.2.0)
+      net-protocol
+      uri
     net-imap (0.2.3)
       digest
       net-protocol
@@ -321,6 +324,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.1)
+    uri (0.11.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -354,6 +358,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   name_of_person
+  net-http
   omniauth-rails_csrf_protection
   pay (~> 3.0)
   pg (~> 1.1)

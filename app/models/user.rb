@@ -27,4 +27,9 @@ class User < ApplicationRecord
   def admin?
     admin
   end
+
+  def spotify_user
+    return nil if spotify_hash.nil?
+    RSpotify::User.new(spotify_hash)
+  end
 end
