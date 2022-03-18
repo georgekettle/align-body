@@ -109,3 +109,5 @@ gem 'kaminari'
 gem "simple_calendar", "~> 2.4"
 # spotify
 gem 'rspotify'
+# Add csrf protection
+gem "omniauth-rails_csrf_protection"

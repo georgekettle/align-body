@@ -34,7 +34,10 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about', as: :about
   post 'sms_upgrade/:user_id', to: 'sms_upgrade#create', as: :sms_upgrade
   post 'sms_upgrade_callback/:user_id', to: 'sms_upgrade#twilio_callback', as: :sms_upgrade_callback
-  get '/auth/spotify/callback', to: 'auth#spotify'
+  
+  # Spotify
+  get '/auth/spotify/callback', to: 'oauth#spotify_callback', as: :auth_spotify
+  get '/auth/spotify', to: 'oauth#spotify_login', as: :spotify_login
 
   # direct errors to errors_controller
   match "/404", :to => "errors#not_found", :via => :all
