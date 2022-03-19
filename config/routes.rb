@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   # Spotify
   get '/auth/spotify/callback', to: 'oauth#spotify_callback', as: :auth_spotify
   get '/auth/spotify', to: 'oauth#spotify_login', as: :spotify_login
+  delete '/auth/spotify/disconnect', to: 'oauth#spotify_disconnect', as: :spotify_disconnect
 
   # direct errors to errors_controller
   match "/404", :to => "errors#not_found", :via => :all

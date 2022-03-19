@@ -19,4 +19,12 @@ class OauthController < ApplicationController
     current_user.update_attribute('spotify_hash', spotify_user.to_hash)
     redirect_to account_path, notice: 'Spotify successfully connected'
   end
+
+  def spotify_disconnect
+    if current_user.update(spotify_hash: nil)
+      redirect_to account_path, notice: 'Spotify successfully disconnected'
+    else
+      redirect_to account_path, alert: 'Oops, something went wrong...'
+    end
+  end
 end

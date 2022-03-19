@@ -55,7 +55,13 @@
 			</div>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<% if current_user.spotify_hash %>
-					<div>
+					<div class="relative">
+						<div class="absolute -top-2 -right-2">
+							<%= button_to spotify_disconnect_path, method: :delete, class: "flex items-center justify-center bg-white rounded-full h-6 px-3 text-terracotta shadow text-xs font-medium uppercase transform-gpu scale-100 hover:scale-105 active:scale-100 transition-transform duration-300 ease-out" do %>
+				        <%= render 'icons/close', klass:"w-2 h-2" %>
+				        <span class="ml-1">Disconnect</span>
+				      <% end %>
+						</div>
 						<div class="text-black border border-black px-6 py-4 text-center inline-block uppercase w-full flex items-center justify-center font-medium">
 							<%= render 'icons/check', klass: 'text-black h-5 w-5 mr-2' %>
 							Spotify connected
