@@ -28,13 +28,26 @@ module.exports = {
       black: colors.black,
       gray: colors.gray,
       'cream': '#FFEFE4',
-      'terracotta': '#8D2B00',
-      'mandarin': '#B55119',
-      'carrot': '#BE6731',
-      'earth': '#76704C',
-      'shale': '#545E45',
-      'forest': '#1F2D16',
-      'water': '#197DB5',
+      'terracotta': {
+        DEFAULT: '#8D2B00',
+        'light': '#E3C2B3',
+      },
+      'mandarin': {
+        DEFAULT: '#B55119',
+        'light': '#E9D4C9',
+      },
+      'shale': {
+        DEFAULT: '#545E45',
+        'light': '#C7CBC1',
+      },
+      'forest': {
+        DEFAULT: '#1F2D16',
+        'light': '#B3B9AF',
+      },
+      'water': {
+        DEFAULT: '#197DB5',
+        'light': '#BFCFD8',
+      },
     },
   },
   plugins: [

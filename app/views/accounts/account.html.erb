@@ -56,24 +56,40 @@
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<% if current_user.spotify_hash %>
 					<div class="relative">
-						<div class="absolute -top-2 -right-2">
-							<%= button_to spotify_disconnect_path, method: :delete, class: "flex items-center justify-center bg-white rounded-full h-6 px-3 text-terracotta shadow text-xs font-medium uppercase transform-gpu scale-100 hover:scale-105 active:scale-100 transition-transform duration-300 ease-out" do %>
-				        <%= render 'icons/close', klass:"w-2 h-2" %>
-				        <span class="ml-1">Disconnect</span>
-				      <% end %>
-						</div>
 						<div class="text-black border border-black px-6 py-4 text-center inline-block uppercase w-full flex items-center justify-center font-medium">
-							<%= render 'icons/check', klass: 'text-black h-5 w-5 mr-2' %>
-							Spotify connected
+							<%= render 'icons/spotify', klass: 'text-black h-4 w-4 mr-2' %>
+							Spotify
 						</div>
-						<div style="background: #1db954;" class="p-2 border border-t-0 border-black text-center text-white text-sm flex items-center justify-center">
-							<%= render 'icons/spotify', klass:'w-4 h-4 text-white mr-2' %>
-							Connected to <%= current_user.spotify_user.display_name %>
+						<div style="background: #1db954;" class="p-2 border border-t-0 border-black text-center text-white text-sm flex items-center justify-between">
+							<div class="flex items-center justify-center">
+								<%= render 'icons/check', klass:'w-4 h-4 text-white mr-2' %>
+								Connected to <%= current_user.spotify_user.display_name %>
+							</div>
+							<div data-controller="modal">
+								<!-- Open modal button -->
+							  <a href="#" data-action="click->modal#open" class="text-white h-6 w-6 rounded-full flex items-center justify-center transform duration-300 ease-out rotate-0 hover:rotate-45">
+							    <%= render 'icons/settings', klass:'h-4 w-4' %>
+							  </a>
+							  <!-- Modal Container -->
+							  <div data-target="modal.container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">
+							    <!-- Modal Inner Container -->
+							    <div class="max-h-screen w-full max-w-lg relative">
+							      <!-- Modal Card -->
+							      <%= render 'components/modal/container', title: 'Spotify settings' do %>
+					          	<%= button_to spotify_disconnect_path, method: :delete, class: "text-terracotta px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium hover:bg-terracotta-light transition-all duration-300 duration-300 ease-out" do %>
+								        <%= render 'icons/spotify', klass:"h-4 w-4 mr-1" %>
+								        <span class="ml-1">Disconnect Spotify</span>
+								      <% end %>
+						        <% end %>
+							    </div>
+							  </div>
+							</div>
 						</div>
 					</div>
 				<% else %>
 					<%= link_to spotify_login_path, method: :post, class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
-				    Connect your spotify
+				    <%= render 'icons/spotify', klass: 'text-black h-4 w-4 mr-2' %>
+						Connect Spotify
 				  <% end %>
 				<% end %>
 			</div>
