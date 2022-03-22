@@ -7,6 +7,7 @@ import "helpers/cookies"
 import * as Native from "helpers/native"
 import "controllers"
 
-document.addEventListener('turbo:load', (e) => {
+document.addEventListener('turbo:load', async (e) => {
 	Native.hideSplashScreen()
 })
+

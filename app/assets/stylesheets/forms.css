@@ -49,3 +49,12 @@ button .show-when-disabled,
 button[disabled] .show-when-enabled {
 	display:  none;
 }
+
+/* vertical range slider */
+input[type=range][orient=vertical] {
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* Chromium */
+    width: 8px;
+    height: 80px;
+    padding: 0 5px;
+}

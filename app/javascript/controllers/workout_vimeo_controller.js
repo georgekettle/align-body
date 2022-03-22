@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import * as Vimeo from "@vimeo/player"
 
 export default class extends Controller {
-  static targets = ['embed']
+  static targets = ['embed', 'cover', 'detail']
   static values = {
     url: String,
   }
@@ -10,33 +10,30 @@ export default class extends Controller {
   connect() {
     const options = {
       id: this.urlValue,
-      allowfullscreen: true
+      allowfullscreen: true,
+      width: '100%'
     }
     this.player = new Vimeo.default(this.embedTarget, options)
-
-    this.initFullscreenListener()
+    this.player.on('loaded', this.onLoad.bind(this))
   }
 
   disconnect() {
     this.player.destroy()
   }
 
-  initFullscreenListener() {
-    const _this = this
-    const embed = this.embedTarget
-    this.player.on('fullscreenchange', (data) => {
-      if (data.fullscreen) {
-        embed.classList.remove('hidden')
-      } else {
-        embed.classList.add('hidden')
-        _this.player.pause()
-      }
-    })
+  onLoad() {
+    var frame = this.embedTarget.querySelector('iframe')
+    if (frame !== null) {
+      frame.style.width = '100%'
+      frame.style.height = '100%'
+    }
   }
 
-  fullscreen(e) {
-    e.preventDefault()
+  pause(e) {
+    this.player.pause()
+  }
+
+  play(e) {
     this.player.play()
-    this.player.requestFullscreen()
   }
 }

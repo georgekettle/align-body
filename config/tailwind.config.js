@@ -14,6 +14,9 @@ module.exports = {
         serif: ['Value Serif', ...defaultTheme.fontFamily.serif],
         display: ['Magnet Display', 'Magnet', ...defaultTheme.fontFamily.sans]
       },
+      rotate: {
+        '-90': '-90deg',
+      },
       aspectRatio: {
         '3/2': '3 / 2',
       },
@@ -48,6 +51,7 @@ module.exports = {
         DEFAULT: '#197DB5',
         'light': '#BFCFD8',
       },
+      'spotify': '#1DB954',
     },
   },
   plugins: [

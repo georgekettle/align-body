@@ -11,5 +11,7 @@ class WorkoutsController < ApplicationController
 		@navbar_fixed = true
 		@hide_native_navbar = true
 		@hide_footer = true
+		align_spotify_account = RSpotify::User.find(ENV['SPOTIFY_USER_ID']) 
+		@playlists = align_spotify_account.playlists.select{ |pl| pl.public }
 	end
 end

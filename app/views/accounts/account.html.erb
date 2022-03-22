@@ -54,7 +54,7 @@
 				<h4 class="uppercase font-medium">Music</h4>
 			</div>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-				<% if current_user.spotify_hash %>
+				<% if current_user.spotify_user %>
 					<div class="relative">
 						<div class="text-black border border-black px-6 py-4 text-center inline-block uppercase w-full flex items-center justify-center font-medium">
 							<%= render 'icons/spotify', klass: 'text-black h-4 w-4 mr-2' %>

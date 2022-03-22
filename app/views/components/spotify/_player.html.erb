@@ -1,0 +1,77 @@
+<div data-controller="spotify" data-spotify-token-value="<%= current_user.spotify_user.credentials['token'] %>">
+  <div class="bg-mandarin text-white p-4 b border-t-2 border-black block sm:flex items-center justify-between">
+  	<div class="flex items-center text-center sm:text-left w-full sm:w-unset mb-2 sm:mb-0">
+  		<div class="relative hidden sm:block">
+	  		<div class="bg-mandarin-light w-12 h-12 mr-2 relative group overflow-hidden block rounded-full border border-white relative">
+	  			<div class="pointer-events-none mix-blend-multiply absolute inset-0 h-full flex items-center justify-center z-0" data-spotify-target="loading">
+	          <%= image_tag 'spinner.gif', class:'h-full' %>
+	        </div>
+	  			<%= image_tag '', data: {spotify_target: 'image'}, class:'absolute inset-0 transform-gpu scale-100 group-hover:scale-105 transition-transform duration-300 ease-out object-cover' %>
+	  		</div>
+  			<%= render 'icons/spotify_fill', klass: 'h-4 w-4 border border-white absolute top-0 left-0 rounded-full shadow' %>
+  		</div>
+  		<p class="uppercase text-sm animate-pulse leading-none w-full" data-spotify-target="loading">Loading...</p>
+  		<div data-spotify-target="trackInfo" class="font-serif w-full hidden">
+		  	<p data-spotify-target="trackTitle" class="leading-none">Song title/p>
+		  	<p data-spotify-target="trackArtist" class="opacity-50 text-xs">Artist name</p>
+  		</div>
+  	</div>
+  	<div class="flex items-center justify-center" data-spotify-target="controls">
+  		<div class="relative" data-controller="dropdown">
+			  <%= button_tag data: {dropdown_target: 'button', action: "click->dropdown#toggle"}, class: "text-white opacity-30 text-center cursor-pointer inline-block w-10 h-10 flex items-center justify-center rounded-full hover:opacity-100 transition-opacity duration-300 ease-out mr-1" do %>
+			    <%= render 'icons/playlist', klass: 'text-white w-5 h-5' %>
+			  <% end %>
+			  <div data-dropdown-target="menu" class="absolute bottom-full pb-2 hidden left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2">
+			  	<div class="border border-black bg-white text-black shadow w-64">
+			  		<div class="bg-cream border-b border-black p-2">
+			  			<p class="font-serif whitespace-nowrap">Select playlist</p>
+			  			<p class="text-xs whitespace-nowrap opacity-50">Our handpicked records</p>
+			  		</div>
+			  		<div class="max-h-96 overflow-scroll text-left">
+				  		<% @playlists.each do |playlist| %>
+				  			<%= link_to '#', data: {action: 'click->spotify#playPlaylist', playlist_uri: playlist.uri}, class: 'p-2 block hover:bg-gray-200 odd:bg-gray-100 odd:hover:bg-gray-200 flex items-center' do %>
+				  				<% if playlist.images.present? %>
+				  					<% image_number = playlist.images.length - 1 %>
+				  					<%= image_tag playlist.images[image_number]['url'], class:'h-10 w-10 mr-2 border border-black'  %>
+				  				<% else %>
+				  					<div class="h-10 w-10 mr-2 bg-black bg-opacity-10 border border-black"></div>
+				  				<% end %>
+				  				<div>
+					  				<p class="uppercase text-sm"><%= playlist.name %></p>
+					  				<p class="opacity-50 text-xs"><%= playlist.tracks.count %> tracks</p>
+				  				</div>
+				  			<% end %>
+				  		<% end %>
+			  		</div>
+			  	</div>
+			  </div>
+		  </div>
+
+  		<button data-action="click->spotify#playPrev" data-spotify-target="skipPrev" class="w-10 h-10 rounded-full flex items-center justify-center transform scale-100 hover:scale-110 ease-out duration-200 focus:scale-100">
+	    	<%= render 'icons/prev_song', klass:'h-4 w-4' %>
+	    </button>
+
+	    <button data-spotify-target="play" data-action="click->spotify#play" class="w-10 h-10 rounded-full bg-white text-mandarin flex items-center justify-center transform scale-100 hover:scale-110 ease-out duration-200 focus:scale-100">
+	    	<%= render 'icons/play_fill', klass:'h-4 w-4 ml-0.5' %>
+	    </button>
+	    <button data-spotify-target="pause" data-action="click->spotify#pause" class="hidden w-10 h-10 rounded-full bg-white text-mandarin flex items-center justify-center transform scale-100 hover:scale-110 ease-out duration-200 focus:scale-100">
+	    	<%= render 'icons/pause_fill', klass:'h-4 w-4' %>
+	    </button>
+
+	    <button data-action="click->spotify#playNext" data-spotify-target="skipNext" class="w-10 h-10 rounded-full flex items-center justify-center transform scale-100 hover:scale-110 ease-out duration-200 focus:scale-100">
+	    	<%= render 'icons/next_song', klass:'h-4 w-4' %>
+	    </button>
+
+		  <div class="relative" data-controller="dropdown">
+		  	<%= button_tag data: {dropdown_target: 'button', action: "click->dropdown#toggle"}, id:'dropdown-button', class: "text-white opacity-30 text-center cursor-pointer inline-block w-10 h-10 flex items-center justify-center rounded-full hover:opacity-100 transition-opacity duration-300 ease-out ml-1 select-none" do %>
+			    <%= render 'icons/volume', klass: 'text-white w-5 h-5' %>
+			  <% end %>
+			  <div data-dropdown-target="menu" class="absolute bottom-full pb-2 hidden transform left-1/2 -translate-x-1/2">
+			  	<div class="p-4 border border-black bg-cream shadow">
+			  		<input type="range" min="0" max="100" value="50" orient="vertical" class="h-16" data-spotify-target="volume" data-action="click->spotify#changeVolume">
+			  	</div>
+			  </div>
+		  </div>
+  	</div>
+	</div>
+</div>
