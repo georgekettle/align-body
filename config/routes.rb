@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
   resources :daily_workouts, only: [:index, :new, :create, :destroy]
   get 'account', to: 'accounts#account', as: :account
-  get 'account_settings', to: 'accounts#account_settings', as: :account_settings
+  get 'membership', to: 'accounts#membership', as: :membership
   resources :saves, only: :index
   resources :categories, only: :show
   get 'terms', to: 'policies#terms', as: :terms
