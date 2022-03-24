@@ -1,12 +1,12 @@
 <% plan = subscription.plan %>
-<% plan_name = plan.nickname&.downcase %>
-<% plan_savings = @yearly_savings[plan_name.to_sym] %>
+<% plan_name = plan.nickname&.downcase || Stripe::Product.retrieve(plan.product)&.name %>
+<% plan_savings = @yearly_savings[plan_name&.to_sym] %>
 <% most_popular = plan_name == 'weekly' %>
 <% price = number_with_precision(plan.amount.fdiv(100)) %>
 
 <div class="border border-black p-6 bg-white relative min-h-56 flex flex-col justify-between h-full">
 	<div>
-	  <h2 class="text-2xl leading-tight font-serif text-gray-900"><%= plan_name.capitalize %></h2>
+	  <h2 class="text-2xl leading-tight font-serif text-gray-900"><%= plan_name&.capitalize %></h2>
 		<% sub_interval = plan.interval_count > 1 ? pluralize(plan.interval_count, plan.interval) : plan.interval %>
 		<p class="mt-2 text-sm opacity-50"><%= number_to_currency(price, precision: 0) %> / <%= sub_interval %> (<%= plan.currency.upcase %>)</p>
 

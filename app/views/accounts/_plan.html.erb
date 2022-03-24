@@ -1,5 +1,5 @@
 <% plan_name = plan.nickname&.downcase %>
-<% plan_savings = @yearly_savings[plan_name.to_sym] %>
+<% plan_savings = @yearly_savings[plan_name&.to_sym] %>
 <% most_popular = plan_name == 'weekly' %>
 <% price = number_with_precision(plan.unit_amount.fdiv(100)) %>
 

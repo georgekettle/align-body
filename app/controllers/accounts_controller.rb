@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
 				yearly: 416
 			}
 			current_user.set_payment_processor :stripe
-			@portal_session = current_user.payment_processor.billing_portal
+			@portal_session = current_user.payment_processor.billing_portal(return_url: membership_url)
 			@plans =  Stripe::Price.list(active: true, expand:['data.product'])
 									.select{ |price| price.product.active }
 									.sort_by{ |price| price.unit_amount }
