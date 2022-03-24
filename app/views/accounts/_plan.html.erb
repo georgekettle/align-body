@@ -1,16 +1,11 @@
-<% yearly_savings = {
-	monthly: 208,
-	quarterly: 312,
-	yearly: 416
-} %>
 <% plan_name = plan.nickname&.downcase %>
-<% plan_savings = yearly_savings[plan_name.to_sym] %>
+<% plan_savings = @yearly_savings[plan_name.to_sym] %>
 <% most_popular = plan_name == 'weekly' %>
 <% price = number_with_precision(plan.unit_amount.fdiv(100)) %>
 
 <div class="border <%= most_popular ? 'border-mandarin border-2' : 'border-black' %> bg-white relative">
 	<% if most_popular %>
-		<div class="p-2 px-4 rounded-full flex items-center bg-mandarin text-white absolute transform -translate-y-1/2 -translate-x-1/2 top-0 left-1/2 text-xs font-serif whitespace-nowrap leading-none">
+		<div class="p-1 px-2 rounded-full flex items-center bg-mandarin text-white absolute transform -translate-y-1/2 -translate-x-1/2 top-0 left-1/2 text-xs font-serif whitespace-nowrap leading-none">
 			<%= render 'icons/certificate_check', klass: 'mr-1 h-4 w-4' %>
 			Most Popular
 		</div>

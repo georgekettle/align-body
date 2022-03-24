@@ -1,0 +1,56 @@
+<% plan = subscription.plan %>
+<% plan_name = plan.nickname&.downcase %>
+<% plan_savings = @yearly_savings[plan_name.to_sym] %>
+<% most_popular = plan_name == 'weekly' %>
+<% price = number_with_precision(plan.amount.fdiv(100)) %>
+
+<div class="border border-black p-6 bg-white relative min-h-56 flex flex-col justify-between h-full">
+	<div>
+	  <h2 class="text-2xl leading-tight font-serif text-gray-900"><%= plan_name.capitalize %></h2>
+		<% sub_interval = plan.interval_count > 1 ? pluralize(plan.interval_count, plan.interval) : plan.interval %>
+		<p class="mt-2 text-sm opacity-50"><%= number_to_currency(price, precision: 0) %> / <%= sub_interval %> (<%= plan.currency.upcase %>)</p>
+
+	  <!-- SUB status -->
+	  <% if subscription && subscription.cancel_at_period_end %>
+	  	<div class="absolute top-6 right-6 flex items-center bg-mandarin text-white rounded-full p-1 text-xs font-serif pr-3">
+				<div class="w-5 h-5 rounded-full bg-white text-mandarin flex items-center justify-center  mr-2">
+					<%= render 'icons/check', klass: 'h-2.5 w-2.5' %>
+				</div>
+				<p>Cancelled</p>
+			</div>
+
+	  	<% ending_at = Time.at(subscription.cancel_at).to_datetime %>
+	  	<p class="inline-block w-full mt-2 relative text-xs mt-6">
+		  	Your plan will end on:
+		  </p>
+	  	<p class="text-sm text-black font-normal uppercase opacity-50 capitalize"><%= ending_at.strftime("%a #{ending_at.day.ordinalize} %b, %Y") %></p>
+	  	</div>
+	  	<!-- Update billing -->
+			<%= link_to @portal_session.url, class: "bg-white text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-8" do %>
+				<%= render 'icons/refresh', klass: 'h-4 w-4 mr-2' %>
+		    Renew subscription
+		  <% end %>
+	  <% else %>
+	  		<div class="absolute top-6 right-6 flex items-center bg-mandarin text-white rounded-full p-1 text-xs font-serif pr-3">
+					<div class="w-5 h-5 rounded-full bg-white text-mandarin flex items-center justify-center  mr-2">
+						<%= render 'icons/check', klass: 'h-2.5 w-2.5' %>
+					</div>
+					<% if plan_savings %>
+						<p>You save $<%= plan_savings %> / year</p>
+					<% else %>
+						<p>Upgrade to save</p>
+					<% end %>
+				</div>
+
+				<% renews_at = Time.at(subscription.billing_cycle_anchor).to_datetime %>
+		  	<p class="inline-block w-full mt-2 relative text-xs mt-6">
+			  	Your plan will renew on:
+			  </p>
+		  	<p class="text-sm text-black font-normal uppercase opacity-50 capitalize"><%= renews_at.strftime("%a #{renews_at.day.ordinalize} %b, %Y") %></p>
+	  	</div>
+		  <!-- Update billing -->
+			<%= link_to @portal_session.url, class: "bg-white text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium mt-8" do %>
+		    Manage subscription
+		  <% end %>
+	  <% end %>
+</div>

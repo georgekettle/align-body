@@ -30,8 +30,25 @@
 
   <div class="p-4">
     <div class="container">
-      <!-- Plans -->
+      <!-- Your membership -->
+      <% if current_user.subscribed? %>
+        <div class="mb-8">
+          <div class="flex items-center justify-between mb-4">
+            <h4 class="uppercase font-medium">My Memberships</h4>
+          </div>
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <%# render 'accounts/free_plan' %>
+            <% @subscriptions.each do |subscription| %>
+              <%= render 'accounts/active_subscription', subscription: subscription %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <!-- Memberships -->
       <div class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h4 class="uppercase font-medium">Membership Options</h4>
+        </div>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <%# render 'accounts/free_plan' %>
           <% @plans.each do |plan| %>
