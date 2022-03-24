@@ -1,11 +1,30 @@
-<div style="background-image: url(<%= plan.product.images.first %>)" class="w-full bg-cover bg-center aspect-w-2 aspect-h-3 bg-white">
-	<div class="h-full w-full flex flex-col justify-end p-4">
-		<h3 class="text-6xl font-medium font-display uppercase"><%= plan.product.name %></h3>
-		<% price = number_with_precision(plan.unit_amount.fdiv(100), precision: 2) %>
-		<h6 class="font-medium text-lg">
-			<%= number_to_currency(price) %> <span class="opacity-50 font-thin text-xs">per <%= plan.recurring.interval %> (<%= plan.currency.upcase %>)</span>
-		</h6>
+<% plan_name = plan.nickname&.downcase %>
+<% plan_savings = @yearly_savings[plan_name&.to_sym] %>
+<% most_popular = plan_name == 'weekly' %>
+<% price = number_with_precision(plan.unit_amount.fdiv(100)) %>
 
-		<%= render 'accounts/subscribe_btn', plan: plan %>
-	</div>
+<div class="border <%= most_popular ? 'border-mandarin border-2' : 'border-black' %> bg-white relative">
+	<% if most_popular %>
+		<div class="p-1 px-2 rounded-full flex items-center bg-mandarin text-white absolute transform -translate-y-1/2 -translate-x-1/2 top-0 left-1/2 text-xs font-serif whitespace-nowrap leading-none">
+			<%= render 'icons/certificate_check', klass: 'mr-1 h-4 w-4' %>
+			Most Popular
+		</div>
+	<% end %>
+  <div class="p-6 flex flex-col justify-between h-full">
+  	<div>
+	    <h2 class="text-2xl leading-tight font-serif text-gray-900"><%= plan.nickname&.capitalize %></h2>
+	    <p class="mt-2 text-sm opacity-50">Access to all of Align Body</p>
+  	</div>
+  	<div>
+	    <p class="mt-8">
+	      <span class="text-4xl font-medium text-gray-900"><%= number_to_currency(price, precision: 0) %></span>
+	      <% sub_interval = plan.recurring.interval_count > 1 ? pluralize(plan.recurring.interval_count, plan.recurring.interval) : plan.recurring.interval %>
+	      <span class="text-base text-xs opacity-50">/ <%= sub_interval %> (<%= plan.currency.upcase %>)</span>
+	    </p>
+	    <% if plan_savings %>
+				<p class="text-sm text-mandarin">Save $<%= plan_savings %> per year</p>
+			<% end %>
+	    <%= render 'accounts/subscribe_btn', plan: plan %>
+  	</div>
+  </div>
 </div>

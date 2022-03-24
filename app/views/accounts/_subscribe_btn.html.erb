@@ -1,35 +1,17 @@
-<% if plan.product.name.downcase == 'freedom' %>
-	<div class="mt-6">
-		<% if current_user.active_subscriptions.empty? %>
-			<div class="bg-white text-black px-6 py-4 text-center inline-block uppercase w-full flex items-center justify-center font-medium cursor-default">
-				<%= render 'icons/check', klass: 'text-black h-5 w-5 mr-2' %>
-		    Subscribed
-			</div>
-		<% else %>
-			<%= link_to @portal_session.url, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
-		    Downgrade
-		  <% end %>
-		<% end %>
-	</div>
-<% elsif current_user.active_subscriptions.find_by(processor_plan: plan.id) %>
+<% if current_user.active_subscriptions.find_by(processor_plan: plan.id) %>
 	<div class="mt-6">
 		<!-- SUB status -->
-		<% subscription = @subscriptions.select{ |sub| sub.plan.id == plan.id }.first %>
+		<% subscription = @subscriptions.find{ |sub| sub.plan.id == plan.id } %>
 	  <% if subscription && subscription.cancel_at_period_end %>
-	  	<% ending_at = Time.new(subscription.cancel_at) %>
-	  	<p class="bg-white text-mandarin px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex flex-col items-center justify-center font-medium mb-1 relative">
-	  		Your plan will end
-	  		<span class="text-xs text-black font-normal uppercase opacity-80 capitalize">(<%= ending_at.strftime("%A, #{ending_at.day.ordinalize} %b") %>)</span>
-	  	</p>
 	  	<!-- Update billing -->
-			<%= link_to @portal_session.url, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
-				<%= render 'icons/refresh', klass: 'text-white h-5 w-5 mr-2' %>
+			<%= link_to @portal_session.url, class: "bg-white text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+				<%= render 'icons/refresh', klass: 'h-4 w-4 mr-2' %>
 		    Renew subscription
 		  <% end %>
 	  <% else %>
 		  <!-- Update billing -->
-			<%= link_to @portal_session.url, class: "bg-white text-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
-				<%= render 'icons/check', klass: 'text-black h-5 w-5 mr-2' %>
+			<%= link_to @portal_session.url, class: "bg-white text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+				<%= render 'icons/check', klass: 'h-5 w-5 mr-2' %>
 		    Subscribed
 		  <% end %>
 	  <% end %>
@@ -45,13 +27,13 @@
 												        price: plan.id,
 												        quantity: 1
 												      }],
-												      success_url: account_url,
-												      cancel_url: account_url
+												      success_url: membership_url,
+												      cancel_url: membership_url
 												    ) %>
 		<% if is_native? %>
 			<div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium">Not subscribed</div>
 		<% else %>
-			<%= render "pay/stripe/checkout_button", session: checkout_session, title: "Upgrade", class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" %>
+			<%= render "pay/stripe/checkout_button", session: checkout_session, title: "Subscribe", class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" %>
 		<% end %>
 	</div>
 <% end %>

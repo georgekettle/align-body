@@ -10,33 +10,17 @@
 <% end %>
 <div class="p-4">
 <div class="container">
-		<% if is_native? %>
-			<!-- Account settings -->
-			<div class="mb-8">
-				<div class="flex items-center justify-between mb-4">
-					<h4 class="uppercase font-medium">Account settings</h4>
-				</div>
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-					<%= link_to account_settings_path, class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
-				    Go to settings
-				  <% end %>
-				</div>
+		<!-- Account settings -->
+		<div class="mb-8">
+			<div class="flex items-center justify-between mb-4">
+				<h4 class="uppercase font-medium">Account settings</h4>
 			</div>
-		<% else %>
-			<!-- Plans -->
-			<div class="mb-8">
-				<div class="mb-4">
-					<h4 class="uppercase font-medium">Your plan</h4>
-					<p class="mt-0.5 opacity-50 text-sm" data-native-target="onlyNative">Subscriptions managed online</p>
-				</div>
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-					<%= render 'accounts/free_plan' %>
-					<% @plans.each do |plan| %>
-						<%= render 'accounts/plan', plan: plan %>
-					<% end %>
-				</div>
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+				<%= link_to membership_path, class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+			    My membership
+			  <% end %>
 			</div>
-		<% end %>
+		</div>
 		<!-- Logout button -->
 		<div class="mb-8">
 			<div class="flex items-center justify-between mb-4">
