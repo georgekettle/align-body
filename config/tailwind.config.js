@@ -10,9 +10,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Magnet', ...defaultTheme.fontFamily.sans],
+        sans: ['HK Grotesk', ...defaultTheme.fontFamily.sans],
         serif: ['Value Serif', ...defaultTheme.fontFamily.serif],
-        display: ['Magnet Display', 'Magnet', ...defaultTheme.fontFamily.sans]
+        display: ['Magnet Display', 'HK Grotesk', ...defaultTheme.fontFamily.sans]
       },
       aspectRatio: {
         '3/2': '3 / 2',
@@ -25,9 +25,9 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       white: colors.white,
-      black: colors.black,
+      black: '#1F2D16',
       gray: colors.gray,
-      'cream': '#FFEFE4',
+      'cream': '#FFF8EB',
       'terracotta': {
         DEFAULT: '#8D2B00',
         'light': '#E3C2B3',
