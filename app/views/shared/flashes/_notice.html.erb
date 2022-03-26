@@ -1,4 +1,4 @@
-<div data-controller="alert" class="overflow-hidden max-w-sm w-full shadow-xl rounded-full relative bg-black text-white pointer-events-auto mb-1 ease-out transition-transform duration-300 transform -translate-y-24" data-alert-dismiss-after-value="5000">
+<div data-controller="alert" class="overflow-hidden max-w-sm w-full shadow-xl rounded-full relative bg-black text-white pointer-events-auto mb-1 ease-out transition-transform duration-300 transform -translate-y-24">
   <div class="p-2">
     <div class="flex items-center p-4 py-2">
       <div class="w-0 flex-1">
@@ -6,8 +6,8 @@
           <%= notice %>
         </p>
       </div>
-      <div class="ml-4 flex-shrink-0 flex">
-        <button data-action="alert#close" class="icon-btn hover:bg-white hover:bg-opacity-20">
+      <div class="ml-4 flex-shrink-0 flex h-4 w-4 items-center justify-center relative">
+        <button data-action="alert#close" class="hover:bg-white hover:bg-opacity-20 transition-all duration-300 ease-out w-8 h-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center rounded-full">
           <%= render 'icons/close', klass: "text-white h-2.5 w-2.5" %>
         </button>
       </div>
