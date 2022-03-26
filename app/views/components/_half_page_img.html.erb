@@ -1,3 +1,8 @@
+<% img_path ||= nil %>
 <div class="md:w-1/2 bg-white h-96 md:max-h-screen md:h-full overflow-hidden border-b border-black md:border-b-0 md:border-r">
-  <%= image_tag img_path, class: "object-cover object-center md:object-bottom h-full w-full" %>
+  <% if img_path.present? %>
+    <%= image_tag img_path, class: "object-cover object-center md:object-bottom h-full w-full" %>
+  <% else %>
+    <%= yield %>
+  <% end %>
 </div>
