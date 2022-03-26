@@ -234,11 +234,14 @@ GEM
       netrc (~> 0.8)
     rexml (3.2.5)
     ruby2_keywords (0.0.5)
+    ruby_http_client (3.5.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    sendgrid-ruby (6.6.2)
+      ruby_http_client (~> 3.4)
     sidekiq (6.3.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -319,6 +322,7 @@ DEPENDENCIES
   rails (~> 7.0.0)
   redis (~> 4.0)
   selenium-webdriver
+  sendgrid-ruby
   sidekiq
   sidekiq-failures (~> 1.0)
   simple_calendar (~> 2.4)
