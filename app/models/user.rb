@@ -16,6 +16,8 @@ class User < ApplicationRecord
   validates :phone, phone: { possible: true, types: [:voip, :mobile] }, presence: true
   validates :terms_of_service, acceptance: true
 
+  after_commit :create_sendgrid_contact, on: :create
+
   def active_subscriptions
     subscriptions.where(status: "active")
   end
@@ -26,5 +28,11 @@ class User < ApplicationRecord
 
   def admin?
     admin
+  end
+
+  private
+
+  def create_sendgrid_contact
+    CreateSendgridContactJob.perform_later(self)
   end
 end

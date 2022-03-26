@@ -104,3 +104,5 @@ gem 'simple_form'
 gem 'kaminari'
 # calendar
 gem "simple_calendar", "~> 2.4"
+# sendgrid emails integration (marketing and transactional)
+gem 'sendgrid-ruby'
