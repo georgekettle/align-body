@@ -65,114 +65,15 @@
     <%= render 'components/half_page_img', img_path: 'default_1.jpg' %>
     <div class="md:w-1/2 bg-cream p-4 md:p-12 flex flex-col items-start justify-center h-1/2 text-center md:h-full">
       <div class="max-w-sm mx-auto">
-        <p class="text-mandarin font-bold mb-4">Launching soon!</p>
+        <p class="text-mandarin font-bold mb-4">We've just launched!</p>
         <h1 class="text-4xl md:text-5xl font-serif leading-none mb-2">Pilates classes for all phases of your cycle</h1>
         <p class="font-serif leading-normal mb-6">Our goal is for you to become familiar with your body, and how to workout to support your cycle.</p>
         <% if user_signed_in? %>
           <%= link_to 'Start a workout', workouts_path, class: "bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
         <% else %>
-          <%= link_to 'Notify me!', '#', class: "vrlps-trigger bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
+          <%= link_to 'Get started!', new_user_registration_path, class: "bg-black text-white px-8 py-4 text-center cursor-pointer inline-block uppercase font-medium" %>
         <% end %>
-        <p class="opacity-50 text-sm mt-2">Join the launch to win!</p>
       </div>
     </div>
   </div>
-
-  <!-- Viral loops -->
-  <script>
-    ! function(a, b, c, d, t) {
-        var e, f = a.getElementsByTagName("head")[0];
-        if (!a.getElementById(c)) {
-            if (e = a.createElement(b), e.id = c, e.setAttribute("data-vrlps-ucid", d), e.setAttribute("data-vrlps-version", "2"), e.setAttribute("data-vrlps-template", t), e.src = "https://app.viral-loops.com/popup_assets/js/vl_load_v2.min.js", window.ub) {
-                jQuery = null, $ = null;
-                var g = a.createElement(b);
-                g.src = "https://code.jquery.com/jquery-2.2.4.min.js", f.appendChild(g)
-            }
-            f.appendChild(e);
-            var h = a.createElement("link");
-            h.rel = "stylesheet", h.type = "text/css", h.href = "https://app.viral-loops.com/static/vl-loader.css", f.appendChild(h);
-            var i = a.createElement("div");
-            i.id = "vl-overlay", i.style.display = "none";
-            var j = a.createElement("div");
-            j.id = "vl-loader", i.appendChild(j), a.addEventListener("DOMContentLoaded", function(b) {
-                console.log('vl loader');
-                a.body.appendChild(i);
-                for (var c = a.getElementsByClassName("vrlps-trigger"), d = 0; d < c.length; d++) c[d].removeAttribute("href"), c[d].onclick = function() {
-                    a.getElementById("vl-overlay").style.display = "block"
-                };
-                var e = a.querySelectorAll("[data-vl-widget='popupTrigger']");
-                [].forEach.call(e, function(b) {
-                    var c = a.createElement("div");
-                    c.className = "vl-embedded-cta-loader", b.appendChild(c)
-                })
-            })
-        }
-    }(document, "script", "vrlps-js", "73vqCzCD314gvpa0CaUZ0c5IKf0", "waitlist");
-  </script>
-
-  <style type="text/css">
-    #vl_popup.vlns.vl-wider-popup .vl-modal-dialog {
-      height: 100vh!important;
-      margin: 0px!important;
-      padding: 1rem!important;
-      display: flex!important;
-      align-items: center!important;
-      justify-content: center!important;
-      width: 100vw!important;
-      max-width: unset!important;
-    }
-
-    .vl-heading {
-      font-family: 'Value Serif'!important;
-      font-weight: 400!important;
-    }
-
-    .vlns .vl-body,
-    .vlns .vl-sharing-subheading,
-    .vlns .vl-subheading,
-    .vlns .vl-form-control,
-    .vlns .vl-submit-btn {
-      font-family: 'Magnet'!important;
-      letter-spacing: normal!important;
-    }
-
-    .vlns .vl-submit-btn {
-      text-transform: uppercase!important;
-      font-weight:  500!important;
-    }
-
-    #vl_popup.vlns .vl-label,
-    #vl_popup.vlns .vl-label-emphasis,
-    #vl_popup.vlns .vl-label-emphasis-big,
-    #vl_popup.vlns .vl-label-input {
-      font-family: 'Value Serif'!important;
-      font-weight: 400!important;
-    }
-
-    #vl_popup.vlns.vl-new-version .vl-modal-dialog .vl-metric .vl-metric-description {
-      font-family: 'Magnet'!important;
-    }
-
-    .vl-order-banner {
-      border: none!important;
-    }
-
-    .vlns .vl-leaderboard-info {
-      color: #B55119!important;
-    }
-
-    #vl_popup.vlns.vl-wider-popup .vl-modal-dialog .vl-close-btn-2 {
-      opacity: 100!important;
-    }
-
-    @media (max-width: 600px) {
-      #vl_popup.vlns.vl-wider-popup .vl-modal-dialog {
-        align-items: start!important;
-      }
-
-      #vl_popup.vlns.vl-new-version .vl-modal-dialog .vl-modal-content {
-        margin-top: 30px!important;
-      }
-    }
-  </style>
 <% end %>

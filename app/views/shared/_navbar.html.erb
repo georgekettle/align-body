@@ -35,18 +35,10 @@
 							<span class="hidden md:inline font-medium">Account</span>
 						<% end %>
 					<% else %>
-
-						<%= link_to new_user_session_path, class: 'px-4 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
+						<%= link_to 'Login', new_user_session_path, class: 'px-4 h-full hidden md:inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300' %>
+						<%= link_to new_user_registration_path, class: 'px-4 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
 							<%= render 'icons/account', klass: "text-black w-4.5 h-4.5 md:hidden" %>
-							<span class="hidden md:inline font-medium">Admin Login</span>
-						<% end %>
-
-						<% if false %>
-							<%= link_to 'Login', new_user_session_path, class: 'px-4 h-full hidden md:inline-flex items-center justify-center uppercase font-medium opacity-100 hover:opacity-50 transition-opacity duration-300' %>
-							<%= link_to new_user_registration_path, class: 'px-4 md:pr-0 h-full inline-flex items-center justify-center uppercase opacity-100 hover:opacity-50 transition-opacity duration-300' do %>
-								<%= render 'icons/account', klass: "text-black w-4.5 h-4.5 md:hidden" %>
-								<span class="hidden md:inline font-medium">Signup</span>
-							<% end %>
+							<span class="hidden md:inline font-medium">Signup</span>
 						<% end %>
 					<% end %>
 				</div>
