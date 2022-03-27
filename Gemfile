@@ -106,3 +106,5 @@ gem 'kaminari'
 gem "simple_calendar", "~> 2.4"
 # sendgrid emails integration (marketing and transactional)
 gem 'sendgrid-ruby'
+# Error monitoring
+gem 'rollbar'
