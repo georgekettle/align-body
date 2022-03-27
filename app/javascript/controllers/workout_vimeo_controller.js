@@ -4,16 +4,15 @@ import * as Vimeo from "@vimeo/player"
 export default class extends Controller {
   static targets = ['embed']
   static values = {
-    id: Number,
+    url: String,
   }
 
   connect() {
     const options = {
-      id: this.idValue,
+      id: this.urlValue,
       allowfullscreen: true
     }
     this.player = new Vimeo.default(this.embedTarget, options)
-
     this.initFullscreenListener()
   }
 
