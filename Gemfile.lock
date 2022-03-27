@@ -233,6 +233,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
+    rollbar (3.3.0)
     ruby2_keywords (0.0.5)
     ruby_http_client (3.5.5)
     rubyzip (2.3.2)
@@ -321,6 +322,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.0)
   redis (~> 4.0)
+  rollbar
   selenium-webdriver
   sendgrid-ruby
   sidekiq
