@@ -12,7 +12,6 @@ class ErrorsController < ApplicationController
   private
 
   def hide_footer
-    debugger
     @hide_footer = true
   end
 end
