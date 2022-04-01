@@ -19,9 +19,35 @@
       <p class="text-sm mt-2 opacity-80 mb-6"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
       
       <% if policy(@workout).locked? && !current_user.admin? %>
-        <div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed font-medium">
-          <%= render 'icons/locked', klass: 'text-white w-4 h-4 mr-4', fill: true %>
-          Start workout
+        <div data-controller="modal">
+          <div data-action="click->modal#open" class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed font-medium">
+            <%= render 'icons/locked', klass: 'text-white w-4 h-4 mr-4', fill: true %>
+            Start workout
+          </div>
+
+          <!-- Modal Container -->
+          <div data-modal-target="container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">
+            <!-- Modal Inner Container -->
+            <div class="max-h-screen w-full max-w-lg relative">
+              <!-- Modal Card -->
+              <%= render 'components/modal/container' do %>
+                <div class="p-4 py-10 text-left mx-auto max-w-md">
+                  <h4 class="font-serif text-3xl mb-1">Oops, this is a membership only workout</h4>
+                  <p class="text-shale">To gain access to a community that will help you improve your body & mind, please subscribe to a membership.</p>
+                  <div class="mt-6">
+                    <% if is_native? %>
+                      <p class="text-mandarin">* Please go to Align Body on the web to manage your membership.</p>
+                    <% else %>
+                      <%= link_to membership_path, class: "bg-black text-white px-8 py-4 text-center cursor-pointer inline-block uppercase font-medium inline-flex items-center" do %>
+                        <%= render 'icons/sparkle', klass:'h-4 w-4 mr-2', fill: true %>
+                        Buy membership
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
         <% if is_native? %>
           <p class="text-center text-sm mt-1 text-black opacity-50">This workout is locked for your plan</p>
