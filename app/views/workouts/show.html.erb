@@ -18,7 +18,7 @@
       <h1 class="text-4xl tracking-tight font-serif"><%= @workout.name %></h1>
       <p class="text-sm mt-2 opacity-80 mb-6"><%= @workout.mins %> mins · with <%= @workout.instructor.name %></p>
       
-      <% if policy(@workout).locked? %>
+      <% if policy(@workout).locked? && !current_user.admin? %>
         <div class="bg-black text-white px-6 py-4 text-center cursor-pointer inline-block uppercase w-56 flex items-center justify-center cursor-not-allowed font-medium">
           <%= render 'icons/locked', klass: 'text-white w-4 h-4 mr-4', fill: true %>
           Start workout
@@ -26,7 +26,7 @@
         <% if is_native? %>
           <p class="text-center text-sm mt-1 text-black opacity-50">This workout is locked for your plan</p>
         <% else %>
-          <%= link_to "Upgrade plan to participate", account_path, class: "text-center hover:opacity-80 transition-opacity duration-300 ease-out text-sm mt-1 text-mandarin" %>
+          <%= link_to "Upgrade plan to participate", membership_path, class: "underline text-center hover:opacity-80 transition-opacity duration-300 ease-out text-sm mt-1 text-mandarin" %>
         <% end %>
       <% else %>
         <div data-controller="workout-vimeo" data-workout-vimeo-url-value="<%= @workout.video_url %>">
@@ -35,6 +35,13 @@
             Start workout
           <% end %>
           <div data-workout-vimeo-target="embed" class="hidden"></div>
+          <% if @workout.membership? && current_user.admin? %>
+            <!-- For admins... -->
+            <div class="text-center text-sm mt-1 text-black opacity-50 flex items-center justify-center">
+              <%= render 'icons/locked', klass: 'w-3 h-3 mr-2 inline', fill: true %>
+              <p>Requires membership</p>
+            </div>
+          <% end %>
         </div>
       <% end %>
       <div class="mt-4">
