@@ -1,0 +1,13 @@
+<% title ||= '' %>
+
+<div class="m-1 bg-white text-black border border-black shadow-xl">
+	<div class="text-black bg-cream border-b border-black px-4 py-2 text-center inline-block capitalize w-full flex items-center justify-between">
+		<h4 class="uppercase"><%= title.capitalize %></h4>
+		<button data-action="click->modal#close" class="m-1 mr-0 p-2 rounded-full transform scale-100 border border-transparent hover:border-black hover:bg-white transition-all duration-300 duration-300 ease-out">
+      <%= render 'icons/close', klass:"h-3 w-3" %>
+    </button>
+	</div>
+	<div class="relative">
+		<%= yield %>
+	</div>
+</div>

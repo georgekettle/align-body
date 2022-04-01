@@ -9,13 +9,15 @@ images = [
 	]
 
 puts "Creating Users"
+	# admin user
 	george = User.create!(
 							email: 'george@gmail.com',
 							password: 'secret',
 							first_name: "George",
 							last_name: "Kettle",
 							phone: "+61403978505",
-							admin: true)
+							admin: true,
+							terms_of_service: true)
 puts "Finished creating Users"
 
 
@@ -87,7 +89,7 @@ puts "Creating Workouts"
 		{
 			name: 'Abs be burnin',
 			video_url: 'https://player.vimeo.com/video/209288527',
-			category: Category.find_by_name('Foundations'),
+			category: Category.find_by_name('Fundamentals'),
 			instructor: emma,
 			intensity: 'high',
 			mins: 43,

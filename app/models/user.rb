@@ -26,13 +26,9 @@ class User < ApplicationRecord
     active_subscriptions.any?
   end
 
-  def admin?
-    admin
-  end
-
   private
 
   def create_sendgrid_contact
-    CreateSendgridContactJob.perform_later(self)
+    CreateSendgridContactJob.perform_later(self) if Rails.env == 'production'
   end
 end
